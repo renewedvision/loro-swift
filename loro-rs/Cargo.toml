@@ -3,10 +3,10 @@ name = "loro-swift"
 version = "0.16.2"
 edition = "2021"
 
-[lib]
-name = "loro"
-# Build as an rlib.
-crate-type = ["rlib"]
+# [lib]
+# name = "loro-swift"
+# # Build as an rlib.
+# crate-type = ["rlib"]
 
 [[bin]]
 # This can be whatever name makes sense for your project, but the rest of this tutorial assumes uniffi-bindgen.
