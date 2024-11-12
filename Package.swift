@@ -1,27 +1,13 @@
 // swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
-import Foundation
+// import Foundation
 import PackageDescription
-
-let FFIbinaryTarget: PackageDescription.Target
-
-if ProcessInfo.processInfo.environment["LOCAL_BUILD"] != nil {
-    FFIbinaryTarget = .binaryTarget(name: "LoroFFI", path: "./loroFFI.xcframework.zip")
-}else {
-   FFIbinaryTarget = .binaryTarget(
-       name: "LoroFFI",
-       url: "https://github.com/loro-dev/loro-swift/releases/download/1.0.0-alpha.5/loroFFI.xcframework.zip",
-       checksum: "2b9c11aecf4f90ead28e12c8487b072e3fc406885e91ab2d1999b8c83040bd6c"
-   )
-}
 
 let package = Package(
     name: "Loro",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
-        .visionOS(.v1)
+        .macOS(.v10_15)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -30,12 +16,18 @@ let package = Package(
             targets: ["Loro"]),
     ],
     targets: [
+        // Define a "LoroBuildPlugin" that helps us manage build sequencing like the "RVRegistrationPlugin" does for our RVRegistrationClient package.
+        .plugin(
+            name: "LoroBuildPlugin",
+            capability: .buildTool
+        )
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        FFIbinaryTarget,
         .target(
             name: "Loro",
-            dependencies: ["LoroFFI"]
+            plugins: [
+                "LoroBuildPlugin"
+            ]
         ),
         .testTarget(
             name: "LoroTests",
