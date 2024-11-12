@@ -3,19 +3,14 @@ name = "loro-swift"
 version = "0.16.2"
 edition = "2021"
 
-# [lib]
-# name = "loro-swift"
-# # Build as an rlib.
-# crate-type = ["rlib"]
+# By default this will produce an rlib named "loro-swift", which is what we want.
 
 [[bin]]
 # This can be whatever name makes sense for your project, but the rest of this tutorial assumes uniffi-bindgen.
 name = "uniffi-bindgen"
 path = "src/uniffi-bindgen.rs"
 
-
 [dependencies]
-# loro-ffi = { path = "../../loro/crates/loro-ffi" }
 # Build using a compatible rev of the Loro Rust project.  To get a newer version of Loro, we need to update the "rev" specified here, and fix resultant build errors.
 loro-ffi = { git = "https://github.com/loro-dev/loro.git", rev = "9680be41" }
 uniffi = { version = "0.28" }
