@@ -9,29 +9,25 @@ let package = Package(
         .macOS(.v10_15)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
+        // Foreign Function Interface to Loro's Rust implementation, that provides the loroFFI.h C header that Swift imports declarations from
+        .library(
+            name: "loroFFI",
+            targets: ["loroFFI"]
+        ),
+        // Swift code built atop the loroFFI API
         .library(
             name: "LoroSwift",
             targets: ["LoroSwift"]
-        ),
+        )
     ],
     targets: [
-        // Define a "LoroSwiftBuildPlugin" that helps us manage build sequencing like the "RVRegistrationPlugin" does for our RVRegistrationClient package.
-        .plugin(
-            name: "LoroSwiftBuildPlugin",
-            capability: .buildTool
+        .target(
+            name: "loroFFI"
         ),
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "LoroSwift",
-            plugins: [
-                "LoroSwiftBuildPlugin"
-            ]
+            dependencies: ["loroFFI"],
+            path: "Sources/Loro"
         ),
-        .testTarget(
-            name: "LoroSwiftTests",
-            dependencies: ["LoroSwift"]
-        )
     ]
 )
