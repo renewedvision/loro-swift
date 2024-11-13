@@ -4,7 +4,7 @@ import Foundation
 import PackagePlugin
 
 @main
-struct LoroBuildPlugin {
+struct LoroSwiftBuildPlugin {
     enum PluginError: Error, CustomStringConvertible {
         /// Indicates that the target where the plugin was applied to was not `SourceModuleTarget`.
         case invalidTarget(Target)
@@ -24,10 +24,10 @@ struct LoroBuildPlugin {
         targetDirectory: Path
     ) throws -> [Command] {
         return [
-            self.invokeProRustPreBuild(
+            self.invokePreBuild(
                 outputDirectory: pluginWorkDirectory
             ),
-            self.invokeProRustComplete(
+            self.invokeComplete(
                 directory: targetDirectory,
                 sourceFiles: sourceFiles,
                 outputDirectory: pluginWorkDirectory
@@ -35,31 +35,32 @@ struct LoroBuildPlugin {
         ]
     }
 
-    private func invokeProRustPreBuild(
+    private func invokePreBuild(
         outputDirectory: Path
     ) -> Command {
+        print("TNS: Returning LoroSwiftBuildPlugin.invokePreBuild() .prebuildCommand")
         return .prebuildCommand(
-            displayName: "CoreRegistrationClientPreBulid",
+            displayName: "LoroPreBulid",
             executable: Path("/bin/rm"),
             arguments: [
                 "-fr",
                 Path("/private/tmp").appending([
-                    "CoreRegistrationClientWait.md"
+                    "LoroSwiftWait.md"
                 ])
             ],
             outputFilesDirectory: Path("/dev/null")
         )
     }
 
-    private func invokeProRustComplete(
+    private func invokeComplete(
         directory: Path,
         sourceFiles: FileList,
         outputDirectory: Path
     ) -> Command {
         let derivedData = outputDirectory
-            .removingLastComponent() // LoroBuildPlugin
-            .removingLastComponent() // RVRegistrationClient
-            .removingLastComponent() // rvregistrationclient.output
+            .removingLastComponent() // LoroSwiftBuildPlugin
+            .removingLastComponent() // loro-swift
+            .removingLastComponent() // loro-swift.output
             .removingLastComponent() // plugins
             .removingLastComponent() // SourcePackages
 
@@ -68,28 +69,27 @@ struct LoroBuildPlugin {
                 "Build",
                 "Products",
                 "Debug",
-                "CoreRegistrationClient"
+                "loro-swift"
             ])
-        // the actual products from the ProRust target in ProCore
+        // the actual products from the Xcode target's "Run Shell Script" build phase
         let header = buildProducts.appending([
-            "CoreRegistrationClient.h"
+            "loroFFI.h"
         ])
         let moduleMap = buildProducts.appending([
-            "module.modulemap"
+            "loroFFI.modulemap"
         ])
-        // the signal file indicating the ProRust target has completed
+        // the signal file indicating the "Run Shell Script" build phase has completed
         let finished = Path("/private/tmp").appending([
-            "CoreRegistrationClientWait.md"
+            "LoroSwiftWait.md"
         ])
         // they byproduct quieting the script dependency output check
         let touched = outputDirectory.appending([
-            "CoreRegistrationClientWait.md"
+            "LoroSwiftWait.md"
         ])
 
-        // a flag to let CoreRegistrationClientWait in RVRegistrationClient know this step has completed
-        // note that ProRust always runs at present should that change then a different mechanism will be needed
+        // Move the sentinel file that the "Run Shell Script" build phase produced to the outputDiretory.
         return .buildCommand(
-            displayName: "CoreRegistrationClientWait",
+            displayName: "LoroSwiftWait",
             executable: Path("/bin/mv"),
             arguments: [
                 finished,
@@ -101,7 +101,7 @@ struct LoroBuildPlugin {
     }
 }
 
-extension LoroBuildPlugin: BuildToolPlugin {
+extension LoroSwiftBuildPlugin: BuildToolPlugin {
     func createBuildCommands(
         context: PluginContext,
         target: Target
@@ -121,7 +121,7 @@ extension LoroBuildPlugin: BuildToolPlugin {
 #if canImport(XcodeProjectPlugin)
 import XcodeProjectPlugin
 
-extension LoroBuildPlugin: XcodeBuildToolPlugin {
+extension LoroSwiftBuildPlugin: XcodeBuildToolPlugin {
     func createBuildCommands(
         context: XcodePluginContext,
         target: XcodeTarget
