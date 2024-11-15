@@ -1,2 +1,2 @@
-use loro_ffi::*;
+pub use loro_ffi::*;
 uniffi::include_scaffolding!("loro");

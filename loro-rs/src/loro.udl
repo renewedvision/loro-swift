@@ -1,5 +1,5 @@
 namespace loro{
-    
+    // (This namespace appears to be unused, so its name is probably irrelevant?)
 };
 
 // ============= Traits =============

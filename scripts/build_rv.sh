@@ -75,4 +75,7 @@ echo "▸ Done. Check for changes to these files that should be committed to git
 echo "Sources/loroFFI/include/loroFFI.h"
 echo "Sources/Loro/LoroFFI.swift"
 
+echo "Dumping _loro_ffi_ symbols in .rlib:"
+objdump -t target/aarch64-apple-darwin/release/libloro_swift.rlib | grep _ffi_loro_
+
 echo "▸ Ready to run swift build"
