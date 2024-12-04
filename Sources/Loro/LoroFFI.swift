@@ -25,13 +25,13 @@ fileprivate extension RustBuffer {
     }
 
     static func from(_ ptr: UnsafeBufferPointer<UInt8>) -> RustBuffer {
-        try! rustCall { ffi_loro_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
+        try! rustCall { ffi_loro_swift_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
     }
 
     // Frees the buffer in place.
     // The buffer must not be used after this is called.
     func deallocate() {
-        try! rustCall { ffi_loro_rustbuffer_free(self, $0) }
+        try! rustCall { ffi_loro_swift_rustbuffer_free(self, $0) }
     }
 }
 
@@ -633,12 +633,12 @@ open class Awareness:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_awareness(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_awareness(self.pointer, $0) }
     }
 public convenience init(peer: UInt64, timeout: Int64) {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_awareness_new(
+    uniffi_loro_swift_fn_constructor_awareness_new(
         FfiConverterUInt64.lower(peer),
         FfiConverterInt64.lower(timeout),$0
     )
@@ -651,7 +651,7 @@ public convenience init(peer: UInt64, timeout: Int64) {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_awareness(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_awareness(pointer, $0) }
     }
 
     
@@ -659,7 +659,7 @@ public convenience init(peer: UInt64, timeout: Int64) {
     
 open func apply(encodedPeersInfo: Data) -> AwarenessPeerUpdate {
     return try!  FfiConverterTypeAwarenessPeerUpdate.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_apply(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_awareness_apply(self.uniffiClonePointer(),
         FfiConverterData.lower(encodedPeersInfo),$0
     )
 })
@@ -667,7 +667,7 @@ open func apply(encodedPeersInfo: Data) -> AwarenessPeerUpdate {
     
 open func encode(peers: [UInt64]) -> Data {
     return try!  FfiConverterData.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_encode(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_awareness_encode(self.uniffiClonePointer(),
         FfiConverterSequenceUInt64.lower(peers),$0
     )
 })
@@ -675,41 +675,41 @@ open func encode(peers: [UInt64]) -> Data {
     
 open func encodeAll() -> Data {
     return try!  FfiConverterData.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_encode_all(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_awareness_encode_all(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func getAllStates() -> [UInt64: PeerInfo] {
     return try!  FfiConverterDictionaryUInt64TypePeerInfo.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_get_all_states(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_awareness_get_all_states(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func getLocalState() -> LoroValue? {
     return try!  FfiConverterOptionTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_get_local_state(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_awareness_get_local_state(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func peer() -> UInt64 {
     return try!  FfiConverterUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_peer(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_awareness_peer(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func removeOutdated() -> [UInt64] {
     return try!  FfiConverterSequenceUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_awareness_remove_outdated(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_awareness_remove_outdated(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func setLocalState(value: LoroValueLike) {try! rustCall() {
-    uniffi_loro_fn_method_awareness_set_local_state(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_awareness_set_local_state(self.uniffiClonePointer(),
         FfiConverterTypeLoroValueLike.lower(value),$0
     )
 }
@@ -813,7 +813,7 @@ open class ChangeAncestorsTravelerImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_changeancestorstraveler(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_changeancestorstraveler(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -822,7 +822,7 @@ open class ChangeAncestorsTravelerImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_changeancestorstraveler(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_changeancestorstraveler(pointer, $0) }
     }
 
     
@@ -830,7 +830,7 @@ open class ChangeAncestorsTravelerImpl:
     
 open func travel(change: ChangeMeta) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_changeancestorstraveler_travel(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_changeancestorstraveler_travel(self.uniffiClonePointer(),
         FfiConverterTypeChangeMeta.lower(change),$0
     )
 })
@@ -886,7 +886,7 @@ fileprivate struct UniffiCallbackInterfaceChangeAncestorsTraveler {
 }
 
 private func uniffiCallbackInitChangeAncestorsTraveler() {
-    uniffi_loro_fn_init_callback_vtable_changeancestorstraveler(&UniffiCallbackInterfaceChangeAncestorsTraveler.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_changeancestorstraveler(&UniffiCallbackInterfaceChangeAncestorsTraveler.vtable)
 }
 
 #if swift(>=5.8)
@@ -998,7 +998,7 @@ open class Configure:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_configure(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_configure(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -1007,7 +1007,7 @@ open class Configure:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_configure(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_configure(pointer, $0) }
     }
 
     
@@ -1015,34 +1015,34 @@ open class Configure:
     
 open func fork() -> Configure {
     return try!  FfiConverterTypeConfigure.lift(try! rustCall() {
-    uniffi_loro_fn_method_configure_fork(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_configure_fork(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func mergeInterval() -> Int64 {
     return try!  FfiConverterInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_configure_merge_interval(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_configure_merge_interval(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func recordTimestamp() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_configure_record_timestamp(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_configure_record_timestamp(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func setMergeInterval(interval: Int64) {try! rustCall() {
-    uniffi_loro_fn_method_configure_set_merge_interval(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_configure_set_merge_interval(self.uniffiClonePointer(),
         FfiConverterInt64.lower(interval),$0
     )
 }
 }
     
 open func setRecordTimestamp(record: Bool) {try! rustCall() {
-    uniffi_loro_fn_method_configure_set_record_timestamp(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_configure_set_record_timestamp(self.uniffiClonePointer(),
         FfiConverterBool.lower(record),$0
     )
 }
@@ -1050,7 +1050,7 @@ open func setRecordTimestamp(record: Bool) {try! rustCall() {
     
 open func textStyleConfig() -> StyleConfigMap {
     return try!  FfiConverterTypeStyleConfigMap.lift(try! rustCall() {
-    uniffi_loro_fn_method_configure_text_style_config(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_configure_text_style_config(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -1153,7 +1153,7 @@ open class ContainerIdLikeImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_containeridlike(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_containeridlike(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -1162,7 +1162,7 @@ open class ContainerIdLikeImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_containeridlike(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_containeridlike(pointer, $0) }
     }
 
     
@@ -1170,7 +1170,7 @@ open class ContainerIdLikeImpl:
     
 open func asContainerId(ty: ContainerType) -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_containeridlike_as_container_id(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_containeridlike_as_container_id(self.uniffiClonePointer(),
         FfiConverterTypeContainerType.lower(ty),$0
     )
 })
@@ -1220,7 +1220,7 @@ fileprivate struct UniffiCallbackInterfaceContainerIdLike {
 }
 
 private func uniffiCallbackInitContainerIdLike() {
-    uniffi_loro_fn_init_callback_vtable_containeridlike(&UniffiCallbackInterfaceContainerIdLike.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_containeridlike(&UniffiCallbackInterfaceContainerIdLike.vtable)
 }
 
 #if swift(>=5.8)
@@ -1320,12 +1320,12 @@ open class Cursor:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_cursor(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_cursor(self.pointer, $0) }
     }
 public convenience init(id: Id?, container: ContainerId, side: Side, originPos: UInt32) {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_cursor_new(
+    uniffi_loro_swift_fn_constructor_cursor_new(
         FfiConverterOptionTypeID.lower(id),
         FfiConverterTypeContainerID.lower(container),
         FfiConverterTypeSide.lower(side),
@@ -1340,7 +1340,7 @@ public convenience init(id: Id?, container: ContainerId, side: Side, originPos: 
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_cursor(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_cursor(pointer, $0) }
     }
 
     
@@ -1444,7 +1444,7 @@ open class FractionalIndex:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_fractionalindex(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_fractionalindex(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -1453,13 +1453,13 @@ open class FractionalIndex:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_fractionalindex(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_fractionalindex(pointer, $0) }
     }
 
     
 public static func fromBytes(bytes: Data) -> FractionalIndex {
     return try!  FfiConverterTypeFractionalIndex.lift(try! rustCall() {
-    uniffi_loro_fn_constructor_fractionalindex_from_bytes(
+    uniffi_loro_swift_fn_constructor_fractionalindex_from_bytes(
         FfiConverterData.lower(bytes),$0
     )
 })
@@ -1467,7 +1467,7 @@ public static func fromBytes(bytes: Data) -> FractionalIndex {
     
 public static func fromHexString(str: String) -> FractionalIndex {
     return try!  FfiConverterTypeFractionalIndex.lift(try! rustCall() {
-    uniffi_loro_fn_constructor_fractionalindex_from_hex_string(
+    uniffi_loro_swift_fn_constructor_fractionalindex_from_hex_string(
         FfiConverterString.lower(str),$0
     )
 })
@@ -1477,7 +1477,7 @@ public static func fromHexString(str: String) -> FractionalIndex {
     
 open func toString() -> String {
     return try!  FfiConverterString.lift(try! rustCall() {
-    uniffi_loro_fn_method_fractionalindex_to_string(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_fractionalindex_to_string(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -1582,12 +1582,12 @@ open class Frontiers:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_frontiers(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_frontiers(self.pointer, $0) }
     }
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_frontiers_new($0
+    uniffi_loro_swift_fn_constructor_frontiers_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -1598,13 +1598,13 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_frontiers(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_frontiers(pointer, $0) }
     }
 
     
 public static func decode(bytes: Data)throws  -> Frontiers {
     return try  FfiConverterTypeFrontiers.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_constructor_frontiers_decode(
+    uniffi_loro_swift_fn_constructor_frontiers_decode(
         FfiConverterData.lower(bytes),$0
     )
 })
@@ -1612,7 +1612,7 @@ public static func decode(bytes: Data)throws  -> Frontiers {
     
 public static func fromId(id: Id) -> Frontiers {
     return try!  FfiConverterTypeFrontiers.lift(try! rustCall() {
-    uniffi_loro_fn_constructor_frontiers_from_id(
+    uniffi_loro_swift_fn_constructor_frontiers_from_id(
         FfiConverterTypeID.lower(id),$0
     )
 })
@@ -1620,7 +1620,7 @@ public static func fromId(id: Id) -> Frontiers {
     
 public static func fromIds(ids: [Id]) -> Frontiers {
     return try!  FfiConverterTypeFrontiers.lift(try! rustCall() {
-    uniffi_loro_fn_constructor_frontiers_from_ids(
+    uniffi_loro_swift_fn_constructor_frontiers_from_ids(
         FfiConverterSequenceTypeID.lower(ids),$0
     )
 })
@@ -1630,14 +1630,14 @@ public static func fromIds(ids: [Id]) -> Frontiers {
     
 open func encode() -> Data {
     return try!  FfiConverterData.lift(try! rustCall() {
-    uniffi_loro_fn_method_frontiers_encode(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_frontiers_encode(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func eq(other: Frontiers) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_frontiers_eq(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_frontiers_eq(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(other),$0
     )
 })
@@ -1741,7 +1741,7 @@ open class LocalUpdateCallbackImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_localupdatecallback(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_localupdatecallback(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -1750,14 +1750,14 @@ open class LocalUpdateCallbackImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_localupdatecallback(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_localupdatecallback(pointer, $0) }
     }
 
     
 
     
 open func onLocalUpdate(update: Data) {try! rustCall() {
-    uniffi_loro_fn_method_localupdatecallback_on_local_update(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_localupdatecallback_on_local_update(self.uniffiClonePointer(),
         FfiConverterData.lower(update),$0
     )
 }
@@ -1807,7 +1807,7 @@ fileprivate struct UniffiCallbackInterfaceLocalUpdateCallback {
 }
 
 private func uniffiCallbackInitLocalUpdateCallback() {
-    uniffi_loro_fn_init_callback_vtable_localupdatecallback(&UniffiCallbackInterfaceLocalUpdateCallback.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_localupdatecallback(&UniffiCallbackInterfaceLocalUpdateCallback.vtable)
 }
 
 #if swift(>=5.8)
@@ -1932,7 +1932,7 @@ open class LoroCounter:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorocounter(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorocounter(self.pointer, $0) }
     }
     /**
      * Create a new Counter.
@@ -1940,7 +1940,7 @@ open class LoroCounter:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_lorocounter_new($0
+    uniffi_loro_swift_fn_constructor_lorocounter_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -1951,7 +1951,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorocounter(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorocounter(pointer, $0) }
     }
 
     
@@ -1961,7 +1961,7 @@ public convenience init() {
      * Decrement the counter by the given value.
      */
 open func decrement(value: Double)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorocounter_decrement(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorocounter_decrement(self.uniffiClonePointer(),
         FfiConverterDouble.lower(value),$0
     )
 }
@@ -1972,7 +1972,7 @@ open func decrement(value: Double)throws  {try rustCallWithError(FfiConverterTyp
      */
 open func getValue() -> Double {
     return try!  FfiConverterDouble.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorocounter_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorocounter_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -1982,7 +1982,7 @@ open func getValue() -> Double {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorocounter_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorocounter_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -1991,7 +1991,7 @@ open func id() -> ContainerId {
      * Increment the counter by the given value.
      */
 open func increment(value: Double)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorocounter_increment(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorocounter_increment(self.uniffiClonePointer(),
         FfiConverterDouble.lower(value),$0
     )
 }
@@ -2002,7 +2002,7 @@ open func increment(value: Double)throws  {try rustCallWithError(FfiConverterTyp
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorocounter_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorocounter_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -2568,7 +2568,7 @@ open class LoroDoc:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorodoc(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorodoc(self.pointer, $0) }
     }
     /**
      * Create a new `LoroDoc` instance.
@@ -2576,7 +2576,7 @@ open class LoroDoc:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_lorodoc_new($0
+    uniffi_loro_swift_fn_constructor_lorodoc_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -2587,7 +2587,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorodoc(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorodoc(pointer, $0) }
     }
 
     
@@ -2602,7 +2602,7 @@ public convenience init() {
      * > recorded in the `OpLog` without being applied to the `DocState`.
      */
 open func attach() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_attach(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_attach(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2612,7 +2612,7 @@ open func attach() {try! rustCall() {
      * calculated by applying all the history.
      */
 open func checkStateCorrectnessSlow() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_check_state_correctness_slow(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_check_state_correctness_slow(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2628,7 +2628,7 @@ open func checkStateCorrectnessSlow() {try! rustCall() {
      * You should call `attach` to attach the `DocState` to the latest version of `OpLog`.
      */
 open func checkout(frontiers: Frontiers)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_checkout(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_checkout(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 }
@@ -2645,7 +2645,7 @@ open func checkout(frontiers: Frontiers)throws  {try rustCallWithError(FfiConver
      * This has the same effect as `attach`.
      */
 open func checkoutToLatest() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_checkout_to_latest(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_checkout_to_latest(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2657,7 +2657,7 @@ open func checkoutToLatest() {try! rustCall() {
      */
 open func cmpWithFrontiers(other: Frontiers) -> Ordering {
     return try!  FfiConverterTypeOrdering.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_cmp_with_frontiers(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_cmp_with_frontiers(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(other),$0
     )
 })
@@ -2675,13 +2675,13 @@ open func cmpWithFrontiers(other: Frontiers) -> Ordering {
      * - `doc.checkout(version)` is called.
      */
 open func commit() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_commit(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_commit(self.uniffiClonePointer(),$0
     )
 }
 }
     
 open func commitWith(options: CommitOptions) {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_commit_with(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_commit_with(self.uniffiClonePointer(),
         FfiConverterTypeCommitOptions.lower(options),$0
     )
 }
@@ -2693,7 +2693,7 @@ open func commitWith(options: CommitOptions) {try! rustCall() {
      * The parsed ops will be dropped
      */
 open func compactChangeStore() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_compact_change_store(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_compact_change_store(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2703,7 +2703,7 @@ open func compactChangeStore() {try! rustCall() {
      */
 open func config() -> Configure {
     return try!  FfiConverterTypeConfigure.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_config(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_config(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -2718,7 +2718,7 @@ open func config() -> Configure {
      * beginning or end of the style.
      */
 open func configTextStyle(textStyle: StyleConfigMap) {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_config_text_style(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_config_text_style(self.uniffiClonePointer(),
         FfiConverterTypeStyleConfigMap.lower(textStyle),$0
     )
 }
@@ -2732,7 +2732,7 @@ open func configTextStyle(textStyle: StyleConfigMap) {try! rustCall() {
      * Learn more at https://loro.dev/docs/advanced/doc_state_and_oplog#attacheddetached-status
      */
 open func detach() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_detach(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_detach(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2742,7 +2742,7 @@ open func detach() {try! rustCall() {
      */
 open func exportJsonUpdates(startVv: VersionVector, endVv: VersionVector) -> String {
     return try!  FfiConverterString.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_export_json_updates(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_json_updates(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(startVv),
         FfiConverterTypeVersionVector.lower(endVv),$0
     )
@@ -2751,7 +2751,7 @@ open func exportJsonUpdates(startVv: VersionVector, endVv: VersionVector) -> Str
     
 open func exportShallowSnapshot(frontiers: Frontiers)throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_shallow_snapshot(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_shallow_snapshot(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -2762,14 +2762,14 @@ open func exportShallowSnapshot(frontiers: Frontiers)throws  -> Data {
      */
 open func exportSnapshot()throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_snapshot(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_export_snapshot(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func exportSnapshotAt(frontiers: Frontiers)throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_snapshot_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_snapshot_at(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -2777,7 +2777,7 @@ open func exportSnapshotAt(frontiers: Frontiers)throws  -> Data {
     
 open func exportStateOnly(frontiers: Frontiers?)throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_state_only(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_state_only(self.uniffiClonePointer(),
         FfiConverterOptionTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -2788,7 +2788,7 @@ open func exportStateOnly(frontiers: Frontiers?)throws  -> Data {
      */
 open func exportUpdates(vv: VersionVector)throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_updates(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_updates(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(vv),$0
     )
 })
@@ -2796,7 +2796,7 @@ open func exportUpdates(vv: VersionVector)throws  -> Data {
     
 open func exportUpdatesInRange(spans: [IdSpan])throws  -> Data {
     return try  FfiConverterData.lift(try rustCallWithError(FfiConverterTypeLoroEncodeError.lift) {
-    uniffi_loro_fn_method_lorodoc_export_updates_in_range(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_export_updates_in_range(self.uniffiClonePointer(),
         FfiConverterSequenceTypeIdSpan.lower(spans),$0
     )
 })
@@ -2812,7 +2812,7 @@ open func exportUpdatesInRange(spans: [IdSpan])throws  -> Data {
      */
 open func fork() -> LoroDoc {
     return try!  FfiConverterTypeLoroDoc.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_fork(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_fork(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -2824,7 +2824,7 @@ open func fork() -> LoroDoc {
      */
 open func forkAt(frontiers: Frontiers) -> LoroDoc {
     return try!  FfiConverterTypeLoroDoc.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_fork_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_fork_at(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -2834,7 +2834,7 @@ open func forkAt(frontiers: Frontiers) -> LoroDoc {
      * Free the cached diff calculator that is used for checkout.
      */
 open func freeDiffCalculator() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_free_diff_calculator(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_free_diff_calculator(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2846,7 +2846,7 @@ open func freeDiffCalculator() {try! rustCall() {
      * You can free it by calling this method.
      */
 open func freeHistoryCache() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_free_history_cache(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_free_history_cache(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -2856,7 +2856,7 @@ open func freeHistoryCache() {try! rustCall() {
      */
 open func frontiersToVv(frontiers: Frontiers) -> VersionVector? {
     return try!  FfiConverterOptionTypeVersionVector.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_frontiers_to_vv(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_frontiers_to_vv(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -2867,7 +2867,7 @@ open func frontiersToVv(frontiers: Frontiers) -> VersionVector? {
      */
 open func getByPath(path: [Index]) -> ValueOrContainer? {
     return try!  FfiConverterOptionTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_by_path(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_by_path(self.uniffiClonePointer(),
         FfiConverterSequenceTypeIndex.lower(path),$0
     )
 })
@@ -2878,7 +2878,7 @@ open func getByPath(path: [Index]) -> ValueOrContainer? {
      */
 open func getByStrPath(path: String) -> ValueOrContainer? {
     return try!  FfiConverterOptionTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_by_str_path(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_by_str_path(self.uniffiClonePointer(),
         FfiConverterString.lower(path),$0
     )
 })
@@ -2901,7 +2901,7 @@ open func getByStrPath(path: String) -> ValueOrContainer? {
      */
 open func getChange(id: Id) -> ChangeMeta? {
     return try!  FfiConverterOptionTypeChangeMeta.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_change(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_change(self.uniffiClonePointer(),
         FfiConverterTypeID.lower(id),$0
     )
 })
@@ -2922,7 +2922,7 @@ open func getChange(id: Id) -> ChangeMeta? {
      */
 open func getChangedContainersIn(id: Id, len: UInt32) -> [ContainerId] {
     return try!  FfiConverterSequenceTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_changed_containers_in(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_changed_containers_in(self.uniffiClonePointer(),
         FfiConverterTypeID.lower(id),
         FfiConverterUInt32.lower(len),$0
     )
@@ -2936,7 +2936,7 @@ open func getChangedContainersIn(id: Id, len: UInt32) -> [ContainerId] {
      */
 open func getCounter(id: ContainerIdLike) -> LoroCounter {
     return try!  FfiConverterTypeLoroCounter.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_counter(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_counter(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -2944,7 +2944,7 @@ open func getCounter(id: ContainerIdLike) -> LoroCounter {
     
 open func getCursorPos(cursor: Cursor)throws  -> PosQueryResult {
     return try  FfiConverterTypePosQueryResult.lift(try rustCallWithError(FfiConverterTypeCannotFindRelativePosition.lift) {
-    uniffi_loro_fn_method_lorodoc_get_cursor_pos(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_cursor_pos(self.uniffiClonePointer(),
         FfiConverterTypeCursor.lower(cursor),$0
     )
 })
@@ -2955,7 +2955,7 @@ open func getCursorPos(cursor: Cursor)throws  -> PosQueryResult {
      */
 open func getDeepValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_deep_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_get_deep_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -2965,7 +2965,7 @@ open func getDeepValue() -> LoroValue {
      */
 open func getDeepValueWithId() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_deep_value_with_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_get_deep_value_with_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -2977,7 +2977,7 @@ open func getDeepValueWithId() -> LoroValue {
      */
 open func getList(id: ContainerIdLike) -> LoroList {
     return try!  FfiConverterTypeLoroList.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_list(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_list(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -2990,7 +2990,7 @@ open func getList(id: ContainerIdLike) -> LoroList {
      */
 open func getMap(id: ContainerIdLike) -> LoroMap {
     return try!  FfiConverterTypeLoroMap.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_map(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_map(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -3003,7 +3003,7 @@ open func getMap(id: ContainerIdLike) -> LoroMap {
      */
 open func getMovableList(id: ContainerIdLike) -> LoroMovableList {
     return try!  FfiConverterTypeLoroMovableList.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_movable_list(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_movable_list(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -3014,7 +3014,7 @@ open func getMovableList(id: ContainerIdLike) -> LoroMovableList {
      */
 open func getPathToContainer(id: ContainerId) -> [ContainerPath]? {
     return try!  FfiConverterOptionSequenceTypeContainerPath.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_path_to_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_path_to_container(self.uniffiClonePointer(),
         FfiConverterTypeContainerID.lower(id),$0
     )
 })
@@ -3028,7 +3028,7 @@ open func getPathToContainer(id: ContainerId) -> [ContainerPath]? {
      */
 open func getPendingTxnLen() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_pending_txn_len(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_get_pending_txn_len(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3040,7 +3040,7 @@ open func getPendingTxnLen() -> UInt32 {
      */
 open func getText(id: ContainerIdLike) -> LoroText {
     return try!  FfiConverterTypeLoroText.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_text(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_text(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -3053,7 +3053,7 @@ open func getText(id: ContainerIdLike) -> LoroText {
      */
 open func getTree(id: ContainerIdLike) -> LoroTree {
     return try!  FfiConverterTypeLoroTree.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_tree(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_get_tree(self.uniffiClonePointer(),
         FfiConverterTypeContainerIdLike.lower(id),$0
     )
 })
@@ -3064,14 +3064,14 @@ open func getTree(id: ContainerIdLike) -> LoroTree {
      */
 open func getValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func hasHistoryCache() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_has_history_cache(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_has_history_cache(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3081,7 +3081,7 @@ open func hasHistoryCache() -> Bool {
      */
 open func `import`(bytes: Data)throws  -> ImportStatus {
     return try  FfiConverterTypeImportStatus.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_import(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_import(self.uniffiClonePointer(),
         FfiConverterData.lower(bytes),$0
     )
 })
@@ -3093,7 +3093,7 @@ open func `import`(bytes: Data)throws  -> ImportStatus {
      * The data can be in arbitrary order. The import result will be the same.
      */
 open func importBatch(bytes: [Data])throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_import_batch(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_import_batch(self.uniffiClonePointer(),
         FfiConverterSequenceData.lower(bytes),$0
     )
 }
@@ -3101,7 +3101,7 @@ open func importBatch(bytes: [Data])throws  {try rustCallWithError(FfiConverterT
     
 open func importJsonUpdates(json: String)throws  -> ImportStatus {
     return try  FfiConverterTypeImportStatus.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_import_json_updates(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_import_json_updates(self.uniffiClonePointer(),
         FfiConverterString.lower(json),$0
     )
 })
@@ -3115,7 +3115,7 @@ open func importJsonUpdates(json: String)throws  -> ImportStatus {
      */
 open func importWith(bytes: Data, origin: String)throws  -> ImportStatus {
     return try  FfiConverterTypeImportStatus.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_import_with(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_import_with(self.uniffiClonePointer(),
         FfiConverterData.lower(bytes),
         FfiConverterString.lower(origin),$0
     )
@@ -3128,7 +3128,7 @@ open func importWith(bytes: Data, origin: String)throws  -> ImportStatus {
      */
 open func isDetached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_is_detached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_is_detached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3138,7 +3138,7 @@ open func isDetached() -> Bool {
      */
 open func isShallow() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_is_shallow(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_is_shallow(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3176,7 +3176,7 @@ open func isShallow() -> Bool {
      */
 open func jsonpath(path: String)throws  -> [ValueOrContainer] {
     return try  FfiConverterSequenceTypeValueOrContainer.lift(try rustCallWithError(FfiConverterTypeJsonPathError.lift) {
-    uniffi_loro_fn_method_lorodoc_jsonpath(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_jsonpath(self.uniffiClonePointer(),
         FfiConverterString.lower(path),$0
     )
 })
@@ -3187,7 +3187,7 @@ open func jsonpath(path: String)throws  -> [ValueOrContainer] {
      */
 open func lenChanges() -> UInt64 {
     return try!  FfiConverterUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_len_changes(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_len_changes(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3197,7 +3197,7 @@ open func lenChanges() -> UInt64 {
      */
 open func lenOps() -> UInt64 {
     return try!  FfiConverterUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_len_ops(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_len_ops(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3206,7 +3206,7 @@ open func lenOps() -> UInt64 {
      * Estimate the size of the document states in memory.
      */
 open func logEstimateSize() {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_log_estimate_size(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_log_estimate_size(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -3216,7 +3216,7 @@ open func logEstimateSize() {try! rustCall() {
      */
 open func minimizeFrontiers(frontiers: Frontiers) -> FrontiersOrId {
     return try!  FfiConverterTypeFrontiersOrID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_minimize_frontiers(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_minimize_frontiers(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(frontiers),$0
     )
 })
@@ -3227,7 +3227,7 @@ open func minimizeFrontiers(frontiers: Frontiers) -> FrontiersOrId {
      */
 open func oplogFrontiers() -> Frontiers {
     return try!  FfiConverterTypeFrontiers.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_oplog_frontiers(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_oplog_frontiers(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3237,7 +3237,7 @@ open func oplogFrontiers() -> Frontiers {
      */
 open func oplogVv() -> VersionVector {
     return try!  FfiConverterTypeVersionVector.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_oplog_vv(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_oplog_vv(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3247,7 +3247,7 @@ open func oplogVv() -> VersionVector {
      */
 open func peerId() -> UInt64 {
     return try!  FfiConverterUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_peer_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_peer_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3259,14 +3259,14 @@ open func peerId() -> UInt64 {
      * The default value is 1000 seconds.
      */
 open func setChangeMergeInterval(interval: Int64) {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_set_change_merge_interval(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_set_change_merge_interval(self.uniffiClonePointer(),
         FfiConverterInt64.lower(interval),$0
     )
 }
 }
     
 open func setNextCommitMessage(msg: String) {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_set_next_commit_message(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_set_next_commit_message(self.uniffiClonePointer(),
         FfiConverterString.lower(msg),$0
     )
 }
@@ -3279,7 +3279,7 @@ open func setNextCommitMessage(msg: String) {try! rustCall() {
      * If it happens, the document will be corrupted.
      */
 open func setPeerId(peer: UInt64)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorodoc_set_peer_id(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_set_peer_id(self.uniffiClonePointer(),
         FfiConverterUInt64.lower(peer),$0
     )
 }
@@ -3297,7 +3297,7 @@ open func setPeerId(peer: UInt64)throws  {try rustCallWithError(FfiConverterType
      * the largest existing timestamp will be used instead.
      */
 open func setRecordTimestamp(record: Bool) {try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_set_record_timestamp(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_set_record_timestamp(self.uniffiClonePointer(),
         FfiConverterBool.lower(record),$0
     )
 }
@@ -3310,7 +3310,7 @@ open func setRecordTimestamp(record: Bool) {try! rustCall() {
      */
 open func shallowSinceVv() -> VersionVector {
     return try!  FfiConverterTypeVersionVector.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_shallow_since_vv(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_shallow_since_vv(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3322,7 +3322,7 @@ open func shallowSinceVv() -> VersionVector {
      */
 open func stateFrontiers() -> Frontiers {
     return try!  FfiConverterTypeFrontiers.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_state_frontiers(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_state_frontiers(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3332,7 +3332,7 @@ open func stateFrontiers() -> Frontiers {
      */
 open func stateVv() -> VersionVector {
     return try!  FfiConverterTypeVersionVector.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_state_vv(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorodoc_state_vv(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3352,7 +3352,7 @@ open func stateVv() -> VersionVector {
      */
 open func subscribe(containerId: ContainerId, subscriber: Subscriber) -> Subscription {
     return try!  FfiConverterTypeSubscription.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_subscribe(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_subscribe(self.uniffiClonePointer(),
         FfiConverterTypeContainerID.lower(containerId),
         FfiConverterTypeSubscriber.lower(subscriber),$0
     )
@@ -3364,7 +3364,7 @@ open func subscribe(containerId: ContainerId, subscriber: Subscriber) -> Subscri
      */
 open func subscribeLocalUpdate(callback: LocalUpdateCallback) -> Subscription {
     return try!  FfiConverterTypeSubscription.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_subscribe_local_update(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_subscribe_local_update(self.uniffiClonePointer(),
         FfiConverterTypeLocalUpdateCallback.lower(callback),$0
     )
 })
@@ -3378,7 +3378,7 @@ open func subscribeLocalUpdate(callback: LocalUpdateCallback) -> Subscription {
      */
 open func subscribeRoot(subscriber: Subscriber) -> Subscription {
     return try!  FfiConverterTypeSubscription.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_subscribe_root(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_subscribe_root(self.uniffiClonePointer(),
         FfiConverterTypeSubscriber.lower(subscriber),$0
     )
 })
@@ -3396,7 +3396,7 @@ open func subscribeRoot(subscriber: Subscriber) -> Subscription {
      * * `f` - A mutable function that is called for each ancestor. It can return `ControlFlow::Break(())` to stop the traversal.
      */
 open func travelChangeAncestors(ids: [Id], f: ChangeAncestorsTraveler)throws  {try rustCallWithError(FfiConverterTypeChangeTravelError.lift) {
-    uniffi_loro_fn_method_lorodoc_travel_change_ancestors(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_travel_change_ancestors(self.uniffiClonePointer(),
         FfiConverterSequenceTypeID.lower(ids),
         FfiConverterTypeChangeAncestorsTraveler.lower(f),$0
     )
@@ -3408,7 +3408,7 @@ open func travelChangeAncestors(ids: [Id], f: ChangeAncestorsTraveler)throws  {t
      */
 open func vvToFrontiers(vv: VersionVector) -> Frontiers {
     return try!  FfiConverterTypeFrontiers.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorodoc_vv_to_frontiers(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorodoc_vv_to_frontiers(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(vv),$0
     )
 })
@@ -3598,7 +3598,7 @@ open class LoroList:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorolist(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorolist(self.pointer, $0) }
     }
     /**
      * Create a new container that is detached from the document.
@@ -3609,7 +3609,7 @@ open class LoroList:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_lorolist_new($0
+    uniffi_loro_swift_fn_constructor_lorolist_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -3620,7 +3620,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorolist(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorolist(pointer, $0) }
     }
 
     
@@ -3630,7 +3630,7 @@ public convenience init() {
      * Delete all elements in the list.
      */
 open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_clear(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_clear(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -3639,7 +3639,7 @@ open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) 
      * Delete values at the given position.
      */
 open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_delete(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_delete(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterUInt32.lower(len),$0
     )
@@ -3651,7 +3651,7 @@ open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConv
      */
 open func get(index: UInt32) -> ValueOrContainer? {
     return try!  FfiConverterOptionTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_get(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_get(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(index),$0
     )
 })
@@ -3659,7 +3659,7 @@ open func get(index: UInt32) -> ValueOrContainer? {
     
 open func getCursor(pos: UInt32, side: Side) -> Cursor? {
     return try!  FfiConverterOptionTypeCursor.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_get_cursor(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_get_cursor(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeSide.lower(side),$0
     )
@@ -3671,7 +3671,7 @@ open func getCursor(pos: UInt32, side: Side) -> Cursor? {
      */
 open func getDeepValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_get_deep_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_get_deep_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3681,7 +3681,7 @@ open func getDeepValue() -> LoroValue {
      */
 open func getIdAt(pos: UInt32) -> Id? {
     return try!  FfiConverterOptionTypeID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_get_id_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_get_id_at(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),$0
     )
 })
@@ -3694,7 +3694,7 @@ open func getIdAt(pos: UInt32) -> Id? {
      */
 open func getValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3704,7 +3704,7 @@ open func getValue() -> LoroValue {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3713,7 +3713,7 @@ open func id() -> ContainerId {
      * Insert a value at the given position.
      */
 open func insert(pos: UInt32, v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroValueLike.lower(v),$0
     )
@@ -3722,7 +3722,7 @@ open func insert(pos: UInt32, v: LoroValueLike)throws  {try rustCallWithError(Ff
     
 open func insertCounterContainer(pos: UInt32, child: LoroCounter)throws  -> LoroCounter {
     return try  FfiConverterTypeLoroCounter.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_counter_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_counter_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroCounter.lower(child),$0
     )
@@ -3731,7 +3731,7 @@ open func insertCounterContainer(pos: UInt32, child: LoroCounter)throws  -> Loro
     
 open func insertListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     return try  FfiConverterTypeLoroList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroList.lower(child),$0
     )
@@ -3740,7 +3740,7 @@ open func insertListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     
 open func insertMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     return try  FfiConverterTypeLoroMap.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_map_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_map_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMap.lower(child),$0
     )
@@ -3749,7 +3749,7 @@ open func insertMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     
 open func insertMovableListContainer(pos: UInt32, child: LoroMovableList)throws  -> LoroMovableList {
     return try  FfiConverterTypeLoroMovableList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_movable_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_movable_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMovableList.lower(child),$0
     )
@@ -3758,7 +3758,7 @@ open func insertMovableListContainer(pos: UInt32, child: LoroMovableList)throws 
     
 open func insertTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     return try  FfiConverterTypeLoroText.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_text_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_text_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroText.lower(child),$0
     )
@@ -3767,7 +3767,7 @@ open func insertTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     
 open func insertTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
     return try  FfiConverterTypeLoroTree.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_insert_tree_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_insert_tree_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroTree.lower(child),$0
     )
@@ -3782,7 +3782,7 @@ open func insertTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
      */
 open func isAttached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_is_attached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_is_attached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3792,21 +3792,21 @@ open func isAttached() -> Bool {
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func isEmpty() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_is_empty(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_is_empty(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func len() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_len(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_len(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -3816,13 +3816,13 @@ open func len() -> UInt32 {
      */
 open func pop()throws  -> LoroValue? {
     return try  FfiConverterOptionTypeLoroValue.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_pop(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_pop(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func push(v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorolist_push(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorolist_push(self.uniffiClonePointer(),
         FfiConverterTypeLoroValueLike.lower(v),$0
     )
 }
@@ -3836,7 +3836,7 @@ open func push(v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeL
      */
 open func toVec() -> [LoroValue] {
     return try!  FfiConverterSequenceTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorolist_to_vec(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorolist_to_vec(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4023,7 +4023,7 @@ open class LoroMap:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_loromap(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_loromap(self.pointer, $0) }
     }
     /**
      * Create a new container that is detached from the document.
@@ -4034,7 +4034,7 @@ open class LoroMap:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_loromap_new($0
+    uniffi_loro_swift_fn_constructor_loromap_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -4045,7 +4045,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_loromap(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_loromap(pointer, $0) }
     }
 
     
@@ -4055,7 +4055,7 @@ public convenience init() {
      * Delete all key-value pairs in the map.
      */
 open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_clear(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_clear(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -4064,7 +4064,7 @@ open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) 
      * Delete a key-value pair from the map.
      */
 open func delete(key: String)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_delete(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_delete(self.uniffiClonePointer(),
         FfiConverterString.lower(key),$0
     )
 }
@@ -4075,7 +4075,7 @@ open func delete(key: String)throws  {try rustCallWithError(FfiConverterTypeLoro
      */
 open func get(key: String) -> ValueOrContainer? {
     return try!  FfiConverterOptionTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_get(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_get(self.uniffiClonePointer(),
         FfiConverterString.lower(key),$0
     )
 })
@@ -4088,7 +4088,7 @@ open func get(key: String) -> ValueOrContainer? {
      */
 open func getDeepValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_get_deep_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_get_deep_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4098,7 +4098,7 @@ open func getDeepValue() -> LoroValue {
      */
 open func getLastEditor(key: String) -> UInt64? {
     return try!  FfiConverterOptionUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_get_last_editor(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_get_last_editor(self.uniffiClonePointer(),
         FfiConverterString.lower(key),$0
     )
 })
@@ -4111,7 +4111,7 @@ open func getLastEditor(key: String) -> UInt64? {
      */
 open func getValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4121,7 +4121,7 @@ open func getValue() -> LoroValue {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4130,7 +4130,7 @@ open func id() -> ContainerId {
      * Insert a key-value pair into the map.
      */
 open func insert(key: String, v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroValueLike.lower(v),$0
     )
@@ -4139,7 +4139,7 @@ open func insert(key: String, v: LoroValueLike)throws  {try rustCallWithError(Ff
     
 open func insertCounterContainer(key: String, child: LoroCounter)throws  -> LoroCounter {
     return try  FfiConverterTypeLoroCounter.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_counter_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_counter_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroCounter.lower(child),$0
     )
@@ -4148,7 +4148,7 @@ open func insertCounterContainer(key: String, child: LoroCounter)throws  -> Loro
     
 open func insertListContainer(key: String, child: LoroList)throws  -> LoroList {
     return try  FfiConverterTypeLoroList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_list_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroList.lower(child),$0
     )
@@ -4157,7 +4157,7 @@ open func insertListContainer(key: String, child: LoroList)throws  -> LoroList {
     
 open func insertMapContainer(key: String, child: LoroMap)throws  -> LoroMap {
     return try  FfiConverterTypeLoroMap.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_map_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_map_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroMap.lower(child),$0
     )
@@ -4166,7 +4166,7 @@ open func insertMapContainer(key: String, child: LoroMap)throws  -> LoroMap {
     
 open func insertMovableListContainer(key: String, child: LoroMovableList)throws  -> LoroMovableList {
     return try  FfiConverterTypeLoroMovableList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_movable_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_movable_list_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroMovableList.lower(child),$0
     )
@@ -4175,7 +4175,7 @@ open func insertMovableListContainer(key: String, child: LoroMovableList)throws 
     
 open func insertTextContainer(key: String, child: LoroText)throws  -> LoroText {
     return try  FfiConverterTypeLoroText.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_text_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_text_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroText.lower(child),$0
     )
@@ -4184,7 +4184,7 @@ open func insertTextContainer(key: String, child: LoroText)throws  -> LoroText {
     
 open func insertTreeContainer(key: String, child: LoroTree)throws  -> LoroTree {
     return try  FfiConverterTypeLoroTree.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromap_insert_tree_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromap_insert_tree_container(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeLoroTree.lower(child),$0
     )
@@ -4196,7 +4196,7 @@ open func insertTreeContainer(key: String, child: LoroTree)throws  -> LoroTree {
      */
 open func isAttached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_is_attached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_is_attached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4206,7 +4206,7 @@ open func isAttached() -> Bool {
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4216,7 +4216,7 @@ open func isDeleted() -> Bool {
      */
 open func isEmpty() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_is_empty(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_is_empty(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4226,7 +4226,7 @@ open func isEmpty() -> Bool {
      */
 open func keys() -> [String] {
     return try!  FfiConverterSequenceString.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_keys(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_keys(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4236,7 +4236,7 @@ open func keys() -> [String] {
      */
 open func len() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_len(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_len(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4246,7 +4246,7 @@ open func len() -> UInt32 {
      */
 open func values() -> [ValueOrContainer] {
     return try!  FfiConverterSequenceTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromap_values(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromap_values(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4480,7 +4480,7 @@ open class LoroMovableList:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_loromovablelist(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_loromovablelist(self.pointer, $0) }
     }
     /**
      * Create a new container that is detached from the document.
@@ -4491,7 +4491,7 @@ open class LoroMovableList:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_loromovablelist_new($0
+    uniffi_loro_swift_fn_constructor_loromovablelist_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -4502,7 +4502,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_loromovablelist(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_loromovablelist(pointer, $0) }
     }
 
     
@@ -4512,7 +4512,7 @@ public convenience init() {
      * Delete all elements in the list.
      */
 open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_clear(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_clear(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -4521,7 +4521,7 @@ open func clear()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) 
      * Delete values at the given position.
      */
 open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_delete(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_delete(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterUInt32.lower(len),$0
     )
@@ -4533,7 +4533,7 @@ open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConv
      */
 open func get(index: UInt32) -> ValueOrContainer? {
     return try!  FfiConverterOptionTypeValueOrContainer.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_get(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(index),$0
     )
 })
@@ -4541,7 +4541,7 @@ open func get(index: UInt32) -> ValueOrContainer? {
     
 open func getCreatorAt(pos: UInt32) -> UInt64? {
     return try!  FfiConverterOptionUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_creator_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_get_creator_at(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),$0
     )
 })
@@ -4564,7 +4564,7 @@ open func getCreatorAt(pos: UInt32) -> UInt64? {
      */
 open func getCursor(pos: UInt32, side: Side) -> Cursor? {
     return try!  FfiConverterOptionTypeCursor.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_cursor(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_get_cursor(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeSide.lower(side),$0
     )
@@ -4576,7 +4576,7 @@ open func getCursor(pos: UInt32, side: Side) -> Cursor? {
      */
 open func getDeepValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_deep_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_get_deep_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4586,7 +4586,7 @@ open func getDeepValue() -> LoroValue {
      */
 open func getLastEditorAt(pos: UInt32) -> UInt64? {
     return try!  FfiConverterOptionUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_last_editor_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_get_last_editor_at(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),$0
     )
 })
@@ -4597,7 +4597,7 @@ open func getLastEditorAt(pos: UInt32) -> UInt64? {
      */
 open func getLastMoverAt(pos: UInt32) -> UInt64? {
     return try!  FfiConverterOptionUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_last_mover_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_get_last_mover_at(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),$0
     )
 })
@@ -4610,7 +4610,7 @@ open func getLastMoverAt(pos: UInt32) -> UInt64? {
      */
 open func getValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4620,7 +4620,7 @@ open func getValue() -> LoroValue {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4629,7 +4629,7 @@ open func id() -> ContainerId {
      * Insert a value at the given position.
      */
 open func insert(pos: UInt32, v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroValueLike.lower(v),$0
     )
@@ -4638,7 +4638,7 @@ open func insert(pos: UInt32, v: LoroValueLike)throws  {try rustCallWithError(Ff
     
 open func insertCounterContainer(pos: UInt32, child: LoroCounter)throws  -> LoroCounter {
     return try  FfiConverterTypeLoroCounter.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_counter_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_counter_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroCounter.lower(child),$0
     )
@@ -4647,7 +4647,7 @@ open func insertCounterContainer(pos: UInt32, child: LoroCounter)throws  -> Loro
     
 open func insertListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     return try  FfiConverterTypeLoroList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroList.lower(child),$0
     )
@@ -4656,7 +4656,7 @@ open func insertListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     
 open func insertMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     return try  FfiConverterTypeLoroMap.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_map_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_map_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMap.lower(child),$0
     )
@@ -4665,7 +4665,7 @@ open func insertMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     
 open func insertMovableListContainer(pos: UInt32, child: LoroMovableList)throws  -> LoroMovableList {
     return try  FfiConverterTypeLoroMovableList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_movable_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_movable_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMovableList.lower(child),$0
     )
@@ -4674,7 +4674,7 @@ open func insertMovableListContainer(pos: UInt32, child: LoroMovableList)throws 
     
 open func insertTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     return try  FfiConverterTypeLoroText.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_text_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_text_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroText.lower(child),$0
     )
@@ -4683,7 +4683,7 @@ open func insertTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     
 open func insertTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
     return try  FfiConverterTypeLoroTree.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_insert_tree_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_insert_tree_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroTree.lower(child),$0
     )
@@ -4698,7 +4698,7 @@ open func insertTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
      */
 open func isAttached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_is_attached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_is_attached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4708,21 +4708,21 @@ open func isAttached() -> Bool {
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func isEmpty() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_is_empty(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_is_empty(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func len() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_len(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_len(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -4731,7 +4731,7 @@ open func len() -> UInt32 {
      * Move the value at the given position to the given position.
      */
 open func mov(from: UInt32, to: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_mov(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_mov(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(from),
         FfiConverterUInt32.lower(to),$0
     )
@@ -4743,13 +4743,13 @@ open func mov(from: UInt32, to: UInt32)throws  {try rustCallWithError(FfiConvert
      */
 open func pop()throws  -> ValueOrContainer? {
     return try  FfiConverterOptionTypeValueOrContainer.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_pop(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_pop(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func push(v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_push(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_push(self.uniffiClonePointer(),
         FfiConverterTypeLoroValueLike.lower(v),$0
     )
 }
@@ -4759,7 +4759,7 @@ open func push(v: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeL
      * Set the value at the given position.
      */
 open func set(pos: UInt32, value: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroValueLike.lower(value),$0
     )
@@ -4768,7 +4768,7 @@ open func set(pos: UInt32, value: LoroValueLike)throws  {try rustCallWithError(F
     
 open func setCounterContainer(pos: UInt32, child: LoroCounter)throws  -> LoroCounter {
     return try  FfiConverterTypeLoroCounter.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_counter_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_counter_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroCounter.lower(child),$0
     )
@@ -4777,7 +4777,7 @@ open func setCounterContainer(pos: UInt32, child: LoroCounter)throws  -> LoroCou
     
 open func setListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     return try  FfiConverterTypeLoroList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroList.lower(child),$0
     )
@@ -4786,7 +4786,7 @@ open func setListContainer(pos: UInt32, child: LoroList)throws  -> LoroList {
     
 open func setMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     return try  FfiConverterTypeLoroMap.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_map_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_map_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMap.lower(child),$0
     )
@@ -4795,7 +4795,7 @@ open func setMapContainer(pos: UInt32, child: LoroMap)throws  -> LoroMap {
     
 open func setMovableListContainer(pos: UInt32, child: LoroMovableList)throws  -> LoroMovableList {
     return try  FfiConverterTypeLoroMovableList.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_movable_list_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_movable_list_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroMovableList.lower(child),$0
     )
@@ -4804,7 +4804,7 @@ open func setMovableListContainer(pos: UInt32, child: LoroMovableList)throws  ->
     
 open func setTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     return try  FfiConverterTypeLoroText.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_text_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_text_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroText.lower(child),$0
     )
@@ -4813,7 +4813,7 @@ open func setTextContainer(pos: UInt32, child: LoroText)throws  -> LoroText {
     
 open func setTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
     return try  FfiConverterTypeLoroTree.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_loromovablelist_set_tree_container(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_loromovablelist_set_tree_container(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeLoroTree.lower(child),$0
     )
@@ -4829,7 +4829,7 @@ open func setTreeContainer(pos: UInt32, child: LoroTree)throws  -> LoroTree {
      */
 open func toVec() -> [LoroValue] {
     return try!  FfiConverterSequenceTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_loromovablelist_to_vec(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_loromovablelist_to_vec(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5091,7 +5091,7 @@ open class LoroText:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorotext(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorotext(self.pointer, $0) }
     }
     /**
      * Create a new container that is detached from the document.
@@ -5102,7 +5102,7 @@ open class LoroText:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_lorotext_new($0
+    uniffi_loro_swift_fn_constructor_lorotext_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -5113,7 +5113,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorotext(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorotext(pointer, $0) }
     }
 
     
@@ -5123,7 +5123,7 @@ public convenience init() {
      * Delete a range of text at the given unicode position with unicode length.
      */
 open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_delete(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_delete(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterUInt32.lower(len),$0
     )
@@ -5134,7 +5134,7 @@ open func delete(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConv
      * Delete a range of text at the given utf-8 position with utf-8 length.
      */
 open func deleteUtf8(pos: UInt32, len: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_delete_utf8(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_delete_utf8(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterUInt32.lower(len),$0
     )
@@ -5158,7 +5158,7 @@ open func deleteUtf8(pos: UInt32, len: UInt32)throws  {try rustCallWithError(Ffi
      */
 open func getCursor(pos: UInt32, side: Side) -> Cursor? {
     return try!  FfiConverterOptionTypeCursor.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_get_cursor(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_get_cursor(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterTypeSide.lower(side),$0
     )
@@ -5170,7 +5170,7 @@ open func getCursor(pos: UInt32, side: Side) -> Cursor? {
      */
 open func getEditorAtUnicodePos(pos: UInt32) -> UInt64? {
     return try!  FfiConverterOptionUInt64.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_get_editor_at_unicode_pos(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_get_editor_at_unicode_pos(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),$0
     )
 })
@@ -5181,7 +5181,7 @@ open func getEditorAtUnicodePos(pos: UInt32) -> UInt64? {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5190,7 +5190,7 @@ open func id() -> ContainerId {
      * Insert a string at the given unicode position.
      */
 open func insert(pos: UInt32, s: String)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_insert(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_insert(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterString.lower(s),$0
     )
@@ -5201,7 +5201,7 @@ open func insert(pos: UInt32, s: String)throws  {try rustCallWithError(FfiConver
      * Insert a string at the given utf-8 position.
      */
 open func insertUtf8(pos: UInt32, s: String)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_insert_utf8(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_insert_utf8(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterString.lower(s),$0
     )
@@ -5216,7 +5216,7 @@ open func insertUtf8(pos: UInt32, s: String)throws  {try rustCallWithError(FfiCo
      */
 open func isAttached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_is_attached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_is_attached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5226,7 +5226,7 @@ open func isAttached() -> Bool {
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5236,7 +5236,7 @@ open func isDeleted() -> Bool {
      */
 open func isEmpty() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_is_empty(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_is_empty(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5246,7 +5246,7 @@ open func isEmpty() -> Bool {
      */
 open func lenUnicode() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_len_unicode(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_len_unicode(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5256,7 +5256,7 @@ open func lenUnicode() -> UInt32 {
      */
 open func lenUtf16() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_len_utf16(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_len_utf16(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5266,7 +5266,7 @@ open func lenUtf16() -> UInt32 {
      */
 open func lenUtf8() -> UInt32 {
     return try!  FfiConverterUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_len_utf8(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_len_utf8(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5288,7 +5288,7 @@ open func lenUtf8() -> UInt32 {
      * Note: this is not suitable for unmergeable annotations like comments.
      */
 open func mark(from: UInt32, to: UInt32, key: String, value: LoroValueLike)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_mark(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_mark(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(from),
         FfiConverterUInt32.lower(to),
         FfiConverterString.lower(key),
@@ -5301,7 +5301,7 @@ open func mark(from: UInt32, to: UInt32, key: String, value: LoroValueLike)throw
      * Push a string to the end of the text container.
      */
 open func pushStr(s: String)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_push_str(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_push_str(self.uniffiClonePointer(),
         FfiConverterString.lower(s),$0
     )
 }
@@ -5312,7 +5312,7 @@ open func pushStr(s: String)throws  {try rustCallWithError(FfiConverterTypeLoroE
      */
 open func slice(startIndex: UInt32, endIndex: UInt32)throws  -> String {
     return try  FfiConverterString.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_slice(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_slice(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(startIndex),
         FfiConverterUInt32.lower(endIndex),$0
     )
@@ -5324,7 +5324,7 @@ open func slice(startIndex: UInt32, endIndex: UInt32)throws  -> String {
      */
 open func splice(pos: UInt32, len: UInt32, s: String)throws  -> String {
     return try  FfiConverterString.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_splice(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_splice(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(pos),
         FfiConverterUInt32.lower(len),
         FfiConverterString.lower(s),$0
@@ -5337,7 +5337,7 @@ open func splice(pos: UInt32, len: UInt32, s: String)throws  -> String {
      */
 open func toDelta() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_to_delta(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_to_delta(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5347,7 +5347,7 @@ open func toDelta() -> LoroValue {
      */
 open func toString() -> String {
     return try!  FfiConverterString.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotext_to_string(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotext_to_string(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5371,7 +5371,7 @@ open func toString() -> String {
      * Note: you cannot delete unmergeable annotations like comments by this method.
      */
 open func unmark(from: UInt32, to: UInt32, key: String)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotext_unmark(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_unmark(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(from),
         FfiConverterUInt32.lower(to),
         FfiConverterString.lower(key),$0
@@ -5389,7 +5389,7 @@ open func unmark(from: UInt32, to: UInt32, key: String)throws  {try rustCallWith
      * In that case, you should use `updateByLine` instead.
      */
 open func update(s: String, options: UpdateOptions)throws  {try rustCallWithError(FfiConverterTypeUpdateTimeoutError.lift) {
-    uniffi_loro_fn_method_lorotext_update(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_update(self.uniffiClonePointer(),
         FfiConverterString.lower(s),
         FfiConverterTypeUpdateOptions.lower(options),$0
     )
@@ -5402,7 +5402,7 @@ open func update(s: String, options: UpdateOptions)throws  {try rustCallWithErro
      * This update calculation is line-based, which will be more efficient but less precise.
      */
 open func updateByLine(s: String, options: UpdateOptions)throws  {try rustCallWithError(FfiConverterTypeUpdateTimeoutError.lift) {
-    uniffi_loro_fn_method_lorotext_update_by_line(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotext_update_by_line(self.uniffiClonePointer(),
         FfiConverterString.lower(s),
         FfiConverterTypeUpdateOptions.lower(options),$0
     )
@@ -5666,7 +5666,7 @@ open class LoroTree:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorotree(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorotree(self.pointer, $0) }
     }
     /**
      * Create a new container that is detached from the document.
@@ -5677,7 +5677,7 @@ open class LoroTree:
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_lorotree_new($0
+    uniffi_loro_swift_fn_constructor_lorotree_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -5688,7 +5688,7 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorotree(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorotree(pointer, $0) }
     }
 
     
@@ -5701,7 +5701,7 @@ public convenience init() {
      */
 open func children(parent: TreeParentId) -> [TreeId]? {
     return try!  FfiConverterOptionSequenceTypeTreeID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_children(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_children(self.uniffiClonePointer(),
         FfiConverterTypeTreeParentId.lower(parent),$0
     )
 })
@@ -5712,7 +5712,7 @@ open func children(parent: TreeParentId) -> [TreeId]? {
      */
 open func childrenNum(parent: TreeParentId) -> UInt32? {
     return try!  FfiConverterOptionUInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_children_num(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_children_num(self.uniffiClonePointer(),
         FfiConverterTypeTreeParentId.lower(parent),$0
     )
 })
@@ -5723,7 +5723,7 @@ open func childrenNum(parent: TreeParentId) -> UInt32? {
      */
 open func contains(target: TreeId) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_contains(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_contains(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5737,7 +5737,7 @@ open func contains(target: TreeId) -> Bool {
      */
 open func create(parent: TreeParentId)throws  -> TreeId {
     return try  FfiConverterTypeTreeID.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_create(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_create(self.uniffiClonePointer(),
         FfiConverterTypeTreeParentId.lower(parent),$0
     )
 })
@@ -5751,7 +5751,7 @@ open func create(parent: TreeParentId)throws  -> TreeId {
      */
 open func createAt(parent: TreeParentId, index: UInt32)throws  -> TreeId {
     return try  FfiConverterTypeTreeID.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_create_at(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_create_at(self.uniffiClonePointer(),
         FfiConverterTypeTreeParentId.lower(parent),
         FfiConverterUInt32.lower(index),$0
     )
@@ -5765,7 +5765,7 @@ open func createAt(parent: TreeParentId, index: UInt32)throws  -> TreeId {
      * rather than actually being deleted.
      */
 open func delete(target: TreeId)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_delete(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_delete(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 }
@@ -5779,7 +5779,7 @@ open func delete(target: TreeId)throws  {try rustCallWithError(FfiConverterTypeL
      * and `tree.createAt()`.
      */
 open func disableFractionalIndex() {try! rustCall() {
-    uniffi_loro_fn_method_lorotree_disable_fractional_index(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_disable_fractional_index(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -5794,7 +5794,7 @@ open func disableFractionalIndex() {try! rustCall() {
      * [Read more about it](https://www.loro.dev/blog/movable-tree#implementation-and-encoding-size)
      */
 open func enableFractionalIndex(jitter: UInt8) {try! rustCall() {
-    uniffi_loro_fn_method_lorotree_enable_fractional_index(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_enable_fractional_index(self.uniffiClonePointer(),
         FfiConverterUInt8.lower(jitter),$0
     )
 }
@@ -5805,7 +5805,7 @@ open func enableFractionalIndex(jitter: UInt8) {try! rustCall() {
      */
 open func fractionalIndex(target: TreeId) -> String? {
     return try!  FfiConverterOptionString.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_fractional_index(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_fractional_index(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5816,7 +5816,7 @@ open func fractionalIndex(target: TreeId) -> String? {
      */
 open func getLastMoveId(target: TreeId) -> Id? {
     return try!  FfiConverterOptionTypeID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_get_last_move_id(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_get_last_move_id(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5827,7 +5827,7 @@ open func getLastMoveId(target: TreeId) -> Id? {
      */
 open func getMeta(target: TreeId)throws  -> LoroMap {
     return try  FfiConverterTypeLoroMap.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_get_meta(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_get_meta(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5841,7 +5841,7 @@ open func getMeta(target: TreeId)throws  -> LoroMap {
      */
 open func getValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_get_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_get_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5851,7 +5851,7 @@ open func getValue() -> LoroValue {
      */
 open func getValueWithMeta() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_get_value_with_meta(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_get_value_with_meta(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5861,7 +5861,7 @@ open func getValueWithMeta() -> LoroValue {
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5874,7 +5874,7 @@ open func id() -> ContainerId {
      */
 open func isAttached() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_is_attached(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_is_attached(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5884,7 +5884,7 @@ open func isAttached() -> Bool {
      */
 open func isDeleted() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_is_deleted(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_is_deleted(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5894,7 +5894,7 @@ open func isDeleted() -> Bool {
      */
 open func isFractionalIndexEnabled() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_is_fractional_index_enabled(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_is_fractional_index_enabled(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5907,7 +5907,7 @@ open func isFractionalIndexEnabled() -> Bool {
      */
 open func isNodeDeleted(target: TreeId)throws  -> Bool {
     return try  FfiConverterBool.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_is_node_deleted(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_is_node_deleted(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5919,7 +5919,7 @@ open func isNodeDeleted(target: TreeId)throws  -> Bool {
      * If the `parent` is `None`, the `target` node will be a root.
      */
 open func mov(target: TreeId, parent: TreeParentId)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_mov(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_mov(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),
         FfiConverterTypeTreeParentId.lower(parent),$0
     )
@@ -5930,7 +5930,7 @@ open func mov(target: TreeId, parent: TreeParentId)throws  {try rustCallWithErro
      * Move the `target` node to be a child after the `after` node with the same parent.
      */
 open func movAfter(target: TreeId, after: TreeId)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_mov_after(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_mov_after(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),
         FfiConverterTypeTreeID.lower(after),$0
     )
@@ -5941,7 +5941,7 @@ open func movAfter(target: TreeId, after: TreeId)throws  {try rustCallWithError(
      * Move the `target` node to be a child before the `before` node with the same parent.
      */
 open func movBefore(target: TreeId, before: TreeId)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_mov_before(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_mov_before(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),
         FfiConverterTypeTreeID.lower(before),$0
     )
@@ -5953,7 +5953,7 @@ open func movBefore(target: TreeId, before: TreeId)throws  {try rustCallWithErro
      * If the `parent` is `None`, the `target` node will be a root.
      */
 open func movTo(target: TreeId, parent: TreeParentId, to: UInt32)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_mov_to(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_mov_to(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),
         FfiConverterTypeTreeParentId.lower(parent),
         FfiConverterUInt32.lower(to),$0
@@ -5966,7 +5966,7 @@ open func movTo(target: TreeId, parent: TreeParentId, to: UInt32)throws  {try ru
      */
 open func nodes() -> [TreeId] {
     return try!  FfiConverterSequenceTypeTreeID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_nodes(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_nodes(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -5979,7 +5979,7 @@ open func nodes() -> [TreeId] {
      */
 open func parent(target: TreeId)throws  -> TreeParentId {
     return try  FfiConverterTypeTreeParentId.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_lorotree_parent(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_lorotree_parent(self.uniffiClonePointer(),
         FfiConverterTypeTreeID.lower(target),$0
     )
 })
@@ -5990,7 +5990,7 @@ open func parent(target: TreeId)throws  -> TreeParentId {
      */
 open func roots() -> [TreeId] {
     return try!  FfiConverterSequenceTypeTreeID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorotree_roots(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorotree_roots(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -6096,7 +6096,7 @@ open class LoroUnknown:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorounknown(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorounknown(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -6105,7 +6105,7 @@ open class LoroUnknown:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorounknown(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorounknown(pointer, $0) }
     }
 
     
@@ -6116,7 +6116,7 @@ open class LoroUnknown:
      */
 open func id() -> ContainerId {
     return try!  FfiConverterTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorounknown_id(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorounknown_id(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -6219,7 +6219,7 @@ open class LoroValueLikeImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_lorovaluelike(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_lorovaluelike(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -6228,7 +6228,7 @@ open class LoroValueLikeImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_lorovaluelike(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_lorovaluelike(pointer, $0) }
     }
 
     
@@ -6236,7 +6236,7 @@ open class LoroValueLikeImpl:
     
 open func asLoroValue() -> LoroValue {
     return try!  FfiConverterTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_lorovaluelike_as_loro_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_lorovaluelike_as_loro_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -6283,7 +6283,7 @@ fileprivate struct UniffiCallbackInterfaceLoroValueLike {
 }
 
 private func uniffiCallbackInitLoroValueLike() {
-    uniffi_loro_fn_init_callback_vtable_lorovaluelike(&UniffiCallbackInterfaceLoroValueLike.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_lorovaluelike(&UniffiCallbackInterfaceLoroValueLike.vtable)
 }
 
 #if swift(>=5.8)
@@ -6385,7 +6385,7 @@ open class OnPopImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_onpop(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_onpop(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -6394,14 +6394,14 @@ open class OnPopImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_onpop(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_onpop(pointer, $0) }
     }
 
     
 
     
 open func onPop(undoOrRedo: UndoOrRedo, span: CounterSpan, undoMeta: UndoItemMeta) {try! rustCall() {
-    uniffi_loro_fn_method_onpop_on_pop(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_onpop_on_pop(self.uniffiClonePointer(),
         FfiConverterTypeUndoOrRedo.lower(undoOrRedo),
         FfiConverterTypeCounterSpan.lower(span),
         FfiConverterTypeUndoItemMeta.lower(undoMeta),$0
@@ -6457,7 +6457,7 @@ fileprivate struct UniffiCallbackInterfaceOnPop {
 }
 
 private func uniffiCallbackInitOnPop() {
-    uniffi_loro_fn_init_callback_vtable_onpop(&UniffiCallbackInterfaceOnPop.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_onpop(&UniffiCallbackInterfaceOnPop.vtable)
 }
 
 #if swift(>=5.8)
@@ -6559,7 +6559,7 @@ open class OnPushImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_onpush(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_onpush(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -6568,7 +6568,7 @@ open class OnPushImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_onpush(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_onpush(pointer, $0) }
     }
 
     
@@ -6576,7 +6576,7 @@ open class OnPushImpl:
     
 open func onPush(undoOrRedo: UndoOrRedo, span: CounterSpan) -> UndoItemMeta {
     return try!  FfiConverterTypeUndoItemMeta.lift(try! rustCall() {
-    uniffi_loro_fn_method_onpush_on_push(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_onpush_on_push(self.uniffiClonePointer(),
         FfiConverterTypeUndoOrRedo.lower(undoOrRedo),
         FfiConverterTypeCounterSpan.lower(span),$0
     )
@@ -6629,7 +6629,7 @@ fileprivate struct UniffiCallbackInterfaceOnPush {
 }
 
 private func uniffiCallbackInitOnPush() {
-    uniffi_loro_fn_init_callback_vtable_onpush(&UniffiCallbackInterfaceOnPush.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_onpush(&UniffiCallbackInterfaceOnPush.vtable)
 }
 
 #if swift(>=5.8)
@@ -6733,12 +6733,12 @@ open class StyleConfigMap:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_styleconfigmap(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_styleconfigmap(self.pointer, $0) }
     }
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_styleconfigmap_new($0
+    uniffi_loro_swift_fn_constructor_styleconfigmap_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -6749,13 +6749,13 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_styleconfigmap(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_styleconfigmap(pointer, $0) }
     }
 
     
 public static func defaultRichTextConfig() -> StyleConfigMap {
     return try!  FfiConverterTypeStyleConfigMap.lift(try! rustCall() {
-    uniffi_loro_fn_constructor_styleconfigmap_default_rich_text_config($0
+    uniffi_loro_swift_fn_constructor_styleconfigmap_default_rich_text_config($0
     )
 })
 }
@@ -6764,14 +6764,14 @@ public static func defaultRichTextConfig() -> StyleConfigMap {
     
 open func get(key: String) -> StyleConfig? {
     return try!  FfiConverterOptionTypeStyleConfig.lift(try! rustCall() {
-    uniffi_loro_fn_method_styleconfigmap_get(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_styleconfigmap_get(self.uniffiClonePointer(),
         FfiConverterString.lower(key),$0
     )
 })
 }
     
 open func insert(key: String, value: StyleConfig) {try! rustCall() {
-    uniffi_loro_fn_method_styleconfigmap_insert(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_styleconfigmap_insert(self.uniffiClonePointer(),
         FfiConverterString.lower(key),
         FfiConverterTypeStyleConfig.lower(value),$0
     )
@@ -6876,7 +6876,7 @@ open class SubscriberImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_subscriber(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_subscriber(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -6885,14 +6885,14 @@ open class SubscriberImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_subscriber(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_subscriber(pointer, $0) }
     }
 
     
 
     
 open func onDiff(diff: DiffEvent) {try! rustCall() {
-    uniffi_loro_fn_method_subscriber_on_diff(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_subscriber_on_diff(self.uniffiClonePointer(),
         FfiConverterTypeDiffEvent.lower(diff),$0
     )
 }
@@ -6942,7 +6942,7 @@ fileprivate struct UniffiCallbackInterfaceSubscriber {
 }
 
 private func uniffiCallbackInitSubscriber() {
-    uniffi_loro_fn_init_callback_vtable_subscriber(&UniffiCallbackInterfaceSubscriber.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_subscriber(&UniffiCallbackInterfaceSubscriber.vtable)
 }
 
 #if swift(>=5.8)
@@ -7057,7 +7057,7 @@ open class Subscription:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_subscription(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_subscription(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -7066,7 +7066,7 @@ open class Subscription:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_subscription(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_subscription(pointer, $0) }
     }
 
     
@@ -7078,7 +7078,7 @@ open class Subscription:
      * subscribed to are dropped
      */
 open func detach() {try! rustCall() {
-    uniffi_loro_fn_method_subscription_detach(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_subscription_detach(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -7232,7 +7232,7 @@ open class UndoManager:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_undomanager(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_undomanager(self.pointer, $0) }
     }
     /**
      * Create a new UndoManager.
@@ -7240,7 +7240,7 @@ open class UndoManager:
 public convenience init(doc: LoroDoc) {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_undomanager_new(
+    uniffi_loro_swift_fn_constructor_undomanager_new(
         FfiConverterTypeLoroDoc.lower(doc),$0
     )
 }
@@ -7252,7 +7252,7 @@ public convenience init(doc: LoroDoc) {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_undomanager(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_undomanager(pointer, $0) }
     }
 
     
@@ -7263,7 +7263,7 @@ public convenience init(doc: LoroDoc) {
      * undo stack.
      */
 open func addExcludeOriginPrefix(prefix: String) {try! rustCall() {
-    uniffi_loro_fn_method_undomanager_add_exclude_origin_prefix(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_add_exclude_origin_prefix(self.uniffiClonePointer(),
         FfiConverterString.lower(prefix),$0
     )
 }
@@ -7274,7 +7274,7 @@ open func addExcludeOriginPrefix(prefix: String) {try! rustCall() {
      */
 open func canRedo() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_undomanager_can_redo(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_undomanager_can_redo(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -7284,7 +7284,7 @@ open func canRedo() -> Bool {
      */
 open func canUndo() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_undomanager_can_undo(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_undomanager_can_undo(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -7293,7 +7293,7 @@ open func canUndo() -> Bool {
      * Record a new checkpoint.
      */
 open func recordNewCheckpoint(doc: LoroDoc)throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_undomanager_record_new_checkpoint(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_record_new_checkpoint(self.uniffiClonePointer(),
         FfiConverterTypeLoroDoc.lower(doc),$0
     )
 }
@@ -7304,7 +7304,7 @@ open func recordNewCheckpoint(doc: LoroDoc)throws  {try rustCallWithError(FfiCon
      */
 open func redo(doc: LoroDoc)throws  -> Bool {
     return try  FfiConverterBool.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_undomanager_redo(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_redo(self.uniffiClonePointer(),
         FfiConverterTypeLoroDoc.lower(doc),$0
     )
 })
@@ -7314,7 +7314,7 @@ open func redo(doc: LoroDoc)throws  -> Bool {
      * Set the maximum number of undo steps. The default value is 100.
      */
 open func setMaxUndoSteps(size: UInt32) {try! rustCall() {
-    uniffi_loro_fn_method_undomanager_set_max_undo_steps(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_set_max_undo_steps(self.uniffiClonePointer(),
         FfiConverterUInt32.lower(size),$0
     )
 }
@@ -7324,7 +7324,7 @@ open func setMaxUndoSteps(size: UInt32) {try! rustCall() {
      * Set the merge interval in ms. The default value is 0, which means no merge.
      */
 open func setMergeInterval(interval: Int64) {try! rustCall() {
-    uniffi_loro_fn_method_undomanager_set_merge_interval(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_set_merge_interval(self.uniffiClonePointer(),
         FfiConverterInt64.lower(interval),$0
     )
 }
@@ -7335,7 +7335,7 @@ open func setMergeInterval(interval: Int64) {try! rustCall() {
      * The listener will be called when an undo/redo item is popped from the stack.
      */
 open func setOnPop(onPop: OnPop?) {try! rustCall() {
-    uniffi_loro_fn_method_undomanager_set_on_pop(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_set_on_pop(self.uniffiClonePointer(),
         FfiConverterOptionTypeOnPop.lower(onPop),$0
     )
 }
@@ -7346,7 +7346,7 @@ open func setOnPop(onPop: OnPop?) {try! rustCall() {
      * The listener will be called when a new undo/redo item is pushed into the stack.
      */
 open func setOnPush(onPush: OnPush?) {try! rustCall() {
-    uniffi_loro_fn_method_undomanager_set_on_push(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_set_on_push(self.uniffiClonePointer(),
         FfiConverterOptionTypeOnPush.lower(onPush),$0
     )
 }
@@ -7357,7 +7357,7 @@ open func setOnPush(onPush: OnPush?) {try! rustCall() {
      */
 open func undo(doc: LoroDoc)throws  -> Bool {
     return try  FfiConverterBool.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_method_undomanager_undo(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_undomanager_undo(self.uniffiClonePointer(),
         FfiConverterTypeLoroDoc.lower(doc),$0
     )
 })
@@ -7461,7 +7461,7 @@ open class UnsubscriberImpl:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_unsubscriber(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_unsubscriber(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -7470,14 +7470,14 @@ open class UnsubscriberImpl:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_unsubscriber(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_unsubscriber(pointer, $0) }
     }
 
     
 
     
 open func onUnsubscribe() {try! rustCall() {
-    uniffi_loro_fn_method_unsubscriber_on_unsubscribe(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_unsubscriber_on_unsubscribe(self.uniffiClonePointer(),$0
     )
 }
 }
@@ -7524,7 +7524,7 @@ fileprivate struct UniffiCallbackInterfaceUnsubscriber {
 }
 
 private func uniffiCallbackInitUnsubscriber() {
-    uniffi_loro_fn_init_callback_vtable_unsubscriber(&UniffiCallbackInterfaceUnsubscriber.vtable)
+    uniffi_loro_swift_fn_init_callback_vtable_unsubscriber(&UniffiCallbackInterfaceUnsubscriber.vtable)
 }
 
 #if swift(>=5.8)
@@ -7644,7 +7644,7 @@ open class ValueOrContainer:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_valueorcontainer(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_valueorcontainer(self.pointer, $0) }
     }
     // No primary constructor declared for this class.
 
@@ -7653,7 +7653,7 @@ open class ValueOrContainer:
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_valueorcontainer(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_valueorcontainer(pointer, $0) }
     }
 
     
@@ -7661,70 +7661,70 @@ open class ValueOrContainer:
     
 open func asContainer() -> ContainerId? {
     return try!  FfiConverterOptionTypeContainerID.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_container(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_container(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroCounter() -> LoroCounter? {
     return try!  FfiConverterOptionTypeLoroCounter.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_counter(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_counter(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroList() -> LoroList? {
     return try!  FfiConverterOptionTypeLoroList.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_list(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_list(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroMap() -> LoroMap? {
     return try!  FfiConverterOptionTypeLoroMap.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_map(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_map(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroMovableList() -> LoroMovableList? {
     return try!  FfiConverterOptionTypeLoroMovableList.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_movable_list(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_movable_list(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroText() -> LoroText? {
     return try!  FfiConverterOptionTypeLoroText.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_text(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_text(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asLoroTree() -> LoroTree? {
     return try!  FfiConverterOptionTypeLoroTree.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_loro_tree(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_loro_tree(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func asValue() -> LoroValue? {
     return try!  FfiConverterOptionTypeLoroValue.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_as_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_as_value(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func isContainer() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_is_container(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_is_container(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func isValue() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_valueorcontainer_is_value(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_valueorcontainer_is_value(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -7851,12 +7851,12 @@ open class VersionVector:
     @_documentation(visibility: private)
 #endif
     public func uniffiClonePointer() -> UnsafeMutableRawPointer {
-        return try! rustCall { uniffi_loro_fn_clone_versionvector(self.pointer, $0) }
+        return try! rustCall { uniffi_loro_swift_fn_clone_versionvector(self.pointer, $0) }
     }
 public convenience init() {
     let pointer =
         try! rustCall() {
-    uniffi_loro_fn_constructor_versionvector_new($0
+    uniffi_loro_swift_fn_constructor_versionvector_new($0
     )
 }
     self.init(unsafeFromRawPointer: pointer)
@@ -7867,13 +7867,13 @@ public convenience init() {
             return
         }
 
-        try! rustCall { uniffi_loro_fn_free_versionvector(pointer, $0) }
+        try! rustCall { uniffi_loro_swift_fn_free_versionvector(pointer, $0) }
     }
 
     
 public static func decode(bytes: Data)throws  -> VersionVector {
     return try  FfiConverterTypeVersionVector.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_constructor_versionvector_decode(
+    uniffi_loro_swift_fn_constructor_versionvector_decode(
         FfiConverterData.lower(bytes),$0
     )
 })
@@ -7883,7 +7883,7 @@ public static func decode(bytes: Data)throws  -> VersionVector {
     
 open func diff(rhs: VersionVector) -> VersionVectorDiff {
     return try!  FfiConverterTypeVersionVectorDiff.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_diff(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_diff(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(rhs),$0
     )
 })
@@ -7891,21 +7891,21 @@ open func diff(rhs: VersionVector) -> VersionVectorDiff {
     
 open func encode() -> Data {
     return try!  FfiConverterData.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_encode(self.uniffiClonePointer(),$0
+    uniffi_loro_swift_fn_method_versionvector_encode(self.uniffiClonePointer(),$0
     )
 })
 }
     
 open func eq(other: VersionVector) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_eq(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_eq(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(other),$0
     )
 })
 }
     
 open func extendToIncludeVv(other: VersionVector) {try! rustCall() {
-    uniffi_loro_fn_method_versionvector_extend_to_include_vv(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_extend_to_include_vv(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(other),$0
     )
 }
@@ -7913,7 +7913,7 @@ open func extendToIncludeVv(other: VersionVector) {try! rustCall() {
     
 open func getLast(peer: UInt64) -> Int32? {
     return try!  FfiConverterOptionInt32.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_get_last(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_get_last(self.uniffiClonePointer(),
         FfiConverterUInt64.lower(peer),$0
     )
 })
@@ -7921,7 +7921,7 @@ open func getLast(peer: UInt64) -> Int32? {
     
 open func getMissingSpan(target: VersionVector) -> [IdSpan] {
     return try!  FfiConverterSequenceTypeIdSpan.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_get_missing_span(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_get_missing_span(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(target),$0
     )
 })
@@ -7929,7 +7929,7 @@ open func getMissingSpan(target: VersionVector) -> [IdSpan] {
     
 open func includesId(id: Id) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_includes_id(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_includes_id(self.uniffiClonePointer(),
         FfiConverterTypeID.lower(id),$0
     )
 })
@@ -7937,7 +7937,7 @@ open func includesId(id: Id) -> Bool {
     
 open func includesVv(other: VersionVector) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_includes_vv(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_includes_vv(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(other),$0
     )
 })
@@ -7945,14 +7945,14 @@ open func includesVv(other: VersionVector) -> Bool {
     
 open func intersectSpan(target: IdSpan) -> CounterSpan? {
     return try!  FfiConverterOptionTypeCounterSpan.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_intersect_span(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_intersect_span(self.uniffiClonePointer(),
         FfiConverterTypeIdSpan.lower(target),$0
     )
 })
 }
     
 open func merge(other: VersionVector) {try! rustCall() {
-    uniffi_loro_fn_method_versionvector_merge(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_merge(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(other),$0
     )
 }
@@ -7960,21 +7960,21 @@ open func merge(other: VersionVector) {try! rustCall() {
     
 open func partialCmp(other: VersionVector) -> Ordering? {
     return try!  FfiConverterOptionTypeOrdering.lift(try! rustCall() {
-    uniffi_loro_fn_method_versionvector_partial_cmp(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_partial_cmp(self.uniffiClonePointer(),
         FfiConverterTypeVersionVector.lower(other),$0
     )
 })
 }
     
 open func setEnd(id: Id) {try! rustCall() {
-    uniffi_loro_fn_method_versionvector_set_end(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_set_end(self.uniffiClonePointer(),
         FfiConverterTypeID.lower(id),$0
     )
 }
 }
     
 open func setLast(id: Id) {try! rustCall() {
-    uniffi_loro_fn_method_versionvector_set_last(self.uniffiClonePointer(),
+    uniffi_loro_swift_fn_method_versionvector_set_last(self.uniffiClonePointer(),
         FfiConverterTypeID.lower(id),$0
     )
 }
@@ -12862,7 +12862,7 @@ fileprivate struct FfiConverterDictionaryStringOptionTypeValueOrContainer: FfiCo
  */
 public func decodeImportBlobMeta(bytes: Data, checkChecksum: Bool)throws  -> ImportBlobMetadata {
     return try  FfiConverterTypeImportBlobMetadata.lift(try rustCallWithError(FfiConverterTypeLoroError.lift) {
-    uniffi_loro_fn_func_decode_import_blob_meta(
+    uniffi_loro_swift_fn_func_decode_import_blob_meta(
         FfiConverterData.lower(bytes),
         FfiConverterBool.lower(checkChecksum),$0
     )
@@ -12880,833 +12880,833 @@ private var initializationResult: InitializationResult = {
     // Get the bindings contract version from our ComponentInterface
     let bindings_contract_version = 26
     // Get the scaffolding contract version by calling the into the dylib
-    let scaffolding_contract_version = ffi_loro_uniffi_contract_version()
+    let scaffolding_contract_version = ffi_loro_swift_uniffi_contract_version()
     if bindings_contract_version != scaffolding_contract_version {
         return InitializationResult.contractVersionMismatch
     }
-    if (uniffi_loro_checksum_func_decode_import_blob_meta() != 2769) {
+    if (uniffi_loro_swift_checksum_func_decode_import_blob_meta() != 43780) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_apply() != 41900) {
+    if (uniffi_loro_swift_checksum_method_awareness_apply() != 27271) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_encode() != 37443) {
+    if (uniffi_loro_swift_checksum_method_awareness_encode() != 25672) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_encode_all() != 38982) {
+    if (uniffi_loro_swift_checksum_method_awareness_encode_all() != 37356) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_get_all_states() != 30017) {
+    if (uniffi_loro_swift_checksum_method_awareness_get_all_states() != 47836) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_get_local_state() != 59706) {
+    if (uniffi_loro_swift_checksum_method_awareness_get_local_state() != 35262) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_peer() != 10202) {
+    if (uniffi_loro_swift_checksum_method_awareness_peer() != 56268) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_remove_outdated() != 1483) {
+    if (uniffi_loro_swift_checksum_method_awareness_remove_outdated() != 43417) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_awareness_set_local_state() != 517) {
+    if (uniffi_loro_swift_checksum_method_awareness_set_local_state() != 58611) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_changeancestorstraveler_travel() != 17239) {
+    if (uniffi_loro_swift_checksum_method_changeancestorstraveler_travel() != 8565) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_fork() != 57176) {
+    if (uniffi_loro_swift_checksum_method_configure_fork() != 51702) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_merge_interval() != 43546) {
+    if (uniffi_loro_swift_checksum_method_configure_merge_interval() != 7995) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_record_timestamp() != 41033) {
+    if (uniffi_loro_swift_checksum_method_configure_record_timestamp() != 61137) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_set_merge_interval() != 4893) {
+    if (uniffi_loro_swift_checksum_method_configure_set_merge_interval() != 32469) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_set_record_timestamp() != 30145) {
+    if (uniffi_loro_swift_checksum_method_configure_set_record_timestamp() != 48920) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_configure_text_style_config() != 50151) {
+    if (uniffi_loro_swift_checksum_method_configure_text_style_config() != 63462) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_containeridlike_as_container_id() != 41081) {
+    if (uniffi_loro_swift_checksum_method_containeridlike_as_container_id() != 64426) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_fractionalindex_to_string() != 57024) {
+    if (uniffi_loro_swift_checksum_method_fractionalindex_to_string() != 49868) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_frontiers_encode() != 48230) {
+    if (uniffi_loro_swift_checksum_method_frontiers_encode() != 45571) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_frontiers_eq() != 20207) {
+    if (uniffi_loro_swift_checksum_method_frontiers_eq() != 48690) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_localupdatecallback_on_local_update() != 21789) {
+    if (uniffi_loro_swift_checksum_method_localupdatecallback_on_local_update() != 50525) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorocounter_decrement() != 53919) {
+    if (uniffi_loro_swift_checksum_method_lorocounter_decrement() != 16040) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorocounter_get_value() != 44616) {
+    if (uniffi_loro_swift_checksum_method_lorocounter_get_value() != 4391) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorocounter_id() != 31148) {
+    if (uniffi_loro_swift_checksum_method_lorocounter_id() != 63186) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorocounter_increment() != 47367) {
+    if (uniffi_loro_swift_checksum_method_lorocounter_increment() != 37593) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorocounter_is_deleted() != 12079) {
+    if (uniffi_loro_swift_checksum_method_lorocounter_is_deleted() != 7696) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_attach() != 7252) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_attach() != 42368) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_check_state_correctness_slow() != 43878) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_check_state_correctness_slow() != 22852) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_checkout() != 415) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_checkout() != 39286) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_checkout_to_latest() != 2349) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_checkout_to_latest() != 47100) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_cmp_with_frontiers() != 31942) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_cmp_with_frontiers() != 26863) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_commit() != 53174) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_commit() != 39458) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_commit_with() != 29999) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_commit_with() != 169) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_compact_change_store() != 26224) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_compact_change_store() != 65326) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_config() != 3400) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_config() != 28962) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_config_text_style() != 52393) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_config_text_style() != 50015) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_detach() != 61399) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_detach() != 24600) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_json_updates() != 15152) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_json_updates() != 8751) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_shallow_snapshot() != 27927) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_shallow_snapshot() != 51066) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_snapshot() != 61274) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_snapshot() != 54694) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_snapshot_at() != 64602) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_snapshot_at() != 49224) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_state_only() != 16747) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_state_only() != 10618) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_updates() != 57637) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_updates() != 14731) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_export_updates_in_range() != 22491) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_export_updates_in_range() != 65219) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_fork() != 45665) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_fork() != 12804) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_fork_at() != 40377) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_fork_at() != 7946) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_free_diff_calculator() != 32937) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_free_diff_calculator() != 29990) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_free_history_cache() != 22144) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_free_history_cache() != 59494) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_frontiers_to_vv() != 11123) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_frontiers_to_vv() != 8664) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_by_path() != 35945) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_by_path() != 60867) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_by_str_path() != 6739) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_by_str_path() != 7170) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_change() != 17896) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_change() != 13711) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_changed_containers_in() != 52454) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_changed_containers_in() != 31395) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_counter() != 12597) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_counter() != 18000) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_cursor_pos() != 30480) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_cursor_pos() != 7887) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_deep_value() != 3404) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_deep_value() != 32349) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_deep_value_with_id() != 49124) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_deep_value_with_id() != 53612) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_list() != 9609) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_list() != 9554) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_map() != 63137) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_map() != 10388) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_movable_list() != 7302) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_movable_list() != 21143) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_path_to_container() != 62623) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_path_to_container() != 62295) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_pending_txn_len() != 15050) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_pending_txn_len() != 29420) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_text() != 56069) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_text() != 50518) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_tree() != 54189) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_tree() != 20688) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_get_value() != 29857) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_get_value() != 49731) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_has_history_cache() != 53741) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_has_history_cache() != 31473) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_import() != 11528) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_import() != 28716) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_import_batch() != 60062) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_import_batch() != 14784) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_import_json_updates() != 57379) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_import_json_updates() != 44260) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_import_with() != 12897) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_import_with() != 22993) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_is_detached() != 30909) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_is_detached() != 54269) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_is_shallow() != 53044) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_is_shallow() != 64949) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_jsonpath() != 15996) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_jsonpath() != 58696) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_len_changes() != 62401) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_len_changes() != 30526) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_len_ops() != 11644) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_len_ops() != 57863) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_log_estimate_size() != 19429) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_log_estimate_size() != 11834) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_minimize_frontiers() != 39579) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_minimize_frontiers() != 28644) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_oplog_frontiers() != 49043) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_oplog_frontiers() != 21775) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_oplog_vv() != 56754) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_oplog_vv() != 27172) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_peer_id() != 35449) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_peer_id() != 35045) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_set_change_merge_interval() != 55133) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_set_change_merge_interval() != 5940) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_set_next_commit_message() != 18940) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_set_next_commit_message() != 7309) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_set_peer_id() != 29379) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_set_peer_id() != 24772) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_set_record_timestamp() != 15945) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_set_record_timestamp() != 26090) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_shallow_since_vv() != 13449) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_shallow_since_vv() != 21576) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_state_frontiers() != 17079) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_state_frontiers() != 36990) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_state_vv() != 1627) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_state_vv() != 34742) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_subscribe() != 7981) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_subscribe() != 34915) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_subscribe_local_update() != 58652) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_subscribe_local_update() != 46090) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_subscribe_root() != 16564) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_subscribe_root() != 24809) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_travel_change_ancestors() != 39918) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_travel_change_ancestors() != 21537) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorodoc_vv_to_frontiers() != 47960) {
+    if (uniffi_loro_swift_checksum_method_lorodoc_vv_to_frontiers() != 18409) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_clear() != 61243) {
+    if (uniffi_loro_swift_checksum_method_lorolist_clear() != 23657) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_delete() != 40414) {
+    if (uniffi_loro_swift_checksum_method_lorolist_delete() != 25025) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_get() != 36174) {
+    if (uniffi_loro_swift_checksum_method_lorolist_get() != 23801) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_get_cursor() != 42636) {
+    if (uniffi_loro_swift_checksum_method_lorolist_get_cursor() != 44116) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_get_deep_value() != 9355) {
+    if (uniffi_loro_swift_checksum_method_lorolist_get_deep_value() != 11087) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_get_id_at() != 63640) {
+    if (uniffi_loro_swift_checksum_method_lorolist_get_id_at() != 34714) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_get_value() != 14384) {
+    if (uniffi_loro_swift_checksum_method_lorolist_get_value() != 18806) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_id() != 33887) {
+    if (uniffi_loro_swift_checksum_method_lorolist_id() != 26869) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert() != 19544) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert() != 16938) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_counter_container() != 41569) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_counter_container() != 18544) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_list_container() != 42165) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_list_container() != 26426) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_map_container() != 25622) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_map_container() != 10390) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_movable_list_container() != 23559) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_movable_list_container() != 31092) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_text_container() != 26631) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_text_container() != 31137) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_insert_tree_container() != 15665) {
+    if (uniffi_loro_swift_checksum_method_lorolist_insert_tree_container() != 26980) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_is_attached() != 60548) {
+    if (uniffi_loro_swift_checksum_method_lorolist_is_attached() != 48201) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_is_deleted() != 44383) {
+    if (uniffi_loro_swift_checksum_method_lorolist_is_deleted() != 48621) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_is_empty() != 13469) {
+    if (uniffi_loro_swift_checksum_method_lorolist_is_empty() != 60818) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_len() != 22800) {
+    if (uniffi_loro_swift_checksum_method_lorolist_len() != 33837) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_pop() != 20748) {
+    if (uniffi_loro_swift_checksum_method_lorolist_pop() != 54797) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_push() != 32091) {
+    if (uniffi_loro_swift_checksum_method_lorolist_push() != 28528) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorolist_to_vec() != 34199) {
+    if (uniffi_loro_swift_checksum_method_lorolist_to_vec() != 16734) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_clear() != 22445) {
+    if (uniffi_loro_swift_checksum_method_loromap_clear() != 31133) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_delete() != 54675) {
+    if (uniffi_loro_swift_checksum_method_loromap_delete() != 37779) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_get() != 57695) {
+    if (uniffi_loro_swift_checksum_method_loromap_get() != 35255) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_get_deep_value() != 23748) {
+    if (uniffi_loro_swift_checksum_method_loromap_get_deep_value() != 52558) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_get_last_editor() != 54864) {
+    if (uniffi_loro_swift_checksum_method_loromap_get_last_editor() != 3862) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_get_value() != 7268) {
+    if (uniffi_loro_swift_checksum_method_loromap_get_value() != 56115) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_id() != 65486) {
+    if (uniffi_loro_swift_checksum_method_loromap_id() != 26507) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert() != 748) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert() != 46206) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_counter_container() != 5567) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_counter_container() != 2133) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_list_container() != 52804) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_list_container() != 53856) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_map_container() != 36523) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_map_container() != 51589) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_movable_list_container() != 21076) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_movable_list_container() != 14390) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_text_container() != 50348) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_text_container() != 42005) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_insert_tree_container() != 59771) {
+    if (uniffi_loro_swift_checksum_method_loromap_insert_tree_container() != 56081) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_is_attached() != 6283) {
+    if (uniffi_loro_swift_checksum_method_loromap_is_attached() != 41008) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_is_deleted() != 20980) {
+    if (uniffi_loro_swift_checksum_method_loromap_is_deleted() != 9510) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_is_empty() != 38768) {
+    if (uniffi_loro_swift_checksum_method_loromap_is_empty() != 47791) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_keys() != 11621) {
+    if (uniffi_loro_swift_checksum_method_loromap_keys() != 27337) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_len() != 38088) {
+    if (uniffi_loro_swift_checksum_method_loromap_len() != 8252) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromap_values() != 46629) {
+    if (uniffi_loro_swift_checksum_method_loromap_values() != 18214) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_clear() != 17252) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_clear() != 8409) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_delete() != 51786) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_delete() != 52574) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get() != 10599) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get() != 60377) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_creator_at() != 21542) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_creator_at() != 52980) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_cursor() != 118) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_cursor() != 29449) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_deep_value() != 18542) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_deep_value() != 25061) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_last_editor_at() != 8998) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_last_editor_at() != 33773) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_last_mover_at() != 26603) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_last_mover_at() != 39212) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_get_value() != 50843) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_get_value() != 46001) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_id() != 9803) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_id() != 2588) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert() != 28537) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert() != 19280) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_counter_container() != 56222) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_counter_container() != 37270) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_list_container() != 47190) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_list_container() != 1255) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_map_container() != 57810) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_map_container() != 12950) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_movable_list_container() != 6019) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_movable_list_container() != 26315) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_text_container() != 48945) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_text_container() != 62679) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_insert_tree_container() != 33670) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_insert_tree_container() != 34352) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_is_attached() != 50724) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_is_attached() != 20215) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_is_deleted() != 37438) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_is_deleted() != 36717) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_is_empty() != 44651) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_is_empty() != 34249) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_len() != 28945) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_len() != 37329) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_mov() != 8301) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_mov() != 22524) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_pop() != 52086) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_pop() != 12949) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_push() != 2828) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_push() != 19695) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set() != 27054) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set() != 13297) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_counter_container() != 1414) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_counter_container() != 23091) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_list_container() != 20393) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_list_container() != 37402) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_map_container() != 20297) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_map_container() != 23280) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_movable_list_container() != 52254) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_movable_list_container() != 9625) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_text_container() != 31935) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_text_container() != 22) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_set_tree_container() != 8298) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_set_tree_container() != 51516) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_loromovablelist_to_vec() != 28826) {
+    if (uniffi_loro_swift_checksum_method_loromovablelist_to_vec() != 16209) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_delete() != 47933) {
+    if (uniffi_loro_swift_checksum_method_lorotext_delete() != 862) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_delete_utf8() != 44384) {
+    if (uniffi_loro_swift_checksum_method_lorotext_delete_utf8() != 9662) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_get_cursor() != 57876) {
+    if (uniffi_loro_swift_checksum_method_lorotext_get_cursor() != 36306) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_get_editor_at_unicode_pos() != 24596) {
+    if (uniffi_loro_swift_checksum_method_lorotext_get_editor_at_unicode_pos() != 64925) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_id() != 30925) {
+    if (uniffi_loro_swift_checksum_method_lorotext_id() != 13702) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_insert() != 10847) {
+    if (uniffi_loro_swift_checksum_method_lorotext_insert() != 43125) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_insert_utf8() != 8484) {
+    if (uniffi_loro_swift_checksum_method_lorotext_insert_utf8() != 40718) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_is_attached() != 45378) {
+    if (uniffi_loro_swift_checksum_method_lorotext_is_attached() != 22596) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_is_deleted() != 31871) {
+    if (uniffi_loro_swift_checksum_method_lorotext_is_deleted() != 53908) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_is_empty() != 7961) {
+    if (uniffi_loro_swift_checksum_method_lorotext_is_empty() != 19113) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_len_unicode() != 46650) {
+    if (uniffi_loro_swift_checksum_method_lorotext_len_unicode() != 52600) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_len_utf16() != 18865) {
+    if (uniffi_loro_swift_checksum_method_lorotext_len_utf16() != 32267) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_len_utf8() != 29025) {
+    if (uniffi_loro_swift_checksum_method_lorotext_len_utf8() != 62448) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_mark() != 42690) {
+    if (uniffi_loro_swift_checksum_method_lorotext_mark() != 64659) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_push_str() != 2374) {
+    if (uniffi_loro_swift_checksum_method_lorotext_push_str() != 57830) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_slice() != 43152) {
+    if (uniffi_loro_swift_checksum_method_lorotext_slice() != 40376) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_splice() != 30467) {
+    if (uniffi_loro_swift_checksum_method_lorotext_splice() != 7816) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_to_delta() != 57631) {
+    if (uniffi_loro_swift_checksum_method_lorotext_to_delta() != 45094) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_to_string() != 63765) {
+    if (uniffi_loro_swift_checksum_method_lorotext_to_string() != 17501) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_unmark() != 14351) {
+    if (uniffi_loro_swift_checksum_method_lorotext_unmark() != 58913) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_update() != 16538) {
+    if (uniffi_loro_swift_checksum_method_lorotext_update() != 48648) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotext_update_by_line() != 29301) {
+    if (uniffi_loro_swift_checksum_method_lorotext_update_by_line() != 7468) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_children() != 4750) {
+    if (uniffi_loro_swift_checksum_method_lorotree_children() != 20772) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_children_num() != 50997) {
+    if (uniffi_loro_swift_checksum_method_lorotree_children_num() != 15920) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_contains() != 62174) {
+    if (uniffi_loro_swift_checksum_method_lorotree_contains() != 36421) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_create() != 55490) {
+    if (uniffi_loro_swift_checksum_method_lorotree_create() != 58940) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_create_at() != 64751) {
+    if (uniffi_loro_swift_checksum_method_lorotree_create_at() != 33523) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_delete() != 36355) {
+    if (uniffi_loro_swift_checksum_method_lorotree_delete() != 27126) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_disable_fractional_index() != 52853) {
+    if (uniffi_loro_swift_checksum_method_lorotree_disable_fractional_index() != 54203) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_enable_fractional_index() != 39633) {
+    if (uniffi_loro_swift_checksum_method_lorotree_enable_fractional_index() != 7207) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_fractional_index() != 51036) {
+    if (uniffi_loro_swift_checksum_method_lorotree_fractional_index() != 30235) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_get_last_move_id() != 12557) {
+    if (uniffi_loro_swift_checksum_method_lorotree_get_last_move_id() != 41276) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_get_meta() != 3068) {
+    if (uniffi_loro_swift_checksum_method_lorotree_get_meta() != 32854) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_get_value() != 44704) {
+    if (uniffi_loro_swift_checksum_method_lorotree_get_value() != 60869) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_get_value_with_meta() != 7497) {
+    if (uniffi_loro_swift_checksum_method_lorotree_get_value_with_meta() != 1844) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_id() != 4862) {
+    if (uniffi_loro_swift_checksum_method_lorotree_id() != 8864) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_is_attached() != 37303) {
+    if (uniffi_loro_swift_checksum_method_lorotree_is_attached() != 64591) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_is_deleted() != 8644) {
+    if (uniffi_loro_swift_checksum_method_lorotree_is_deleted() != 2461) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_is_fractional_index_enabled() != 19364) {
+    if (uniffi_loro_swift_checksum_method_lorotree_is_fractional_index_enabled() != 4547) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_is_node_deleted() != 7339) {
+    if (uniffi_loro_swift_checksum_method_lorotree_is_node_deleted() != 61864) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_mov() != 33288) {
+    if (uniffi_loro_swift_checksum_method_lorotree_mov() != 37280) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_mov_after() != 48871) {
+    if (uniffi_loro_swift_checksum_method_lorotree_mov_after() != 44446) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_mov_before() != 39654) {
+    if (uniffi_loro_swift_checksum_method_lorotree_mov_before() != 16016) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_mov_to() != 21629) {
+    if (uniffi_loro_swift_checksum_method_lorotree_mov_to() != 13839) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_nodes() != 31738) {
+    if (uniffi_loro_swift_checksum_method_lorotree_nodes() != 12793) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_parent() != 6903) {
+    if (uniffi_loro_swift_checksum_method_lorotree_parent() != 29524) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorotree_roots() != 60881) {
+    if (uniffi_loro_swift_checksum_method_lorotree_roots() != 8721) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorounknown_id() != 65156) {
+    if (uniffi_loro_swift_checksum_method_lorounknown_id() != 15468) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_lorovaluelike_as_loro_value() != 23668) {
+    if (uniffi_loro_swift_checksum_method_lorovaluelike_as_loro_value() != 49857) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_onpop_on_pop() != 39438) {
+    if (uniffi_loro_swift_checksum_method_onpop_on_pop() != 37399) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_onpush_on_push() != 4043) {
+    if (uniffi_loro_swift_checksum_method_onpush_on_push() != 29110) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_styleconfigmap_get() != 25442) {
+    if (uniffi_loro_swift_checksum_method_styleconfigmap_get() != 55439) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_styleconfigmap_insert() != 49128) {
+    if (uniffi_loro_swift_checksum_method_styleconfigmap_insert() != 36188) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_subscriber_on_diff() != 462) {
+    if (uniffi_loro_swift_checksum_method_subscriber_on_diff() != 24187) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_subscription_detach() != 64699) {
+    if (uniffi_loro_swift_checksum_method_subscription_detach() != 61057) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_add_exclude_origin_prefix() != 61306) {
+    if (uniffi_loro_swift_checksum_method_undomanager_add_exclude_origin_prefix() != 20885) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_can_redo() != 61543) {
+    if (uniffi_loro_swift_checksum_method_undomanager_can_redo() != 21231) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_can_undo() != 51532) {
+    if (uniffi_loro_swift_checksum_method_undomanager_can_undo() != 40028) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_record_new_checkpoint() != 35753) {
+    if (uniffi_loro_swift_checksum_method_undomanager_record_new_checkpoint() != 62062) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_redo() != 55485) {
+    if (uniffi_loro_swift_checksum_method_undomanager_redo() != 63216) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_set_max_undo_steps() != 43243) {
+    if (uniffi_loro_swift_checksum_method_undomanager_set_max_undo_steps() != 53612) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_set_merge_interval() != 13688) {
+    if (uniffi_loro_swift_checksum_method_undomanager_set_merge_interval() != 20280) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_set_on_pop() != 4141) {
+    if (uniffi_loro_swift_checksum_method_undomanager_set_on_pop() != 55928) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_set_on_push() != 31009) {
+    if (uniffi_loro_swift_checksum_method_undomanager_set_on_push() != 866) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_undomanager_undo() != 32659) {
+    if (uniffi_loro_swift_checksum_method_undomanager_undo() != 11421) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_unsubscriber_on_unsubscribe() != 17877) {
+    if (uniffi_loro_swift_checksum_method_unsubscriber_on_unsubscribe() != 17308) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_container() != 61163) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_container() != 24973) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_counter() != 51072) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_counter() != 53365) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_list() != 16144) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_list() != 8624) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_map() != 62391) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_map() != 6454) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_movable_list() != 49359) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_movable_list() != 61625) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_text() != 8015) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_text() != 5500) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_loro_tree() != 39545) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_tree() != 27409) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_as_value() != 9638) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_as_value() != 52907) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_is_container() != 16329) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_is_container() != 17483) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_valueorcontainer_is_value() != 13911) {
+    if (uniffi_loro_swift_checksum_method_valueorcontainer_is_value() != 54488) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_diff() != 29529) {
+    if (uniffi_loro_swift_checksum_method_versionvector_diff() != 47112) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_encode() != 64665) {
+    if (uniffi_loro_swift_checksum_method_versionvector_encode() != 61687) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_eq() != 30406) {
+    if (uniffi_loro_swift_checksum_method_versionvector_eq() != 48640) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_extend_to_include_vv() != 28076) {
+    if (uniffi_loro_swift_checksum_method_versionvector_extend_to_include_vv() != 56053) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_get_last() != 45434) {
+    if (uniffi_loro_swift_checksum_method_versionvector_get_last() != 59181) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_get_missing_span() != 2797) {
+    if (uniffi_loro_swift_checksum_method_versionvector_get_missing_span() != 17735) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_includes_id() != 50408) {
+    if (uniffi_loro_swift_checksum_method_versionvector_includes_id() != 5085) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_includes_vv() != 23089) {
+    if (uniffi_loro_swift_checksum_method_versionvector_includes_vv() != 2646) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_intersect_span() != 54748) {
+    if (uniffi_loro_swift_checksum_method_versionvector_intersect_span() != 1012) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_merge() != 23694) {
+    if (uniffi_loro_swift_checksum_method_versionvector_merge() != 41027) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_partial_cmp() != 27570) {
+    if (uniffi_loro_swift_checksum_method_versionvector_partial_cmp() != 50199) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_set_end() != 27313) {
+    if (uniffi_loro_swift_checksum_method_versionvector_set_end() != 35095) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_method_versionvector_set_last() != 40968) {
+    if (uniffi_loro_swift_checksum_method_versionvector_set_last() != 6990) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_awareness_new() != 33037) {
+    if (uniffi_loro_swift_checksum_constructor_awareness_new() != 65487) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_cursor_new() != 11721) {
+    if (uniffi_loro_swift_checksum_constructor_cursor_new() != 45779) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_fractionalindex_from_bytes() != 35415) {
+    if (uniffi_loro_swift_checksum_constructor_fractionalindex_from_bytes() != 27808) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_fractionalindex_from_hex_string() != 10737) {
+    if (uniffi_loro_swift_checksum_constructor_fractionalindex_from_hex_string() != 13382) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_frontiers_decode() != 27043) {
+    if (uniffi_loro_swift_checksum_constructor_frontiers_decode() != 34279) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_frontiers_from_id() != 60928) {
+    if (uniffi_loro_swift_checksum_constructor_frontiers_from_id() != 10144) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_frontiers_from_ids() != 61832) {
+    if (uniffi_loro_swift_checksum_constructor_frontiers_from_ids() != 41001) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_frontiers_new() != 5172) {
+    if (uniffi_loro_swift_checksum_constructor_frontiers_new() != 48342) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_lorocounter_new() != 44867) {
+    if (uniffi_loro_swift_checksum_constructor_lorocounter_new() != 32531) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_lorodoc_new() != 54129) {
+    if (uniffi_loro_swift_checksum_constructor_lorodoc_new() != 7612) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_lorolist_new() != 2861) {
+    if (uniffi_loro_swift_checksum_constructor_lorolist_new() != 35916) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_loromap_new() != 63806) {
+    if (uniffi_loro_swift_checksum_constructor_loromap_new() != 23019) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_loromovablelist_new() != 32944) {
+    if (uniffi_loro_swift_checksum_constructor_loromovablelist_new() != 51117) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_lorotext_new() != 33191) {
+    if (uniffi_loro_swift_checksum_constructor_lorotext_new() != 13897) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_lorotree_new() != 42150) {
+    if (uniffi_loro_swift_checksum_constructor_lorotree_new() != 18030) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_styleconfigmap_default_rich_text_config() != 46944) {
+    if (uniffi_loro_swift_checksum_constructor_styleconfigmap_default_rich_text_config() != 5519) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_styleconfigmap_new() != 23831) {
+    if (uniffi_loro_swift_checksum_constructor_styleconfigmap_new() != 35023) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_undomanager_new() != 35328) {
+    if (uniffi_loro_swift_checksum_constructor_undomanager_new() != 45418) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_versionvector_decode() != 19639) {
+    if (uniffi_loro_swift_checksum_constructor_versionvector_decode() != 50889) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_loro_checksum_constructor_versionvector_new() != 31126) {
+    if (uniffi_loro_swift_checksum_constructor_versionvector_new() != 58059) {
         return InitializationResult.apiChecksumMismatch
     }
 
