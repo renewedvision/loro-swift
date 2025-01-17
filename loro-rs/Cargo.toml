@@ -1,6 +1,6 @@
 [package]
 name = "loro-swift"
-version = "1.1.3"
+version = "1.3.0"
 edition = "2021"
 
 # By default this will produce an rlib named "loro-swift", which is what we want.
@@ -13,7 +13,7 @@ path = "src/uniffi-bindgen.rs"
 
 [dependencies]
 # Build using a compatible rev of the Loro Rust project.  To get a newer version of Loro, we need to update the "tag" specified here, and fix resultant build errors.
-loro-ffi = { git = "https://github.com/loro-dev/loro.git", tag = "loro-ffi@1.1.3" }
+loro-ffi = { git = "https://github.com/loro-dev/loro.git", tag = "loro-ffi@1.3.0" }
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
 uniffi = { version = "0.28.3" }
 

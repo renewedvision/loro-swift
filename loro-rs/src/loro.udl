@@ -10,6 +10,7 @@ namespace loro{
 interface ValueOrContainer{
     boolean is_value();
     boolean is_container();
+    ContainerType? container_type();
     LoroValue? as_value();
     ContainerID? as_container();
     LoroText? as_loro_text();
@@ -18,6 +19,7 @@ interface ValueOrContainer{
     LoroTree? as_loro_tree();
     LoroCounter? as_loro_counter();
     LoroMovableList? as_loro_movable_list();
+    LoroUnknown? as_loro_unknown();
 };
 
 [Trait, WithForeign]
@@ -47,7 +49,7 @@ interface Unsubscriber{
 
 [Trait, WithForeign]
 interface OnPush{
-    UndoItemMeta on_push(UndoOrRedo undo_or_redo, CounterSpan span);
+    UndoItemMeta on_push(UndoOrRedo undo_or_redo, CounterSpan span, DiffEvent? diff_event);
 };
 
 [Trait, WithForeign]
@@ -114,10 +116,13 @@ interface LoroDoc{
     /// the largest existing timestamp will be used instead.
     void set_record_timestamp(boolean record);
 
-    /// Set the interval of mergeable changes, in seconds.
+    /// Set the interval of mergeable changes, **in seconds**.
     ///
     /// If two continuous local changes are within the interval, they will be merged into one change.
     /// The default value is 1000 seconds.
+    ///
+    /// By default, we record timestamps in seconds for each change. So if the merge interval is 1, and changes A and B
+    /// have timestamps of 3 and 4 respectively, then they will be merged into one change
     void set_change_merge_interval(i64 interval);
 
     /// Set the rich text format configuration of the document.
@@ -172,18 +177,18 @@ interface LoroDoc{
     ///
     /// Learn more at https://loro.dev/docs/advanced/doc_state_and_oplog#attacheddetached-status
     void detach();
-    
+
     /// Import a batch of updates/snapshot.
     ///
     /// The data can be in arbitrary order. The import result will be the same.
     [Throws=LoroError]
-    void import_batch([ByRef] sequence<bytes> bytes);
+    ImportStatus import_batch([ByRef] sequence<bytes> bytes);
 
     /// Get a [LoroMovableList] by container id.
     ///
     /// If the provided id is string, it will be converted into a root container id with the name of the string.
     LoroMovableList get_movable_list(ContainerIdLike id);
-    
+
     /// Get a [LoroList] by container id.
     ///
     /// If the provided id is string, it will be converted into a root container id with the name of the string.
@@ -201,7 +206,7 @@ interface LoroDoc{
 
     /// Get a [LoroTree] by container id.
     ///
-    /// If the provided id is string, it will be converted into a root container id with the name of the string.  
+    /// If the provided id is string, it will be converted into a root container id with the name of the string.
     LoroTree get_tree(ContainerIdLike id);
 
     /// Get a [LoroCounter] by container id.
@@ -222,16 +227,19 @@ interface LoroDoc{
 
     void commit_with(CommitOptions options);
 
+    /// Set commit message for the current uncommitted changes
+    ///
+    /// It will be persisted.
     void set_next_commit_message([ByRef] string msg);
 
     /// Whether the document is in detached mode, where the [loro_internal::DocState] is not
     /// synchronized with the latest version of the [loro_internal::OpLog].
     boolean is_detached();
-    
+
     /// Import updates/snapshot exported by [`LoroDoc::export_snapshot`] or [`LoroDoc::export_from`].
     [Throws=LoroError]
     ImportStatus import([ByRef]bytes bytes);
-    
+
     /// Import updates/snapshot exported by [`LoroDoc::export_snapshot`] or [`LoroDoc::export_from`].
     ///
     /// It marks the import with a custom `origin` string. It can be used to track the import source
@@ -244,7 +252,7 @@ interface LoroDoc{
 
     /// Export the current state with json-string format of the document.
     string export_json_updates([ByRef]VersionVector start_vv, [ByRef]VersionVector end_vv);
-    
+
     /// Export all the ops not included in the given `VersionVector`
     [Throws=LoroEncodeError]
     bytes export_updates([ByRef] VersionVector vv);
@@ -257,7 +265,6 @@ interface LoroDoc{
     VersionVector? frontiers_to_vv([ByRef] Frontiers frontiers);
 
     /// Minimize the frontiers by removing the unnecessary entries.
-    // TODO:
     FrontiersOrID minimize_frontiers([ByRef] Frontiers frontiers);
 
     /// Convert `VersionVector` into `Frontiers`
@@ -320,7 +327,7 @@ interface LoroDoc{
     /// - `doc.import(data)` is called.
     /// - `doc.checkout(version)` is called.
     Subscription subscribe([ByRef] ContainerID container_id, Subscriber subscriber);
-    
+
     /// Subscribe all the events.
     ///
     /// The callback will be invoked when any part of the [loro_internal::DocState] is changed.
@@ -340,7 +347,57 @@ interface LoroDoc{
     /// Get the handler by the path.
     ValueOrContainer? get_by_path([ByRef] sequence<Index> path);
     
-    /// Get the handler by the string path.
+    /// The path can be specified in different ways depending on the container type:
+    ///
+    /// For Tree:
+    /// 1. Using node IDs: `tree/{node_id}/property`
+    /// 2. Using indices: `tree/0/1/property`
+    ///
+    /// For List and MovableList:
+    /// - Using indices: `list/0` or `list/1/property`
+    ///
+    /// For Map:
+    /// - Using keys: `map/key` or `map/nested/property`
+    ///
+    /// For tree structures, index-based paths follow depth-first traversal order.
+    /// The indices start from 0 and represent the position of a node among its siblings.
+    ///
+    /// # Examples
+    /// ```
+    /// # use loro::{LoroDoc, LoroValue};
+    /// let doc = LoroDoc::new();
+    ///
+    /// // Tree example
+    /// let tree = doc.get_tree("tree");
+    /// let root = tree.create(None).unwrap();
+    /// tree.get_meta(root).unwrap().insert("name", "root").unwrap();
+    /// // Access tree by ID or index
+    /// let name1 = doc.get_by_str_path(&format!("tree/{}/name", root)).unwrap().into_value().unwrap();
+    /// let name2 = doc.get_by_str_path("tree/0/name").unwrap().into_value().unwrap();
+    /// assert_eq!(name1, name2);
+    ///
+    /// // List example
+    /// let list = doc.get_list("list");
+    /// list.insert(0, "first").unwrap();
+    /// list.insert(1, "second").unwrap();
+    /// // Access list by index
+    /// let item = doc.get_by_str_path("list/0");
+    /// assert_eq!(item.unwrap().into_value().unwrap().into_string().unwrap(), "first".into());
+    ///
+    /// // Map example
+    /// let map = doc.get_map("map");
+    /// map.insert("key", "value").unwrap();
+    /// // Access map by key
+    /// let value = doc.get_by_str_path("map/key");
+    /// assert_eq!(value.unwrap().into_value().unwrap().into_string().unwrap(), "value".into());
+    ///
+    /// // MovableList example
+    /// let mlist = doc.get_movable_list("mlist");
+    /// mlist.insert(0, "item").unwrap();
+    /// // Access movable list by index
+    /// let item = doc.get_by_str_path("mlist/0");
+    /// assert_eq!(item.unwrap().into_value().unwrap().into_string().unwrap(), "item".into());
+    /// ```
     ValueOrContainer? get_by_str_path([ByRef] string path);
 
     [Throws=CannotFindRelativePosition]
@@ -366,7 +423,7 @@ interface LoroDoc{
     // bytes export(ExportMode mode);
 
     [Throws=LoroEncodeError]
-    bytes export_updates_in_range([ByRef]sequence<IdSpan> spans); 
+    bytes export_updates_in_range([ByRef]sequence<IdSpan> spans);
 
     [Throws=LoroEncodeError]
     bytes export_shallow_snapshot([ByRef]Frontiers frontiers);
@@ -440,7 +497,6 @@ interface LoroDoc{
     ///
     /// * `id` - The starting ID of the change range
     /// * `len` - The length of the change range to check
-    // TODO: 
     sequence<ContainerID> get_changed_containers_in(ID id, u32 len);
 
     /// Check if the doc contains the full history.
@@ -451,6 +507,36 @@ interface LoroDoc{
     /// The pending transaction is the one that is not committed yet. It will be committed
     /// after calling `doc.commit()`, `doc.export(mode)` or `doc.checkout(version)`.
     u32 get_pending_txn_len();
+
+    /// Export the current state with json-string format of the document, without peer compression.
+    ///
+    /// Compared to [`export_json_updates`], this method does not compress the peer IDs in the updates.
+    /// So the operations are easier to be processed by application code.
+    string export_json_updates_without_peer_compression([ByRef] VersionVector start_vv, [ByRef] VersionVector end_vv);
+
+    /// Export the readable [`Change`]s in the given [`IdSpan`]
+    sequence<string> export_json_in_id_span(IdSpan id_span);
+
+    /// Find the operation id spans that between the `from` version and the `to` version.
+    VersionVectorDiff find_id_spans_between([ByRef] Frontiers from, [ByRef] Frontiers to);
+
+    /// Revert the current document state back to the target version
+    ///
+    /// Internally, it will generate a series of local operations that can revert the
+    /// current doc to the target version. It will calculate the diff between the current
+    /// state and the target state, and apply the diff to the current state.
+    [Throws=LoroError]
+    void revert_to([ByRef] Frontiers version);
+
+    /// Apply a diff to the current document state.
+    ///
+    /// Internally, it will apply the diff to the current state.
+    [Throws=LoroError]
+    void apply_diff([ByRef] DiffBatch diff);
+
+    /// Calculate the diff between two versions
+    [Throws=LoroError]
+    DiffBatch diff([ByRef] Frontiers a, [ByRef] Frontiers b);
 };
 
 dictionary ContainerPath{
@@ -466,52 +552,52 @@ interface LoroText{
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     constructor();
-    
+
     /// Whether the container is attached to a document
     ///
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     boolean is_attached();
-    
+
     /// Get the [ContainerID]  of the text container.
     ContainerID id();
-    
+
     /// Insert a string at the given unicode position.
     [Throws=LoroError]
     void insert(u32 pos, [ByRef] string s);
-    
+
     /// Insert a string at the given utf-8 position.
     [Throws=LoroError]
     void insert_utf8(u32 pos, [ByRef] string s);
-    
+
     /// Delete a range of text at the given unicode position with unicode length.
     [Throws=LoroError]
     void delete(u32 pos, u32 len);
-    
+
     /// Delete a range of text at the given utf-8 position with utf-8 length.
     [Throws=LoroError]
     void delete_utf8(u32 pos, u32 len);
-    
+
     /// Get a string slice at the given Unicode range
     [Throws=LoroError]
     string slice(u32 start_index, u32 end_index);
-    
+
     /// Delete specified character and insert string at the same position at given unicode position.
     [Throws=LoroError]
     string splice(u32 pos, u32 len, [ByRef] string s);
-    
+
     /// Whether the text container is empty.
     boolean is_empty();
-    
+
     /// Get the length of the text container in UTF-8.
     u32 len_utf8();
 
     /// Get the length of the text container in Unicode.
     u32 len_unicode();
-    
+
     /// Get the length of the text container in UTF-16.
     u32 len_utf16();
-    
+
     /// Update the current text based on the provided text.
     ///
     /// It will calculate the minimal difference and apply it to the current text.
@@ -519,16 +605,19 @@ interface LoroText{
     ///
     /// This could take a long time for large texts (e.g. > 50_000 characters).
     /// In that case, you should use `updateByLine` instead.
-    // TODO:
     [Throws=UpdateTimeoutError]
     void update([ByRef] string s, UpdateOptions options);
+
+    /// Apply a [delta](https://quilljs.com/docs/delta/) to the text container.
+    [Throws=LoroError]
+    void apply_delta(sequence<TextDelta> delta);
 
     /// Update the current text based on the provided text.
     ///
     /// This update calculation is line-based, which will be more efficient but less precise.
     [Throws=UpdateTimeoutError]
     void update_by_line([ByRef] string s, UpdateOptions options);
-    
+
     /// Mark a range of text with a key-value pair.
     ///
     /// You can use it to create a highlight, make a range of text bold, or add a link to a range of text.
@@ -545,7 +634,7 @@ interface LoroText{
     /// Note: this is not suitable for unmergeable annotations like comments.
     [Throws=LoroError]
     void mark(u32 from, u32 to, [ByRef] string key, LoroValueLike value);
-    
+
     /// Unmark a range of text with a key and a value.
     ///
     /// You can use it to remove highlights, bolds or links
@@ -564,13 +653,16 @@ interface LoroText{
     /// Note: you cannot delete unmergeable annotations like comments by this method.
     [Throws=LoroError]
     void unmark(u32 from, u32 to, [ByRef] string key);
-    
+
     /// Get the text in [Delta](https://quilljs.com/docs/delta/) format.
-    LoroValue to_delta();
-    
+    sequence<TextDelta> to_delta();
+
+    /// Get the text in [Delta](https://quilljs.com/docs/delta/) format.
+    LoroValue get_richtext_value();
+
     /// Get the text content of the text container.
     string to_string();
-    
+
     /// Get the cursor at the given position in the given Unicode position..
     ///
     /// Using "index" to denote cursor positions can be unstable, as positions may
@@ -603,65 +695,65 @@ interface LoroList{
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     constructor();
-    
+
     /// Whether the container is attached to a document
     ///
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     boolean is_attached();
-    
+
     /// Insert a value at the given position.
     [Throws=LoroError]
     void insert(u32 pos, LoroValueLike v);
-    
+
     /// Delete values at the given position.
     [Throws=LoroError]
     void delete(u32 pos, u32 len);
-    
+
     /// Get the value at the given position.
     ValueOrContainer? get(u32 index);
-    
+
     /// Get the deep value of the container.
     LoroValue get_deep_value();
-    
+
     /// Get the shallow value of the container.
     ///
     /// This does not convert the state of sub-containers; instead, it represents them as [LoroValue::Container].
     LoroValue get_value();
-    
+
     /// Get the ID of the container.
     ContainerID id();
-    
+
     u32 len();
-    
+
     boolean is_empty();
-    
+
     /// Pop the last element of the list.
     [Throws=LoroError]
     LoroValue? pop();
-    
+
     [Throws=LoroError]
     void push(LoroValueLike v);
-    
+
     // TODO: for_each
     [Throws=LoroError]
     LoroList insert_list_container(u32 pos, LoroList child);
-    
+
     [Throws=LoroError]
     LoroMap insert_map_container(u32 pos, LoroMap child);
-    
+
     [Throws=LoroError]
     LoroTree insert_tree_container(u32 pos, LoroTree child);
-    
+
     [Throws=LoroError]
     LoroMovableList insert_movable_list_container(u32 pos, LoroMovableList child);
-    
+
     [Throws=LoroError]
     LoroText insert_text_container(u32 pos, LoroText child);
-    
+
     [Throws=LoroError]
     LoroCounter insert_counter_container(u32 pos, LoroCounter child);
-    
+
     Cursor? get_cursor(u32 pos, Side side);
 
     /// Converts the LoroList to a Vec of LoroValue.
@@ -687,30 +779,30 @@ interface LoroMap{
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     constructor();
-    
+
     /// Whether the container is attached to a document.
     boolean is_attached();
-    
+
     /// Delete a key-value pair from the map.
     [Throws=LoroError]
     void delete([ByRef] string key);
-    
+
     /// Insert a key-value pair into the map.
     [Throws=LoroError]
     void insert([ByRef] string key, LoroValueLike v);
-    
+
     /// Get the length of the map.
     u32 len();
-     
+
     /// Get the ID of the map.
     ContainerID id();
-    
+
     /// Whether the map is empty.
     boolean is_empty();
-    
+
     /// Get the value of the map with the given key.
     ValueOrContainer? get([ByRef] string key);
-    
+
     [Throws=LoroError]
     LoroList insert_list_container([ByRef] string key, LoroList child);
     [Throws=LoroError]
@@ -723,12 +815,12 @@ interface LoroMap{
     LoroText insert_text_container([ByRef] string key, LoroText child);
     [Throws=LoroError]
     LoroCounter insert_counter_container([ByRef] string key, LoroCounter child);
-    
+
     /// Get the shallow value of the map.
     ///
     /// It will not convert the state of sub-containers, but represent them as [LoroValue::Container].
     LoroValue get_value();
-    
+
     /// Get the deep value of the map.
     ///
     /// It will convert the state of sub-containers into a nested JSON value.
@@ -758,64 +850,64 @@ interface LoroTree{
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     constructor();
-    
+
     /// Whether the container is attached to a document
     ///
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     boolean is_attached();
-    
+
     /// Create a new tree node and return the [`TreeID`].
     ///
     /// If the `parent` is `None`, the created node is the root of a tree.
     /// Otherwise, the created node is a child of the parent tree node.
     [Throws=LoroError]
     TreeID create(TreeParentId parent);
-    
+
     /// Create a new tree node at the given index and return the [`TreeID`].
     ///
     /// If the `parent` is `None`, the created node is the root of a tree.
     /// If the `index` is greater than the number of children of the parent, error will be returned.
     [Throws=LoroError]
     TreeID create_at(TreeParentId parent, u32 index);
-    
+
     /// Move the `target` node to be a child of the `parent` node.
     ///
     /// If the `parent` is `None`, the `target` node will be a root.
     [Throws=LoroError]
     void mov(TreeID target, TreeParentId parent);
-    
+
     /// Move the `target` node to be a child of the `parent` node at the given index.
     /// If the `parent` is `None`, the `target` node will be a root.
     [Throws=LoroError]
     void mov_to(TreeID target, TreeParentId parent, u32 to);
-    
+
     /// Move the `target` node to be a child after the `after` node with the same parent.
     [Throws=LoroError]
     void mov_after(TreeID target, TreeID after);
-    
+
     /// Move the `target` node to be a child before the `before` node with the same parent.
     [Throws=LoroError]
     void mov_before(TreeID target, TreeID before);
-    
+
     /// Delete a tree node.
     ///
     /// Note: If the deleted node has children, the children do not appear in the state
     /// rather than actually being deleted.
     [Throws=LoroError]
     void delete(TreeID target);
-    
+
     /// Get the associated metadata map handler of a tree node.
     [Throws=LoroError]
     LoroMap get_meta(TreeID target);
-    
+
     /// Return the parent of target node.
     ///
     /// - If the target node does not exist, throws Error.
     /// - If the target node is a root node, return nil.
     [Throws=LoroError]
     TreeParentId parent(TreeID target);
-    
+
     /// Return whether target node exists.
     boolean contains(TreeID target);
 
@@ -825,7 +917,7 @@ interface LoroTree{
     /// - If the target node does not exist, return `LoroTreeError::TreeNodeNotExist`.
     [Throws=LoroError]
     boolean is_node_deleted(TreeID target);
-    
+
     /// Return all nodes, including deleted nodes
     sequence<TreeID> nodes();
 
@@ -836,22 +928,22 @@ interface LoroTree{
     ///
     /// If the parent node does not exist, return `None`.
     sequence<TreeID>? children(TreeParentId parent);
-    
+
     /// Return the number of children of the target node.
     u32? children_num(TreeParentId parent);
-    
+
     /// Return container id of the tree.
     ContainerID id();
-    
+
     /// Return the fractional index of the target node with hex format.
     string? fractional_index(TreeID target);
-    
+
     /// Return the flat array of the forest.
     ///
     /// Note: the metadata will be not resolved. So if you don't only care about hierarchy
     /// but also the metadata, you should use `get_value_with_meta()`.
     LoroValue get_value();
-    
+
     /// Return the flat array of the forest, each node is with metadata.
     LoroValue get_value_with_meta();
 
@@ -887,7 +979,7 @@ interface LoroMovableList{
     /// The edits on a detached container will not be persisted.
     /// To attach the container to the document, please insert it into an attached container.
     constructor();
-    
+
     /// Whether the container is attached to a document
     ///
     /// The edits on a detached container will not be persisted.
@@ -896,73 +988,73 @@ interface LoroMovableList{
 
     /// Get the container id.
     ContainerID id();
-    
+
     /// Insert a value at the given position.
     [Throws=LoroError]
     void insert(u32 pos, LoroValueLike v);
-    
+
     /// Delete values at the given position.
     [Throws=LoroError]
     void delete(u32 pos, u32 len);
-    
+
     /// Get the value at the given position.
     ValueOrContainer? get(u32 index);
-    
+
     u32 len();
-    
+
     boolean is_empty();
 
     /// Get the deep value of the container.
     LoroValue get_deep_value();
-    
+
     /// Get the shallow value of the container.
     ///
     /// This does not convert the state of sub-containers; instead, it represents them as [LoroValue::Container].
     LoroValue get_value();
-    
+
     /// Pop the last element of the list.
     [Throws=LoroError]
     ValueOrContainer? pop();
-    
+
     [Throws=LoroError]
     void push(LoroValueLike v);
 
     [Throws=LoroError]
     LoroList insert_list_container(u32 pos, LoroList child);
-    
+
     [Throws=LoroError]
     LoroMap insert_map_container(u32 pos, LoroMap child);
-    
+
     [Throws=LoroError]
     LoroTree insert_tree_container(u32 pos, LoroTree child);
-    
+
     [Throws=LoroError]
     LoroMovableList insert_movable_list_container(u32 pos, LoroMovableList child);
-    
+
     [Throws=LoroError]
     LoroText insert_text_container(u32 pos, LoroText child);
-    
+
     [Throws=LoroError]
     LoroCounter insert_counter_container(u32 pos, LoroCounter child);
-    
+
     [Throws=LoroError]
     LoroList set_list_container(u32 pos, LoroList child);
-    
+
     [Throws=LoroError]
     LoroMap set_map_container(u32 pos, LoroMap child);
-    
+
     [Throws=LoroError]
     LoroTree set_tree_container(u32 pos, LoroTree child);
-    
+
     [Throws=LoroError]
     LoroMovableList set_movable_list_container(u32 pos, LoroMovableList child);
-    
+
     [Throws=LoroError]
     LoroText set_text_container(u32 pos, LoroText child);
-    
+
     [Throws=LoroError]
     LoroCounter set_counter_container(u32 pos, LoroCounter child);
-    
+
     /// Get the cursor at the given position.
     ///
     /// Using "index" to denote cursor positions can be unstable, as positions may
@@ -977,11 +1069,11 @@ interface LoroMovableList{
     /// updates cursor info to reference only the IDs of currently present elements,
     /// thereby reducing the need for replay.
     Cursor? get_cursor(u32 pos, Side side);
-    
+
     /// Set the value at the given position.
     [Throws=LoroError]
     void set(u32 pos, LoroValueLike value);
-    
+
     /// Move the value at the given position to the given position.
     [Throws=LoroError]
     void mov(u32 from, u32 to);
@@ -1014,18 +1106,18 @@ interface LoroMovableList{
 interface LoroCounter{
     /// Create a new Counter.
     constructor();
-    
+
     /// Return container id of the Counter.
     ContainerID id();
-    
+
     /// Increment the counter by the given value.
     [Throws=LoroError]
     void increment(double value);
-    
+
     /// Decrement the counter by the given value.
     [Throws=LoroError]
     void decrement(double value);
-    
+
     /// Get the current value of the counter.
     f64 get_value();
 
@@ -1214,9 +1306,9 @@ interface Frontiers{
 
 dictionary VersionVectorDiff{
     /// need to add these spans to move from right to left
-    record<u64, CounterSpan> left;
+    record<u64, CounterSpan> retreat;
     /// need to add these spans to move from left to right
-    record<u64, CounterSpan> right;
+    record<u64, CounterSpan> forward;
 };
 
 // ============= UNDO MANAGER =============
@@ -1393,6 +1485,29 @@ interface Subscription{
     void detach();
 };
 
+interface DiffBatch{
+    constructor();
+
+    /// Push a new event to the batch.
+    ///
+    /// If the cid already exists in the batch, return Err
+    Diff? push(ContainerID cid, Diff diff);
+
+    /// Returns an iterator over the diffs in this batch, in the order they were added.
+    ///
+    /// The iterator yields tuples of `(&ContainerID, &Diff)` where:
+    /// - `ContainerID` is the ID of the container that was modified
+    /// - `Diff` contains the actual changes made to that container
+    ///
+    /// The order of the diffs is preserved from when they were originally added to the batch.
+    sequence<ContainerIDAndDiff> get_diff();
+};
+
+dictionary ContainerIDAndDiff{
+    ContainerID cid;
+    Diff diff;
+};
+
 // ============= TYPES =============
 dictionary TreeID{
     u64 peer;
@@ -1438,7 +1553,7 @@ dictionary IdSpan{
 
 dictionary CounterSpan{
     i32 start;
-    i32 end; 
+    i32 end;
 };
 
 
@@ -1515,6 +1630,7 @@ enum LoroError {
     "ContainerDeleted",
     "ConcurrentOpsWithSamePeerID",
     "InvalidPeerID",
+    "ContainersNotFound",
 };
 
 [Error]

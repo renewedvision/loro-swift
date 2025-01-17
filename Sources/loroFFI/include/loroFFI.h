@@ -288,7 +288,7 @@ typedef void (*UniffiCallbackInterfaceOnPopMethod0)(uint64_t, RustBuffer, RustBu
 #endif
 #ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_ON_PUSH_METHOD0
 #define UNIFFI_FFIDEF_CALLBACK_INTERFACE_ON_PUSH_METHOD0
-typedef void (*UniffiCallbackInterfaceOnPushMethod0)(uint64_t, RustBuffer, RustBuffer, RustBuffer* _Nonnull, 
+typedef void (*UniffiCallbackInterfaceOnPushMethod0)(uint64_t, RustBuffer, RustBuffer, RustBuffer, RustBuffer* _Nonnull, 
         RustCallStatus *_Nonnull uniffiCallStatus
     );
 
@@ -365,14 +365,28 @@ typedef void (*UniffiCallbackInterfaceValueOrContainerMethod7)(uint64_t, RustBuf
 #endif
 #ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD8
 #define UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD8
-typedef void (*UniffiCallbackInterfaceValueOrContainerMethod8)(uint64_t, int8_t* _Nonnull, 
+typedef void (*UniffiCallbackInterfaceValueOrContainerMethod8)(uint64_t, RustBuffer* _Nonnull, 
         RustCallStatus *_Nonnull uniffiCallStatus
     );
 
 #endif
 #ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD9
 #define UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD9
-typedef void (*UniffiCallbackInterfaceValueOrContainerMethod9)(uint64_t, int8_t* _Nonnull, 
+typedef void (*UniffiCallbackInterfaceValueOrContainerMethod9)(uint64_t, RustBuffer* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD10
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD10
+typedef void (*UniffiCallbackInterfaceValueOrContainerMethod10)(uint64_t, int8_t* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD11
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_VALUE_OR_CONTAINER_METHOD11
+typedef void (*UniffiCallbackInterfaceValueOrContainerMethod11)(uint64_t, int8_t* _Nonnull, 
         RustCallStatus *_Nonnull uniffiCallStatus
     );
 
@@ -451,9 +465,11 @@ typedef struct UniffiVTableCallbackInterfaceValueOrContainer {
     UniffiCallbackInterfaceValueOrContainerMethod4 _Nonnull asLoroMovableList;
     UniffiCallbackInterfaceValueOrContainerMethod5 _Nonnull asLoroText;
     UniffiCallbackInterfaceValueOrContainerMethod6 _Nonnull asLoroTree;
-    UniffiCallbackInterfaceValueOrContainerMethod7 _Nonnull asValue;
-    UniffiCallbackInterfaceValueOrContainerMethod8 _Nonnull isContainer;
-    UniffiCallbackInterfaceValueOrContainerMethod9 _Nonnull isValue;
+    UniffiCallbackInterfaceValueOrContainerMethod7 _Nonnull asLoroUnknown;
+    UniffiCallbackInterfaceValueOrContainerMethod8 _Nonnull asValue;
+    UniffiCallbackInterfaceValueOrContainerMethod9 _Nonnull containerType;
+    UniffiCallbackInterfaceValueOrContainerMethod10 _Nonnull isContainer;
+    UniffiCallbackInterfaceValueOrContainerMethod11 _Nonnull isValue;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
 } UniffiVTableCallbackInterfaceValueOrContainer;
 
@@ -608,6 +624,32 @@ void uniffi_loro_swift_fn_free_cursor(void*_Nonnull ptr, RustCallStatus *_Nonnul
 void*_Nonnull uniffi_loro_swift_fn_constructor_cursor_new(RustBuffer id, RustBuffer container, RustBuffer side, uint32_t origin_pos, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_DIFFBATCH
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_DIFFBATCH
+void*_Nonnull uniffi_loro_swift_fn_clone_diffbatch(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_DIFFBATCH
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_DIFFBATCH
+void uniffi_loro_swift_fn_free_diffbatch(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CONSTRUCTOR_DIFFBATCH_NEW
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CONSTRUCTOR_DIFFBATCH_NEW
+void*_Nonnull uniffi_loro_swift_fn_constructor_diffbatch_new(RustCallStatus *_Nonnull out_status
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_DIFFBATCH_GET_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_DIFFBATCH_GET_DIFF
+RustBuffer uniffi_loro_swift_fn_method_diffbatch_get_diff(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_DIFFBATCH_PUSH
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_DIFFBATCH_PUSH
+RustBuffer uniffi_loro_swift_fn_method_diffbatch_push(void*_Nonnull ptr, RustBuffer cid, RustBuffer diff, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FRACTIONALINDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FRACTIONALINDEX
 void*_Nonnull uniffi_loro_swift_fn_clone_fractionalindex(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -751,6 +793,11 @@ void*_Nonnull uniffi_loro_swift_fn_constructor_lorodoc_new(RustCallStatus *_Nonn
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_APPLY_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_APPLY_DIFF
+void uniffi_loro_swift_fn_method_lorodoc_apply_diff(void*_Nonnull ptr, void*_Nonnull diff, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_ATTACH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_ATTACH
 void uniffi_loro_swift_fn_method_lorodoc_attach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -806,9 +853,24 @@ void uniffi_loro_swift_fn_method_lorodoc_config_text_style(void*_Nonnull ptr, vo
 void uniffi_loro_swift_fn_method_lorodoc_detach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_DIFF
+void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_diff(void*_Nonnull ptr, void*_Nonnull a, void*_Nonnull b, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
+RustBuffer uniffi_loro_swift_fn_method_lorodoc_export_json_in_id_span(void*_Nonnull ptr, RustBuffer id_span, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES
 RustBuffer uniffi_loro_swift_fn_method_lorodoc_export_json_updates(void*_Nonnull ptr, void*_Nonnull start_vv, void*_Nonnull end_vv, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
+RustBuffer uniffi_loro_swift_fn_method_lorodoc_export_json_updates_without_peer_compression(void*_Nonnull ptr, void*_Nonnull start_vv, void*_Nonnull end_vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_SHALLOW_SNAPSHOT
@@ -839,6 +901,11 @@ RustBuffer uniffi_loro_swift_fn_method_lorodoc_export_updates(void*_Nonnull ptr,
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
 RustBuffer uniffi_loro_swift_fn_method_lorodoc_export_updates_in_range(void*_Nonnull ptr, RustBuffer spans, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
+RustBuffer uniffi_loro_swift_fn_method_lorodoc_find_id_spans_between(void*_Nonnull ptr, void*_Nonnull from, void*_Nonnull to, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_FORK
@@ -958,7 +1025,7 @@ RustBuffer uniffi_loro_swift_fn_method_lorodoc_import(void*_Nonnull ptr, RustBuf
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_IMPORT_BATCH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_IMPORT_BATCH
-void uniffi_loro_swift_fn_method_lorodoc_import_batch(void*_Nonnull ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_swift_fn_method_lorodoc_import_batch(void*_Nonnull ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_IMPORT_JSON_UPDATES
@@ -1019,6 +1086,11 @@ void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_oplog_vv(void*_Nonnull ptr, Ru
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_PEER_ID
 uint64_t uniffi_loro_swift_fn_method_lorodoc_peer_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_REVERT_TO
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_REVERT_TO
+void uniffi_loro_swift_fn_method_lorodoc_revert_to(void*_Nonnull ptr, void*_Nonnull version, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_CHANGE_MERGE_INTERVAL
@@ -1515,6 +1587,11 @@ void*_Nonnull uniffi_loro_swift_fn_constructor_lorotext_new(RustCallStatus *_Non
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_APPLY_DELTA
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_APPLY_DELTA
+void uniffi_loro_swift_fn_method_lorotext_apply_delta(void*_Nonnull ptr, RustBuffer delta, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_DELETE
 void uniffi_loro_swift_fn_method_lorotext_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
@@ -1533,6 +1610,11 @@ RustBuffer uniffi_loro_swift_fn_method_lorotext_get_cursor(void*_Nonnull ptr, ui
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
 RustBuffer uniffi_loro_swift_fn_method_lorotext_get_editor_at_unicode_pos(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
+RustBuffer uniffi_loro_swift_fn_method_lorotext_get_richtext_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_ID
@@ -1838,7 +1920,7 @@ void uniffi_loro_swift_fn_init_callback_vtable_onpush(UniffiVTableCallbackInterf
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_ONPUSH_ON_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_ONPUSH_ON_PUSH
-RustBuffer uniffi_loro_swift_fn_method_onpush_on_push(void*_Nonnull ptr, RustBuffer undo_or_redo, RustBuffer span, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_swift_fn_method_onpush_on_push(void*_Nonnull ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer diff_event, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_STYLECONFIGMAP
@@ -2038,9 +2120,19 @@ RustBuffer uniffi_loro_swift_fn_method_valueorcontainer_as_loro_text(void*_Nonnu
 RustBuffer uniffi_loro_swift_fn_method_valueorcontainer_as_loro_tree(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
+RustBuffer uniffi_loro_swift_fn_method_valueorcontainer_as_loro_unknown(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_AS_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_AS_VALUE
 RustBuffer uniffi_loro_swift_fn_method_valueorcontainer_as_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
+RustBuffer uniffi_loro_swift_fn_method_valueorcontainer_container_type(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_VALUEORCONTAINER_IS_CONTAINER
@@ -2526,6 +2618,18 @@ uint16_t uniffi_loro_swift_checksum_method_containeridlike_as_container_id(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_DIFFBATCH_GET_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_DIFFBATCH_GET_DIFF
+uint16_t uniffi_loro_swift_checksum_method_diffbatch_get_diff(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_DIFFBATCH_PUSH
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_DIFFBATCH_PUSH
+uint16_t uniffi_loro_swift_checksum_method_diffbatch_push(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRACTIONALINDEX_TO_STRING
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRACTIONALINDEX_TO_STRING
 uint16_t uniffi_loro_swift_checksum_method_fractionalindex_to_string(void
@@ -2577,6 +2681,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorocounter_increment(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_IS_DELETED
 uint16_t uniffi_loro_swift_checksum_method_lorocounter_is_deleted(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_APPLY_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_APPLY_DIFF
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_apply_diff(void
     
 );
 #endif
@@ -2646,9 +2756,27 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_detach(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_DIFF
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_DIFF
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_diff(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_export_json_in_id_span(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_UPDATES
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_export_json_updates(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_export_json_updates_without_peer_compression(void
     
 );
 #endif
@@ -2685,6 +2813,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_export_updates(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_export_updates_in_range(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_find_id_spans_between(void
     
 );
 #endif
@@ -2901,6 +3035,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_oplog_vv(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_PEER_ID
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_peer_id(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_REVERT_TO
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_REVERT_TO
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_revert_to(void
     
 );
 #endif
@@ -3420,6 +3560,12 @@ uint16_t uniffi_loro_swift_checksum_method_loromovablelist_to_vec(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_APPLY_DELTA
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_APPLY_DELTA
+uint16_t uniffi_loro_swift_checksum_method_lorotext_apply_delta(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_DELETE
 uint16_t uniffi_loro_swift_checksum_method_lorotext_delete(void
@@ -3441,6 +3587,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorotext_get_cursor(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
 uint16_t uniffi_loro_swift_checksum_method_lorotext_get_editor_at_unicode_pos(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
+uint16_t uniffi_loro_swift_checksum_method_lorotext_get_richtext_value(void
     
 );
 #endif
@@ -3858,9 +4010,21 @@ uint16_t uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_tree(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
+uint16_t uniffi_loro_swift_checksum_method_valueorcontainer_as_loro_unknown(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_AS_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_AS_VALUE
 uint16_t uniffi_loro_swift_checksum_method_valueorcontainer_as_value(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
+uint16_t uniffi_loro_swift_checksum_method_valueorcontainer_container_type(void
     
 );
 #endif
@@ -3963,6 +4127,12 @@ uint16_t uniffi_loro_swift_checksum_constructor_awareness_new(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_CURSOR_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_CURSOR_NEW
 uint16_t uniffi_loro_swift_checksum_constructor_cursor_new(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_DIFFBATCH_NEW
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_DIFFBATCH_NEW
+uint16_t uniffi_loro_swift_checksum_constructor_diffbatch_new(void
     
 );
 #endif
