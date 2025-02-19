@@ -757,6 +757,16 @@ void*_Nonnull uniffi_loro_swift_fn_constructor_lorocounter_new(RustCallStatus *_
 void uniffi_loro_swift_fn_method_lorocounter_decrement(void*_Nonnull ptr, double value, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_DOC
+RustBuffer uniffi_loro_swift_fn_method_lorocounter_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_lorocounter_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_GET_VALUE
 double uniffi_loro_swift_fn_method_lorocounter_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -770,6 +780,11 @@ RustBuffer uniffi_loro_swift_fn_method_lorocounter_id(void*_Nonnull ptr, RustCal
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_INCREMENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_INCREMENT
 void uniffi_loro_swift_fn_method_lorocounter_increment(void*_Nonnull ptr, double value, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_IS_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_IS_ATTACHED
+int8_t uniffi_loro_swift_fn_method_lorocounter_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROCOUNTER_IS_DELETED
@@ -1179,9 +1194,19 @@ void uniffi_loro_swift_fn_method_lorolist_clear(void*_Nonnull ptr, RustCallStatu
 void uniffi_loro_swift_fn_method_lorolist_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_DOC
+RustBuffer uniffi_loro_swift_fn_method_lorolist_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_GET
 RustBuffer uniffi_loro_swift_fn_method_lorolist_get(void*_Nonnull ptr, uint32_t index, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_lorolist_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROLIST_GET_CURSOR
@@ -1305,9 +1330,19 @@ void uniffi_loro_swift_fn_method_loromap_clear(void*_Nonnull ptr, RustCallStatus
 void uniffi_loro_swift_fn_method_loromap_delete(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_DOC
+RustBuffer uniffi_loro_swift_fn_method_loromap_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET
 RustBuffer uniffi_loro_swift_fn_method_loromap_get(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_loromap_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_DEEP_VALUE
@@ -1318,6 +1353,36 @@ RustBuffer uniffi_loro_swift_fn_method_loromap_get_deep_value(void*_Nonnull ptr,
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_LAST_EDITOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_LAST_EDITOR
 RustBuffer uniffi_loro_swift_fn_method_loromap_get_last_editor(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_counter_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_map_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_movable_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_text_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
+void*_Nonnull uniffi_loro_swift_fn_method_loromap_get_or_create_tree_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMAP_GET_VALUE
@@ -1421,9 +1486,19 @@ void uniffi_loro_swift_fn_method_loromovablelist_clear(void*_Nonnull ptr, RustCa
 void uniffi_loro_swift_fn_method_loromovablelist_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_DOC
+RustBuffer uniffi_loro_swift_fn_method_loromovablelist_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_GET
 RustBuffer uniffi_loro_swift_fn_method_loromovablelist_get(void*_Nonnull ptr, uint32_t index, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_loromovablelist_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROMOVABLELIST_GET_CREATOR_AT
@@ -1602,6 +1677,16 @@ void uniffi_loro_swift_fn_method_lorotext_delete(void*_Nonnull ptr, uint32_t pos
 void uniffi_loro_swift_fn_method_lorotext_delete_utf8(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_DOC
+RustBuffer uniffi_loro_swift_fn_method_lorotext_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_lorotext_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTEXT_GET_CURSOR
 RustBuffer uniffi_loro_swift_fn_method_lorotext_get_cursor(void*_Nonnull ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
@@ -1758,6 +1843,11 @@ void uniffi_loro_swift_fn_method_lorotree_delete(void*_Nonnull ptr, RustBuffer t
 void uniffi_loro_swift_fn_method_lorotree_disable_fractional_index(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_DOC
+RustBuffer uniffi_loro_swift_fn_method_lorotree_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
 void uniffi_loro_swift_fn_method_lorotree_enable_fractional_index(void*_Nonnull ptr, uint8_t jitter, RustCallStatus *_Nonnull out_status
@@ -1766,6 +1856,11 @@ void uniffi_loro_swift_fn_method_lorotree_enable_fractional_index(void*_Nonnull 
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_FRACTIONAL_INDEX
 RustBuffer uniffi_loro_swift_fn_method_lorotree_fractional_index(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_GET_ATTACHED
+RustBuffer uniffi_loro_swift_fn_method_lorotree_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOROTREE_GET_LAST_MOVE_ID
@@ -1990,6 +2085,11 @@ void uniffi_loro_swift_fn_free_subscription(void*_Nonnull ptr, RustCallStatus *_
 void uniffi_loro_swift_fn_method_subscription_detach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_SUBSCRIPTION_UNSUBSCRIBE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_SUBSCRIPTION_UNSUBSCRIBE
+void uniffi_loro_swift_fn_method_subscription_unsubscribe(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_UNDOMANAGER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_UNDOMANAGER
 void*_Nonnull uniffi_loro_swift_fn_clone_undomanager(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -2022,12 +2122,12 @@ int8_t uniffi_loro_swift_fn_method_undomanager_can_undo(void*_Nonnull ptr, RustC
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
-void uniffi_loro_swift_fn_method_undomanager_record_new_checkpoint(void*_Nonnull ptr, void*_Nonnull doc, RustCallStatus *_Nonnull out_status
+void uniffi_loro_swift_fn_method_undomanager_record_new_checkpoint(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_REDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_REDO
-int8_t uniffi_loro_swift_fn_method_undomanager_redo(void*_Nonnull ptr, void*_Nonnull doc, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_swift_fn_method_undomanager_redo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_SET_MAX_UNDO_STEPS
@@ -2052,7 +2152,7 @@ void uniffi_loro_swift_fn_method_undomanager_set_on_push(void*_Nonnull ptr, Rust
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_UNDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_UNDOMANAGER_UNDO
-int8_t uniffi_loro_swift_fn_method_undomanager_undo(void*_Nonnull ptr, void*_Nonnull doc, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_swift_fn_method_undomanager_undo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_UNSUBSCRIBER
@@ -2660,6 +2760,18 @@ uint16_t uniffi_loro_swift_checksum_method_lorocounter_decrement(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_DOC
+uint16_t uniffi_loro_swift_checksum_method_lorocounter_doc(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_lorocounter_get_attached(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_GET_VALUE
 uint16_t uniffi_loro_swift_checksum_method_lorocounter_get_value(void
@@ -2675,6 +2787,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorocounter_id(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_INCREMENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_INCREMENT
 uint16_t uniffi_loro_swift_checksum_method_lorocounter_increment(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_IS_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROCOUNTER_IS_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_lorocounter_is_attached(void
     
 );
 #endif
@@ -3128,9 +3246,21 @@ uint16_t uniffi_loro_swift_checksum_method_lorolist_delete(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_DOC
+uint16_t uniffi_loro_swift_checksum_method_lorolist_doc(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_GET
 uint16_t uniffi_loro_swift_checksum_method_lorolist_get(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROLIST_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_lorolist_get_attached(void
     
 );
 #endif
@@ -3260,9 +3390,21 @@ uint16_t uniffi_loro_swift_checksum_method_loromap_delete(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_DOC
+uint16_t uniffi_loro_swift_checksum_method_loromap_doc(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET
 uint16_t uniffi_loro_swift_checksum_method_loromap_get(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_attached(void
     
 );
 #endif
@@ -3275,6 +3417,42 @@ uint16_t uniffi_loro_swift_checksum_method_loromap_get_deep_value(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_LAST_EDITOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_LAST_EDITOR
 uint16_t uniffi_loro_swift_checksum_method_loromap_get_last_editor(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_counter_container(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_list_container(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_map_container(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_movable_list_container(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_text_container(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_loromap_get_or_create_tree_container(void
     
 );
 #endif
@@ -3380,9 +3558,21 @@ uint16_t uniffi_loro_swift_checksum_method_loromovablelist_delete(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_DOC
+uint16_t uniffi_loro_swift_checksum_method_loromovablelist_doc(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_GET
 uint16_t uniffi_loro_swift_checksum_method_loromovablelist_get(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROMOVABLELIST_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_loromovablelist_get_attached(void
     
 );
 #endif
@@ -3578,6 +3768,18 @@ uint16_t uniffi_loro_swift_checksum_method_lorotext_delete_utf8(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_DOC
+uint16_t uniffi_loro_swift_checksum_method_lorotext_doc(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_lorotext_get_attached(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTEXT_GET_CURSOR
 uint16_t uniffi_loro_swift_checksum_method_lorotext_get_cursor(void
@@ -3746,6 +3948,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorotree_disable_fractional_index(voi
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_DOC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_DOC
+uint16_t uniffi_loro_swift_checksum_method_lorotree_doc(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
 uint16_t uniffi_loro_swift_checksum_method_lorotree_enable_fractional_index(void
@@ -3755,6 +3963,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorotree_enable_fractional_index(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_FRACTIONAL_INDEX
 uint16_t uniffi_loro_swift_checksum_method_lorotree_fractional_index(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_GET_ATTACHED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOROTREE_GET_ATTACHED
+uint16_t uniffi_loro_swift_checksum_method_lorotree_get_attached(void
     
 );
 #endif
@@ -3899,6 +4113,12 @@ uint16_t uniffi_loro_swift_checksum_method_subscriber_on_diff(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_SUBSCRIPTION_DETACH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_SUBSCRIPTION_DETACH
 uint16_t uniffi_loro_swift_checksum_method_subscription_detach(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_SUBSCRIPTION_UNSUBSCRIBE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_SUBSCRIPTION_UNSUBSCRIBE
+uint16_t uniffi_loro_swift_checksum_method_subscription_unsubscribe(void
     
 );
 #endif

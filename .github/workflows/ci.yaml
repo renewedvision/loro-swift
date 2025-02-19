@@ -1,7 +1,5 @@
 name: build-test
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -16,13 +14,13 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: 1.78.0
+          toolchain: 1.80.0
           default: true
       - name: get xcode information
         run: |
           xcodebuild -version
           swift --version
       - name: build xcframework
-        run: ./scripts/build_swift_ffi.sh
+        run: ./scripts/build_macos.sh
       - name: Swift tests
-        run: swift test
+        run: LOCAL_BUILD=true swift test
