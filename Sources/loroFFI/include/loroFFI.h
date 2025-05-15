@@ -265,6 +265,27 @@ typedef void (*UniffiCallbackInterfaceContainerIdLikeMethod0)(uint64_t, RustBuff
     );
 
 #endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER_METHOD0
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER_METHOD0
+typedef void (*UniffiCallbackInterfaceEphemeralSubscriberMethod0)(uint64_t, RustBuffer, void* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK_METHOD0
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK_METHOD0
+typedef void (*UniffiCallbackInterfaceFirstCommitFromPeerCallbackMethod0)(uint64_t, RustBuffer, void* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER_METHOD0
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER_METHOD0
+typedef void (*UniffiCallbackInterfaceLocalEphemeralListenerMethod0)(uint64_t, RustBuffer, void* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
 #ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK_METHOD0
 #define UNIFFI_FFIDEF_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK_METHOD0
 typedef void (*UniffiCallbackInterfaceLocalUpdateCallbackMethod0)(uint64_t, RustBuffer, void* _Nonnull, 
@@ -289,6 +310,13 @@ typedef void (*UniffiCallbackInterfaceOnPopMethod0)(uint64_t, RustBuffer, RustBu
 #ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_ON_PUSH_METHOD0
 #define UNIFFI_FFIDEF_CALLBACK_INTERFACE_ON_PUSH_METHOD0
 typedef void (*UniffiCallbackInterfaceOnPushMethod0)(uint64_t, RustBuffer, RustBuffer, RustBuffer, RustBuffer* _Nonnull, 
+        RustCallStatus *_Nonnull uniffiCallStatus
+    );
+
+#endif
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK_METHOD0
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK_METHOD0
+typedef void (*UniffiCallbackInterfacePreCommitCallbackMethod0)(uint64_t, RustBuffer, void* _Nonnull, 
         RustCallStatus *_Nonnull uniffiCallStatus
     );
 
@@ -407,6 +435,30 @@ typedef struct UniffiVTableCallbackInterfaceContainerIdLike {
 } UniffiVTableCallbackInterfaceContainerIdLike;
 
 #endif
+#ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER
+#define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER
+typedef struct UniffiVTableCallbackInterfaceEphemeralSubscriber {
+    UniffiCallbackInterfaceEphemeralSubscriberMethod0 _Nonnull onEphemeralEvent;
+    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+} UniffiVTableCallbackInterfaceEphemeralSubscriber;
+
+#endif
+#ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK
+#define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK
+typedef struct UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback {
+    UniffiCallbackInterfaceFirstCommitFromPeerCallbackMethod0 _Nonnull onFirstCommitFromPeer;
+    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+} UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback;
+
+#endif
+#ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER
+#define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER
+typedef struct UniffiVTableCallbackInterfaceLocalEphemeralListener {
+    UniffiCallbackInterfaceLocalEphemeralListenerMethod0 _Nonnull onEphemeralUpdate;
+    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+} UniffiVTableCallbackInterfaceLocalEphemeralListener;
+
+#endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK
 typedef struct UniffiVTableCallbackInterfaceLocalUpdateCallback {
@@ -437,6 +489,14 @@ typedef struct UniffiVTableCallbackInterfaceOnPush {
     UniffiCallbackInterfaceOnPushMethod0 _Nonnull onPush;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
 } UniffiVTableCallbackInterfaceOnPush;
+
+#endif
+#ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK
+#define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK
+typedef struct UniffiVTableCallbackInterfacePreCommitCallback {
+    UniffiCallbackInterfacePreCommitCallbackMethod0 _Nonnull onPreCommit;
+    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+} UniffiVTableCallbackInterfacePreCommitCallback;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_SUBSCRIBER
@@ -549,6 +609,26 @@ void uniffi_loro_swift_fn_init_callback_vtable_changeancestorstraveler(UniffiVTa
 int8_t uniffi_loro_swift_fn_method_changeancestorstraveler_travel(void*_Nonnull ptr, RustBuffer change, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_CHANGEMODIFIER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_CHANGEMODIFIER
+void*_Nonnull uniffi_loro_swift_fn_clone_changemodifier(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_CHANGEMODIFIER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_CHANGEMODIFIER
+void uniffi_loro_swift_fn_free_changemodifier(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_CHANGEMODIFIER_SET_MESSAGE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_CHANGEMODIFIER_SET_MESSAGE
+void uniffi_loro_swift_fn_method_changemodifier_set_message(void*_Nonnull ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
+void uniffi_loro_swift_fn_method_changemodifier_set_timestamp(void*_Nonnull ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_CONFIGURE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_CONFIGURE
 void*_Nonnull uniffi_loro_swift_fn_clone_configure(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -650,6 +730,116 @@ RustBuffer uniffi_loro_swift_fn_method_diffbatch_get_diff(void*_Nonnull ptr, Rus
 RustBuffer uniffi_loro_swift_fn_method_diffbatch_push(void*_Nonnull ptr, RustBuffer cid, RustBuffer diff, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_EPHEMERALSTORE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_EPHEMERALSTORE
+void*_Nonnull uniffi_loro_swift_fn_clone_ephemeralstore(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_EPHEMERALSTORE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_EPHEMERALSTORE
+void uniffi_loro_swift_fn_free_ephemeralstore(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CONSTRUCTOR_EPHEMERALSTORE_NEW
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CONSTRUCTOR_EPHEMERALSTORE_NEW
+void*_Nonnull uniffi_loro_swift_fn_constructor_ephemeralstore_new(int64_t timeout, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_APPLY
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_APPLY
+void uniffi_loro_swift_fn_method_ephemeralstore_apply(void*_Nonnull ptr, RustBuffer data, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_DELETE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_DELETE
+void uniffi_loro_swift_fn_method_ephemeralstore_delete(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_ENCODE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_ENCODE
+RustBuffer uniffi_loro_swift_fn_method_ephemeralstore_encode(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_ENCODE_ALL
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_ENCODE_ALL
+RustBuffer uniffi_loro_swift_fn_method_ephemeralstore_encode_all(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_GET
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_GET
+RustBuffer uniffi_loro_swift_fn_method_ephemeralstore_get(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_GET_ALL_STATES
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_GET_ALL_STATES
+RustBuffer uniffi_loro_swift_fn_method_ephemeralstore_get_all_states(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_KEYS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_KEYS
+RustBuffer uniffi_loro_swift_fn_method_ephemeralstore_keys(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
+void uniffi_loro_swift_fn_method_ephemeralstore_remove_outdated(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SET
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SET
+void uniffi_loro_swift_fn_method_ephemeralstore_set(void*_Nonnull ptr, RustBuffer key, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE
+void*_Nonnull uniffi_loro_swift_fn_method_ephemeralstore_subscribe(void*_Nonnull ptr, void*_Nonnull listener, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
+void*_Nonnull uniffi_loro_swift_fn_method_ephemeralstore_subscribe_local_update(void*_Nonnull ptr, void*_Nonnull listener, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_EPHEMERALSUBSCRIBER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_EPHEMERALSUBSCRIBER
+void*_Nonnull uniffi_loro_swift_fn_clone_ephemeralsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_EPHEMERALSUBSCRIBER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_EPHEMERALSUBSCRIBER
+void uniffi_loro_swift_fn_free_ephemeralsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_EPHEMERALSUBSCRIBER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_EPHEMERALSUBSCRIBER
+void uniffi_loro_swift_fn_init_callback_vtable_ephemeralsubscriber(UniffiVTableCallbackInterfaceEphemeralSubscriber* _Nonnull vtable
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
+void uniffi_loro_swift_fn_method_ephemeralsubscriber_on_ephemeral_event(void*_Nonnull ptr, RustBuffer event, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FIRSTCOMMITFROMPEERCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FIRSTCOMMITFROMPEERCALLBACK
+void*_Nonnull uniffi_loro_swift_fn_clone_firstcommitfrompeercallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_FIRSTCOMMITFROMPEERCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_FIRSTCOMMITFROMPEERCALLBACK
+void uniffi_loro_swift_fn_free_firstcommitfrompeercallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_FIRSTCOMMITFROMPEERCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_FIRSTCOMMITFROMPEERCALLBACK
+void uniffi_loro_swift_fn_init_callback_vtable_firstcommitfrompeercallback(UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback* _Nonnull vtable
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
+void uniffi_loro_swift_fn_method_firstcommitfrompeercallback_on_first_commit_from_peer(void*_Nonnull ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FRACTIONALINDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_FRACTIONALINDEX
 void*_Nonnull uniffi_loro_swift_fn_clone_fractionalindex(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -714,6 +904,26 @@ RustBuffer uniffi_loro_swift_fn_method_frontiers_encode(void*_Nonnull ptr, RustC
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_FRONTIERS_EQ
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_FRONTIERS_EQ
 int8_t uniffi_loro_swift_fn_method_frontiers_eq(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_LOCALEPHEMERALLISTENER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_LOCALEPHEMERALLISTENER
+void*_Nonnull uniffi_loro_swift_fn_clone_localephemerallistener(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_LOCALEPHEMERALLISTENER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_LOCALEPHEMERALLISTENER
+void uniffi_loro_swift_fn_free_localephemerallistener(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_LOCALEPHEMERALLISTENER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_LOCALEPHEMERALLISTENER
+void uniffi_loro_swift_fn_init_callback_vtable_localephemerallistener(UniffiVTableCallbackInterfaceLocalEphemeralListener* _Nonnull vtable
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
+void uniffi_loro_swift_fn_method_localephemerallistener_on_ephemeral_update(void*_Nonnull ptr, RustBuffer update, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_LOCALUPDATECALLBACK
@@ -833,6 +1043,11 @@ void uniffi_loro_swift_fn_method_lorodoc_checkout(void*_Nonnull ptr, void*_Nonnu
 void uniffi_loro_swift_fn_method_lorodoc_checkout_to_latest(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
+void uniffi_loro_swift_fn_method_lorodoc_clear_next_commit_options(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CMP_WITH_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CMP_WITH_FRONTIERS
 RustBuffer uniffi_loro_swift_fn_method_lorodoc_cmp_with_frontiers(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
@@ -856,6 +1071,11 @@ void uniffi_loro_swift_fn_method_lorodoc_compact_change_store(void*_Nonnull ptr,
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CONFIG
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CONFIG
 void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_config(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
+void uniffi_loro_swift_fn_method_lorodoc_config_default_text_style(void*_Nonnull ptr, RustBuffer text_style, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_CONFIG_TEXT_STYLE
@@ -1028,6 +1248,11 @@ void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_get_tree(void*_Nonnull ptr, vo
 RustBuffer uniffi_loro_swift_fn_method_lorodoc_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_HAS_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_HAS_CONTAINER
+int8_t uniffi_loro_swift_fn_method_lorodoc_has_container(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_HAS_HISTORY_CACHE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_HAS_HISTORY_CACHE
 int8_t uniffi_loro_swift_fn_method_lorodoc_has_history_cache(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -1118,6 +1343,21 @@ void uniffi_loro_swift_fn_method_lorodoc_set_change_merge_interval(void*_Nonnull
 void uniffi_loro_swift_fn_method_lorodoc_set_next_commit_message(void*_Nonnull ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
+void uniffi_loro_swift_fn_method_lorodoc_set_next_commit_options(void*_Nonnull ptr, RustBuffer options, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
+void uniffi_loro_swift_fn_method_lorodoc_set_next_commit_origin(void*_Nonnull ptr, RustBuffer origin, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
+void uniffi_loro_swift_fn_method_lorodoc_set_next_commit_timestamp(void*_Nonnull ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SET_PEER_ID
 void uniffi_loro_swift_fn_method_lorodoc_set_peer_id(void*_Nonnull ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
@@ -1148,9 +1388,19 @@ void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_state_vv(void*_Nonnull ptr, Ru
 void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_subscribe(void*_Nonnull ptr, RustBuffer container_id, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
+void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_subscribe_first_commit_from_peer(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
 void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_subscribe_local_update(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
+void*_Nonnull uniffi_loro_swift_fn_method_lorodoc_subscribe_pre_commit(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_LORODOC_SUBSCRIBE_ROOT
@@ -2018,6 +2268,26 @@ void uniffi_loro_swift_fn_init_callback_vtable_onpush(UniffiVTableCallbackInterf
 RustBuffer uniffi_loro_swift_fn_method_onpush_on_push(void*_Nonnull ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer diff_event, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_PRECOMMITCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_PRECOMMITCALLBACK
+void*_Nonnull uniffi_loro_swift_fn_clone_precommitcallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_PRECOMMITCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FREE_PRECOMMITCALLBACK
+void uniffi_loro_swift_fn_free_precommitcallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_PRECOMMITCALLBACK
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_INIT_CALLBACK_VTABLE_PRECOMMITCALLBACK
+void uniffi_loro_swift_fn_init_callback_vtable_precommitcallback(UniffiVTableCallbackInterfacePreCommitCallback* _Nonnull vtable
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
+void uniffi_loro_swift_fn_method_precommitcallback_on_pre_commit(void*_Nonnull ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_STYLECONFIGMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_CLONE_STYLECONFIGMAP
 void*_Nonnull uniffi_loro_swift_fn_clone_styleconfigmap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -2336,6 +2606,12 @@ void uniffi_loro_swift_fn_method_versionvector_set_last(void*_Nonnull ptr, RustB
 RustBuffer uniffi_loro_swift_fn_func_decode_import_blob_meta(RustBuffer bytes, int8_t check_checksum, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FUNC_GET_VERSION
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_FN_FUNC_GET_VERSION
+RustBuffer uniffi_loro_swift_fn_func_get_version(RustCallStatus *_Nonnull out_status
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_FFI_LORO_SWIFT_RUSTBUFFER_ALLOC
 #define UNIFFI_FFIDEF_FFI_LORO_SWIFT_RUSTBUFFER_ALLOC
 RustBuffer ffi_loro_swift_rustbuffer_alloc(uint64_t size, RustCallStatus *_Nonnull out_status
@@ -2622,6 +2898,12 @@ uint16_t uniffi_loro_swift_checksum_func_decode_import_blob_meta(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_FUNC_GET_VERSION
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_FUNC_GET_VERSION
+uint16_t uniffi_loro_swift_checksum_func_get_version(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_AWARENESS_APPLY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_AWARENESS_APPLY
 uint16_t uniffi_loro_swift_checksum_method_awareness_apply(void
@@ -2673,6 +2955,18 @@ uint16_t uniffi_loro_swift_checksum_method_awareness_set_local_state(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEANCESTORSTRAVELER_TRAVEL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEANCESTORSTRAVELER_TRAVEL
 uint16_t uniffi_loro_swift_checksum_method_changeancestorstraveler_travel(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEMODIFIER_SET_MESSAGE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEMODIFIER_SET_MESSAGE
+uint16_t uniffi_loro_swift_checksum_method_changemodifier_set_message(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
+uint16_t uniffi_loro_swift_checksum_method_changemodifier_set_timestamp(void
     
 );
 #endif
@@ -2730,6 +3024,84 @@ uint16_t uniffi_loro_swift_checksum_method_diffbatch_push(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_APPLY
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_APPLY
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_apply(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_DELETE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_DELETE
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_delete(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_ENCODE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_ENCODE
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_encode(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_ENCODE_ALL
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_ENCODE_ALL
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_encode_all(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_GET
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_GET
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_get(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_GET_ALL_STATES
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_GET_ALL_STATES
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_get_all_states(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_KEYS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_KEYS
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_keys(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_remove_outdated(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SET
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SET
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_set(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SUBSCRIBE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SUBSCRIBE
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_subscribe(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
+uint16_t uniffi_loro_swift_checksum_method_ephemeralstore_subscribe_local_update(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
+uint16_t uniffi_loro_swift_checksum_method_ephemeralsubscriber_on_ephemeral_event(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
+uint16_t uniffi_loro_swift_checksum_method_firstcommitfrompeercallback_on_first_commit_from_peer(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRACTIONALINDEX_TO_STRING
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRACTIONALINDEX_TO_STRING
 uint16_t uniffi_loro_swift_checksum_method_fractionalindex_to_string(void
@@ -2745,6 +3117,12 @@ uint16_t uniffi_loro_swift_checksum_method_frontiers_encode(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRONTIERS_EQ
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_FRONTIERS_EQ
 uint16_t uniffi_loro_swift_checksum_method_frontiers_eq(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
+uint16_t uniffi_loro_swift_checksum_method_localephemerallistener_on_ephemeral_update(void
     
 );
 #endif
@@ -2832,6 +3210,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_checkout_to_latest(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_clear_next_commit_options(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CMP_WITH_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CMP_WITH_FRONTIERS
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_cmp_with_frontiers(void
@@ -2859,6 +3243,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_compact_change_store(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CONFIG
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CONFIG
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_config(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_config_default_text_style(void
     
 );
 #endif
@@ -3066,6 +3456,12 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_get_value(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_HAS_CONTAINER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_HAS_CONTAINER
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_has_container(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_HAS_HISTORY_CACHE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_HAS_HISTORY_CACHE
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_has_history_cache(void
@@ -3174,6 +3570,24 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_set_next_commit_message(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_set_next_commit_options(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_set_next_commit_origin(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_set_next_commit_timestamp(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SET_PEER_ID
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_set_peer_id(void
@@ -3210,9 +3624,21 @@ uint16_t uniffi_loro_swift_checksum_method_lorodoc_subscribe(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_subscribe_first_commit_from_peer(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
 uint16_t uniffi_loro_swift_checksum_method_lorodoc_subscribe_local_update(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
+uint16_t uniffi_loro_swift_checksum_method_lorodoc_subscribe_pre_commit(void
     
 );
 #endif
@@ -4092,6 +4518,12 @@ uint16_t uniffi_loro_swift_checksum_method_onpush_on_push(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
+uint16_t uniffi_loro_swift_checksum_method_precommitcallback_on_pre_commit(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_STYLECONFIGMAP_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_METHOD_STYLECONFIGMAP_GET
 uint16_t uniffi_loro_swift_checksum_method_styleconfigmap_get(void
@@ -4353,6 +4785,12 @@ uint16_t uniffi_loro_swift_checksum_constructor_cursor_new(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_DIFFBATCH_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_DIFFBATCH_NEW
 uint16_t uniffi_loro_swift_checksum_constructor_diffbatch_new(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_EPHEMERALSTORE_NEW
+#define UNIFFI_FFIDEF_UNIFFI_LORO_SWIFT_CHECKSUM_CONSTRUCTOR_EPHEMERALSTORE_NEW
+uint16_t uniffi_loro_swift_checksum_constructor_ephemeralstore_new(void
     
 );
 #endif
