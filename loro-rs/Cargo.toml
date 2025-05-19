@@ -10,15 +10,14 @@ edition = "2021"
 name = "uniffi-bindgen"
 path = "src/uniffi-bindgen.rs"
 
-
 [dependencies]
-loro-ffi = { git = "https://github.com/loro-dev/loro.git", version = "*" }
+loro-ffi = { git = "https://github.com/loro-dev/loro.git", version = "1.*" }
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
-uniffi = { version = "0.28.3" }
+uniffi = { version = "0.28" }
 
 [build-dependencies]
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
-uniffi = { version = "0.28.3", features = ["build"] }
+uniffi = { version = "0.28", features = ["build"] }
 
 [features]
 cli = ["uniffi/cli"]

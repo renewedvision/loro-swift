@@ -682,7 +682,7 @@ dependencies = [
 [[package]]
 name = "loro"
 version = "1.5.1"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "enum-as-inner 0.6.1",
  "fxhash",
@@ -697,7 +697,7 @@ dependencies = [
 [[package]]
 name = "loro-common"
 version = "1.4.7"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "arbitrary",
  "enum-as-inner 0.6.1",
@@ -714,7 +714,7 @@ dependencies = [
 [[package]]
 name = "loro-delta"
 version = "1.5.0"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "arrayvec",
  "enum-as-inner 0.5.1",
@@ -725,7 +725,7 @@ dependencies = [
 [[package]]
 name = "loro-ffi"
 version = "1.5.0"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "loro",
  "serde_json",
@@ -734,7 +734,7 @@ dependencies = [
 [[package]]
 name = "loro-internal"
 version = "1.5.1"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "append-only-bytes",
  "arref",
@@ -777,7 +777,7 @@ dependencies = [
 [[package]]
 name = "loro-kv-store"
 version = "1.4.7"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "bytes",
  "ensure-cov",
@@ -793,7 +793,7 @@ dependencies = [
 [[package]]
 name = "loro-rle"
 version = "1.2.7"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "append-only-bytes",
  "num",
@@ -817,7 +817,7 @@ checksum = "3f3d053a135388e6b1df14e8af1212af5064746e9b87a06a345a7a779ee9695a"
 [[package]]
 name = "loro_fractional_index"
 version = "1.2.7"
-source = "git+https://github.com/loro-dev/loro.git#bc74f0195f9a2828a13a24663741d9b707e0d9b5"
+source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
 dependencies = [
  "once_cell",
  "rand",
