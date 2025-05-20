@@ -681,8 +681,9 @@ dependencies = [
 
 [[package]]
 name = "loro"
-version = "1.5.1"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dc6d610e2f9258f8691d5280eb60c900abd480964d36bd0e21422a5fad0bef63"
 dependencies = [
  "enum-as-inner 0.6.1",
  "fxhash",
@@ -696,8 +697,9 @@ dependencies = [
 
 [[package]]
 name = "loro-common"
-version = "1.4.7"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "308800501e7f4c53db20eedfd2d0c2c78d79adfbf1e68d67b5c8bacae4a6a81b"
 dependencies = [
  "arbitrary",
  "enum-as-inner 0.6.1",
@@ -713,8 +715,9 @@ dependencies = [
 
 [[package]]
 name = "loro-delta"
-version = "1.5.0"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e9b920ad564430b2e392ac6f0e8f97ef5745960cc40edc482be57a407db1c243"
 dependencies = [
  "arrayvec",
  "enum-as-inner 0.5.1",
@@ -724,8 +727,9 @@ dependencies = [
 
 [[package]]
 name = "loro-ffi"
-version = "1.5.0"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "89c1cf8d3f594b1f917362a65d2be434e6f9e3aca8b25a88bed074848edafc66"
 dependencies = [
  "loro",
  "serde_json",
@@ -733,8 +737,9 @@ dependencies = [
 
 [[package]]
 name = "loro-internal"
-version = "1.5.1"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7d917188bdfa110a3aae3b21adf7088ca8285c62b1cd84be16b790b88ec542cd"
 dependencies = [
  "append-only-bytes",
  "arref",
@@ -776,8 +781,9 @@ dependencies = [
 
 [[package]]
 name = "loro-kv-store"
-version = "1.4.7"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+version = "1.5.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2fbdbbda1c89efbe3c090798da234b281277543e2dcfd4431d8a206939172686"
 dependencies = [
  "bytes",
  "ensure-cov",
@@ -793,7 +799,8 @@ dependencies = [
 [[package]]
 name = "loro-rle"
 version = "1.2.7"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "077b51e4eac04e7f18574f7e6ac0201ffd98ff65015343eee3702bc3e7c49dc8"
 dependencies = [
  "append-only-bytes",
  "num",
@@ -817,7 +824,8 @@ checksum = "3f3d053a135388e6b1df14e8af1212af5064746e9b87a06a345a7a779ee9695a"
 [[package]]
 name = "loro_fractional_index"
 version = "1.2.7"
-source = "git+https://github.com/loro-dev/loro.git#60876bbc109ffc98a68600fa734250f4b1642c45"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e387a04d7d6a74ebb3434c906c84ddcae4413e5ef8bcd8e7d5138959d416a512"
 dependencies = [
  "once_cell",
  "rand",

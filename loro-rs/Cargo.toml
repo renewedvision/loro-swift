@@ -11,7 +11,7 @@ name = "uniffi-bindgen"
 path = "src/uniffi-bindgen.rs"
 
 [dependencies]
-loro-ffi = { git = "https://github.com/loro-dev/loro.git", version = "1.*" }
+loro-ffi = "1.*"
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
 uniffi = { version = "0.28" }
 
