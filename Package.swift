@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "LoroSwift",
+    name: "Loro",
     platforms: [
         .macOS(.v10_15)
     ],
@@ -16,8 +16,8 @@ let package = Package(
         ),
         // Swift code built atop the loroFFI API
         .library(
-            name: "LoroSwift",
-            targets: ["LoroSwift"]
+            name: "Loro",
+            targets: ["Loro"]
         )
     ],
     targets: [
@@ -25,7 +25,7 @@ let package = Package(
             name: "loroFFI"
         ),
         .target(
-            name: "LoroSwift",
+            name: "Loro",
             dependencies: ["loroFFI"],
             path: "Sources/Loro"
         ),
