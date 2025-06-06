@@ -13,7 +13,7 @@ path = "src/uniffi-bindgen.rs"
 [dependencies]
 loro-ffi = "1.*"
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
-uniffi = { version = "0.28" }
+uniffi = { version = "0.28.3" }
 
 [build-dependencies]
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
