@@ -1,19 +1,21 @@
 [package]
 name = "loro-swift"
-version = "1.5.0"
+version = "0.1.0"
 edition = "2021"
 
 # By default this will produce an rlib named "loro-swift", which is what we want.
+[lib]
+# Produce both the "cydlib" that uniffi requires, and the "rlib" that we need to link into our libcore.a.  See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
+crate-type = ["cdylib", "rlib"]
 
 [[bin]]
-# This can be whatever name makes sense for your project, but the rest of this tutorial assumes uniffi-bindgen.
 name = "uniffi-bindgen"
 path = "src/uniffi-bindgen.rs"
 
 [dependencies]
 loro-ffi = "1.*"
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
-uniffi = { version = "0.28.3" }
+uniffi = { version = "0.28", features = ["cli"] }
 
 [build-dependencies]
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html

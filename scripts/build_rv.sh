@@ -10,8 +10,8 @@
 
 set -euxo pipefail
 THIS_SCRIPT_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-LIB_NAME="libloro.a"
-RUST_FOLDER="$THIS_SCRIPT_DIR/../loro-rs"
+LIB_NAME="libloro_swift.a"
+RUST_FOLDER="$THIS_SCRIPT_DIR/../loro-swift"
 FRAMEWORK_NAME="loroFFI"
 
 SWIFT_PACKAGE_FOLDER="$THIS_SCRIPT_DIR/.."
@@ -37,22 +37,26 @@ rustup default ${RUST_NIGHTLY}
 echo "▸ Install toolchains"
 rustup target add aarch64-apple-darwin # macOS ARM/M1
 rustup target add x86_64-apple-darwin # macOS Intel/x86
-cargo_build="cargo build --manifest-path $RUST_FOLDER/Cargo.toml"
-cargo_build_nightly="cargo +${RUST_NIGHTLY} build --manifest-path $RUST_FOLDER/Cargo.toml"
-cargo_build_nightly_with_std="cargo -Zbuild-std build --manifest-path $RUST_FOLDER/Cargo.toml"
+cargo_build="cargo build --manifest-path $RUST_FOLDER/Cargo.toml --features cli"
+cargo_build_nightly="cargo +${RUST_NIGHTLY} build --manifest-path $RUST_FOLDER/Cargo.toml --features cli"
+cargo_build_nightly_with_std="cargo -Zbuild-std build --manifest-path $RUST_FOLDER/Cargo.toml --features cli"
 
 echo "▸ Clean state"
 rm -rf "${XCFRAMEWORK_FOLDER}"
 rm -rf "${SWIFT_FOLDER}"
 mkdir -p "${SWIFT_FOLDER}"
 echo "▸ Generate Swift Scaffolding Code"
-cargo run --manifest-path "$RUST_FOLDER/Cargo.toml"  \
+cd loro-swift
+echo "▸ Build dylib"
+$cargo_build -r
+cargo run -r --manifest-path "$RUST_FOLDER/Cargo.toml"  \
     --features=cli \
     --bin uniffi-bindgen generate \
-    "$RUST_FOLDER/src/loro.udl" \
+    --library "$RUST_FOLDER/target/release/libloro_swift.dylib" \
     --no-format \
     --language swift \
     --out-dir "${SWIFT_FOLDER}"
+cd ..
 
 bash "${THIS_SCRIPT_DIR}/refine_trait.sh"
 
@@ -76,6 +80,6 @@ echo "Sources/loroFFI/include/loroFFI.h"
 echo "Sources/Loro/LoroFFI.swift"
 
 # echo "Dumping _loro_ffi_ symbols in .rlib:"
-# objdump -t loro-rs/target/aarch64-apple-darwin/release/libloro_swift.rlib | grep _ffi_loro_
+# objdump -t loro-swift/target/aarch64-apple-darwin/release/libloro_swift.rlib | grep _ffi_loro_
 
 echo "▸ Ready to run swift build"
