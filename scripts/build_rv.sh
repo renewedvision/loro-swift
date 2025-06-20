@@ -80,6 +80,6 @@ echo "Sources/loroFFI/include/loroFFI.h"
 echo "Sources/Loro/LoroFFI.swift"
 
 # echo "Dumping _loro_ffi_ symbols in .rlib:"
-# objdump -t loro-rs/target/aarch64-apple-darwin/release/libloro_swift.rlib | grep _ffi_loro_
+# objdump -t loro-swift/target/aarch64-apple-darwin/release/libloro_swift.rlib | grep _ffi_loro_
 
 echo "▸ Ready to run swift build"
