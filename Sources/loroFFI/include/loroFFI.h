@@ -916,6 +916,16 @@ RustBuffer uniffi_loro_ffi_fn_method_frontiers_encode(void*_Nonnull ptr, RustCal
 int8_t uniffi_loro_ffi_fn_method_frontiers_eq(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_IS_EMPTY
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_IS_EMPTY
+int8_t uniffi_loro_ffi_fn_method_frontiers_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_TO_VEC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_TO_VEC
+RustBuffer uniffi_loro_ffi_fn_method_frontiers_to_vec(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALEPHEMERALLISTENER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALEPHEMERALLISTENER
 void*_Nonnull uniffi_loro_ffi_fn_clone_localephemerallistener(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -2450,6 +2460,21 @@ int8_t uniffi_loro_ffi_fn_method_undomanager_can_redo(void*_Nonnull ptr, RustCal
 int8_t uniffi_loro_ffi_fn_method_undomanager_can_undo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_END
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_END
+void uniffi_loro_ffi_fn_method_undomanager_group_end(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_START
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_START
+void uniffi_loro_ffi_fn_method_undomanager_group_start(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_PEER
+uint64_t uniffi_loro_ffi_fn_method_undomanager_peer(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 void uniffi_loro_ffi_fn_method_undomanager_record_new_checkpoint(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
@@ -2745,6 +2770,16 @@ void uniffi_loro_ffi_fn_method_versionvector_set_end(void*_Nonnull ptr, RustBuff
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_LAST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_LAST
 void uniffi_loro_ffi_fn_method_versionvector_set_last(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TO_HASHMAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TO_HASHMAP
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_to_hashmap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
+int8_t uniffi_loro_ffi_fn_method_versionvector_try_update_last(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FUNC_DECODE_IMPORT_BLOB_META
@@ -3269,6 +3304,18 @@ uint16_t uniffi_loro_ffi_checksum_method_frontiers_encode(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_EQ
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_EQ
 uint16_t uniffi_loro_ffi_checksum_method_frontiers_eq(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_IS_EMPTY
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_IS_EMPTY
+uint16_t uniffi_loro_ffi_checksum_method_frontiers_is_empty(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_TO_VEC
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_FRONTIERS_TO_VEC
+uint16_t uniffi_loro_ffi_checksum_method_frontiers_to_vec(void
     
 );
 #endif
@@ -4784,6 +4831,24 @@ uint16_t uniffi_loro_ffi_checksum_method_undomanager_can_undo(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_GROUP_END
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_GROUP_END
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_group_end(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_GROUP_START
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_GROUP_START
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_group_start(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_PEER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_PEER
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_peer(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 uint16_t uniffi_loro_ffi_checksum_method_undomanager_record_new_checkpoint(void
@@ -5057,6 +5122,18 @@ uint16_t uniffi_loro_ffi_checksum_method_versionvector_set_end(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_SET_LAST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_SET_LAST
 uint16_t uniffi_loro_ffi_checksum_method_versionvector_set_last(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_TO_HASHMAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_TO_HASHMAP
+uint16_t uniffi_loro_ffi_checksum_method_versionvector_to_hashmap(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
+uint16_t uniffi_loro_ffi_checksum_method_versionvector_try_update_last(void
     
 );
 #endif
