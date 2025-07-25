@@ -2421,6 +2421,10 @@ public protocol FrontiersProtocol : AnyObject {
     
     func eq(other: Frontiers)  -> Bool
     
+    func isEmpty()  -> Bool
+    
+    func toVec()  -> [Id]
+    
 }
 
 open class Frontiers:
@@ -2515,6 +2519,20 @@ open func eq(other: Frontiers) -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
     uniffi_loro_ffi_fn_method_frontiers_eq(self.uniffiClonePointer(),
         FfiConverterTypeFrontiers.lower(other),$0
+    )
+})
+}
+    
+open func isEmpty() -> Bool {
+    return try!  FfiConverterBool.lift(try! rustCall() {
+    uniffi_loro_ffi_fn_method_frontiers_is_empty(self.uniffiClonePointer(),$0
+    )
+})
+}
+    
+open func toVec() -> [Id] {
+    return try!  FfiConverterSequenceTypeID.lift(try! rustCall() {
+    uniffi_loro_ffi_fn_method_frontiers_to_vec(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -9436,6 +9454,26 @@ public protocol UndoManagerProtocol : AnyObject {
     func canUndo()  -> Bool
     
     /**
+     * Ends the current group, calling UndoManager::undo() after this will
+     * undo all changes that occurred during the group.
+     */
+    func groupEnd() 
+    
+    /**
+     * Will start a new group of changes, all subsequent changes will be merged
+     * into a new item on the undo stack. If we receive remote changes, we determine
+     * wether or not they are conflicting. If the remote changes are conflicting
+     * we split the undo item and close the group. If there are no conflict
+     * in changed container ids we continue the group merge.
+     */
+    func groupStart() throws 
+    
+    /**
+     * Get the peer id of the undo manager
+     */
+    func peer()  -> UInt64
+    
+    /**
      * Record a new checkpoint.
      */
     func recordNewCheckpoint() throws 
@@ -9572,6 +9610,39 @@ open func canRedo() -> Bool {
 open func canUndo() -> Bool {
     return try!  FfiConverterBool.lift(try! rustCall() {
     uniffi_loro_ffi_fn_method_undomanager_can_undo(self.uniffiClonePointer(),$0
+    )
+})
+}
+    
+    /**
+     * Ends the current group, calling UndoManager::undo() after this will
+     * undo all changes that occurred during the group.
+     */
+open func groupEnd() {try! rustCall() {
+    uniffi_loro_ffi_fn_method_undomanager_group_end(self.uniffiClonePointer(),$0
+    )
+}
+}
+    
+    /**
+     * Will start a new group of changes, all subsequent changes will be merged
+     * into a new item on the undo stack. If we receive remote changes, we determine
+     * wether or not they are conflicting. If the remote changes are conflicting
+     * we split the undo item and close the group. If there are no conflict
+     * in changed container ids we continue the group merge.
+     */
+open func groupStart()throws  {try rustCallWithError(FfiConverterTypeLoroError.lift) {
+    uniffi_loro_ffi_fn_method_undomanager_group_start(self.uniffiClonePointer(),$0
+    )
+}
+}
+    
+    /**
+     * Get the peer id of the undo manager
+     */
+open func peer() -> UInt64 {
+    return try!  FfiConverterUInt64.lift(try! rustCall() {
+    uniffi_loro_ffi_fn_method_undomanager_peer(self.uniffiClonePointer(),$0
     )
 })
 }
@@ -10439,6 +10510,13 @@ public protocol VersionVectorProtocol : AnyObject {
     
     func setLast(id: Id) 
     
+    func toHashmap()  -> [UInt64: Int32]
+    
+    /**
+     * Update the end counter of the given client if the end is greater. Return whether updated
+     */
+    func tryUpdateLast(id: Id)  -> Bool
+    
 }
 
 open class VersionVector:
@@ -10603,6 +10681,24 @@ open func setLast(id: Id) {try! rustCall() {
         FfiConverterTypeID.lower(id),$0
     )
 }
+}
+    
+open func toHashmap() -> [UInt64: Int32] {
+    return try!  FfiConverterDictionaryUInt64Int32.lift(try! rustCall() {
+    uniffi_loro_ffi_fn_method_versionvector_to_hashmap(self.uniffiClonePointer(),$0
+    )
+})
+}
+    
+    /**
+     * Update the end counter of the given client if the end is greater. Return whether updated
+     */
+open func tryUpdateLast(id: Id) -> Bool {
+    return try!  FfiConverterBool.lift(try! rustCall() {
+    uniffi_loro_ffi_fn_method_versionvector_try_update_last(self.uniffiClonePointer(),
+        FfiConverterTypeID.lower(id),$0
+    )
+})
 }
     
 
@@ -15977,6 +16073,32 @@ fileprivate struct FfiConverterSequenceTypeTextDelta: FfiConverterRustBuffer {
 #if swift(>=5.8)
 @_documentation(visibility: private)
 #endif
+fileprivate struct FfiConverterDictionaryUInt64Int32: FfiConverterRustBuffer {
+    public static func write(_ value: [UInt64: Int32], into buf: inout [UInt8]) {
+        let len = Int32(value.count)
+        writeInt(&buf, len)
+        for (key, value) in value {
+            FfiConverterUInt64.write(key, into: &buf)
+            FfiConverterInt32.write(value, into: &buf)
+        }
+    }
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> [UInt64: Int32] {
+        let len: Int32 = try readInt(&buf)
+        var dict = [UInt64: Int32]()
+        dict.reserveCapacity(Int(len))
+        for _ in 0..<len {
+            let key = try FfiConverterUInt64.read(from: &buf)
+            let value = try FfiConverterInt32.read(from: &buf)
+            dict[key] = value
+        }
+        return dict
+    }
+}
+
+#if swift(>=5.8)
+@_documentation(visibility: private)
+#endif
 fileprivate struct FfiConverterDictionaryUInt64TypeCounterSpan: FfiConverterRustBuffer {
     public static func write(_ value: [UInt64: CounterSpan], into buf: inout [UInt8]) {
         let len = Int32(value.count)
@@ -16225,6 +16347,12 @@ private var initializationResult: InitializationResult = {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_loro_ffi_checksum_method_frontiers_eq() != 19191) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_frontiers_is_empty() != 14722) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_frontiers_to_vec() != 15210) {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_loro_ffi_checksum_method_localephemerallistener_on_ephemeral_update() != 58755) {
@@ -16983,6 +17111,15 @@ private var initializationResult: InitializationResult = {
     if (uniffi_loro_ffi_checksum_method_undomanager_can_undo() != 42348) {
         return InitializationResult.apiChecksumMismatch
     }
+    if (uniffi_loro_ffi_checksum_method_undomanager_group_end() != 37541) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_undomanager_group_start() != 64372) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_undomanager_peer() != 45180) {
+        return InitializationResult.apiChecksumMismatch
+    }
     if (uniffi_loro_ffi_checksum_method_undomanager_record_new_checkpoint() != 12209) {
         return InitializationResult.apiChecksumMismatch
     }
@@ -17119,6 +17256,12 @@ private var initializationResult: InitializationResult = {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_loro_ffi_checksum_method_versionvector_set_last() != 28435) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_versionvector_to_hashmap() != 56398) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_loro_ffi_checksum_method_versionvector_try_update_last() != 58412) {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_loro_ffi_checksum_constructor_awareness_new() != 18821) {
