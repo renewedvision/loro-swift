@@ -1333,11 +1333,6 @@ uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_changes(void*_Nonnull ptr, RustCa
 uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_ops(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
-#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LOG_ESTIMATE_SIZE
-#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LOG_ESTIMATE_SIZE
-void uniffi_loro_ffi_fn_method_lorodoc_log_estimate_size(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
-);
-#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_MINIMIZE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_MINIMIZE_FRONTIERS
 RustBuffer uniffi_loro_ffi_fn_method_lorodoc_minimize_frontiers(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
@@ -2508,6 +2503,26 @@ void uniffi_loro_ffi_fn_method_undomanager_set_on_pop(void*_Nonnull ptr, RustBuf
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_PUSH
 void uniffi_loro_ffi_fn_method_undomanager_set_on_push(void*_Nonnull ptr, RustBuffer on_push, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_META
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_META
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_meta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_VALUE
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_META
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_META
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_meta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_UNDO
@@ -3733,12 +3748,6 @@ uint16_t uniffi_loro_ffi_checksum_method_lorodoc_len_ops(void
     
 );
 #endif
-#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_LOG_ESTIMATE_SIZE
-#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_LOG_ESTIMATE_SIZE
-uint16_t uniffi_loro_ffi_checksum_method_lorodoc_log_estimate_size(void
-    
-);
-#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_MINIMIZE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_MINIMIZE_FRONTIERS
 uint16_t uniffi_loro_ffi_checksum_method_lorodoc_minimize_frontiers(void
@@ -4888,6 +4897,30 @@ uint16_t uniffi_loro_ffi_checksum_method_undomanager_set_on_pop(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_SET_ON_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_SET_ON_PUSH
 uint16_t uniffi_loro_ffi_checksum_method_undomanager_set_on_push(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_REDO_META
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_REDO_META
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_top_redo_meta(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_REDO_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_REDO_VALUE
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_top_redo_value(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_UNDO_META
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_UNDO_META
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_top_undo_meta(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
+uint16_t uniffi_loro_ffi_checksum_method_undomanager_top_undo_value(void
     
 );
 #endif
