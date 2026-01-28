@@ -1,6 +1,6 @@
 [package]
 name = "loro-swift"
-version = "1.10.3"
+version = "1.10.5"
 edition = "2021"
 
 # By default this will produce an rlib named "loro-swift", which is what we want.
