@@ -20,7 +20,7 @@ XCFRAMEWORK_FOLDER="$THIS_SCRIPT_DIR/../${FRAMEWORK_NAME}.xcframework"
 # (as of 10/10/23), but leaving it open to float seems less useful than
 # moving the pinning forward, since Catalyst support (target macabi) still
 # requires an active, nightly toolchain.
-RUST_NIGHTLY="nightly-2024-10-09"
+RUST_NIGHTLY="nightly-2025-09-06"
 
 echo "Install nightly and rust-src for Catalyst"
 rustup toolchain install ${RUST_NIGHTLY}
@@ -35,7 +35,7 @@ rustup target add aarch64-apple-ios-sim # iOS Simulator (M1)
 rustup target add aarch64-apple-ios # iOS Device
 rustup target add aarch64-apple-darwin # macOS ARM/M1
 rustup target add x86_64-apple-darwin # macOS Intel/x86
-rustup target add wasm32-wasi # WebAssembly
+rustup target add wasm32-wasip1 # WebAssembly
 
 cargo_build="cargo build --manifest-path $RUST_FOLDER/Cargo.toml --features cli"
 cargo_build_nightly="cargo +${RUST_NIGHTLY} build --manifest-path $RUST_FOLDER/Cargo.toml --features cli"
@@ -94,8 +94,8 @@ $cargo_build_nightly -Z build-std --target aarch64-apple-ios-macabi --locked --r
 echo "▸ Building for x86_64-apple-ios-macabi"
 $cargo_build_nightly -Z build-std --target x86_64-apple-ios-macabi --locked --release
 
-echo "▸ Building for wasm32-wasi"
-$cargo_build --target wasm32-wasi --locked --release
+echo "▸ Building for wasm32-wasip1"
+$cargo_build --target wasm32-wasip1 --locked --release
 
 # echo "▸ Consolidating the headers and modulemaps for XCFramework generation"
 # copies the generated header from AutomergeUniffi/automergeFFI.h to
