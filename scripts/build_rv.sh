@@ -30,8 +30,10 @@ RUST_NIGHTLY="nightly-2025-09-06"
 echo "Install nightly and rust-src for Catalyst"
 rustup toolchain install ${RUST_NIGHTLY}
 rustup component add rust-src --toolchain ${RUST_NIGHTLY}
-rustup update
-rustup default ${RUST_NIGHTLY}
+# Keep the nightly selection local to this script instead of mutating the
+# machine-wide default toolchain. Avoid `rustup update` here as it is not
+# required for the build and can fail independently of the actual FFI work.
+export RUSTUP_TOOLCHAIN="${RUST_NIGHTLY}"
 
 
 echo "▸ Install toolchains"

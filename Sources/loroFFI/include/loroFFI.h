@@ -50,9 +50,9 @@ typedef void (*UniffiRustFutureContinuationCallback)(uint64_t, int8_t
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_FREE
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_FREE
-typedef void (*UniffiForeignFutureFree)(uint64_t
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_DROPPED_CALLBACK
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_DROPPED_CALLBACK
+typedef void (*UniffiForeignFutureDroppedCallback)(uint64_t
     );
 
 #endif
@@ -62,192 +62,184 @@ typedef void (*UniffiCallbackInterfaceFree)(uint64_t
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE
-typedef struct UniffiForeignFuture {
-    uint64_t handle;
-    UniffiForeignFutureFree _Nonnull free;
-} UniffiForeignFuture;
+#ifndef UNIFFI_FFIDEF_CALLBACK_INTERFACE_CLONE
+#define UNIFFI_FFIDEF_CALLBACK_INTERFACE_CLONE
+typedef uint64_t (*UniffiCallbackInterfaceClone)(uint64_t
+    );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U8
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U8
-typedef struct UniffiForeignFutureStructU8 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_DROPPED_CALLBACK_STRUCT
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_DROPPED_CALLBACK_STRUCT
+typedef struct UniffiForeignFutureDroppedCallbackStruct {
+    uint64_t handle;
+    UniffiForeignFutureDroppedCallback _Nonnull free;
+} UniffiForeignFutureDroppedCallbackStruct;
+
+#endif
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U8
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U8
+typedef struct UniffiForeignFutureResultU8 {
     uint8_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructU8;
+} UniffiForeignFutureResultU8;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U8
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U8
-typedef void (*UniffiForeignFutureCompleteU8)(uint64_t, UniffiForeignFutureStructU8
+typedef void (*UniffiForeignFutureCompleteU8)(uint64_t, UniffiForeignFutureResultU8
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I8
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I8
-typedef struct UniffiForeignFutureStructI8 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I8
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I8
+typedef struct UniffiForeignFutureResultI8 {
     int8_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructI8;
+} UniffiForeignFutureResultI8;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I8
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I8
-typedef void (*UniffiForeignFutureCompleteI8)(uint64_t, UniffiForeignFutureStructI8
+typedef void (*UniffiForeignFutureCompleteI8)(uint64_t, UniffiForeignFutureResultI8
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U16
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U16
-typedef struct UniffiForeignFutureStructU16 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U16
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U16
+typedef struct UniffiForeignFutureResultU16 {
     uint16_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructU16;
+} UniffiForeignFutureResultU16;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U16
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U16
-typedef void (*UniffiForeignFutureCompleteU16)(uint64_t, UniffiForeignFutureStructU16
+typedef void (*UniffiForeignFutureCompleteU16)(uint64_t, UniffiForeignFutureResultU16
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I16
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I16
-typedef struct UniffiForeignFutureStructI16 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I16
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I16
+typedef struct UniffiForeignFutureResultI16 {
     int16_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructI16;
+} UniffiForeignFutureResultI16;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I16
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I16
-typedef void (*UniffiForeignFutureCompleteI16)(uint64_t, UniffiForeignFutureStructI16
+typedef void (*UniffiForeignFutureCompleteI16)(uint64_t, UniffiForeignFutureResultI16
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U32
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U32
-typedef struct UniffiForeignFutureStructU32 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U32
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U32
+typedef struct UniffiForeignFutureResultU32 {
     uint32_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructU32;
+} UniffiForeignFutureResultU32;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U32
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U32
-typedef void (*UniffiForeignFutureCompleteU32)(uint64_t, UniffiForeignFutureStructU32
+typedef void (*UniffiForeignFutureCompleteU32)(uint64_t, UniffiForeignFutureResultU32
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I32
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I32
-typedef struct UniffiForeignFutureStructI32 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I32
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I32
+typedef struct UniffiForeignFutureResultI32 {
     int32_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructI32;
+} UniffiForeignFutureResultI32;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I32
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I32
-typedef void (*UniffiForeignFutureCompleteI32)(uint64_t, UniffiForeignFutureStructI32
+typedef void (*UniffiForeignFutureCompleteI32)(uint64_t, UniffiForeignFutureResultI32
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U64
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_U64
-typedef struct UniffiForeignFutureStructU64 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U64
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_U64
+typedef struct UniffiForeignFutureResultU64 {
     uint64_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructU64;
+} UniffiForeignFutureResultU64;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U64
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_U64
-typedef void (*UniffiForeignFutureCompleteU64)(uint64_t, UniffiForeignFutureStructU64
+typedef void (*UniffiForeignFutureCompleteU64)(uint64_t, UniffiForeignFutureResultU64
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I64
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_I64
-typedef struct UniffiForeignFutureStructI64 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I64
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_I64
+typedef struct UniffiForeignFutureResultI64 {
     int64_t returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructI64;
+} UniffiForeignFutureResultI64;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I64
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_I64
-typedef void (*UniffiForeignFutureCompleteI64)(uint64_t, UniffiForeignFutureStructI64
+typedef void (*UniffiForeignFutureCompleteI64)(uint64_t, UniffiForeignFutureResultI64
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_F32
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_F32
-typedef struct UniffiForeignFutureStructF32 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_F32
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_F32
+typedef struct UniffiForeignFutureResultF32 {
     float returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructF32;
+} UniffiForeignFutureResultF32;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_F32
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_F32
-typedef void (*UniffiForeignFutureCompleteF32)(uint64_t, UniffiForeignFutureStructF32
+typedef void (*UniffiForeignFutureCompleteF32)(uint64_t, UniffiForeignFutureResultF32
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_F64
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_F64
-typedef struct UniffiForeignFutureStructF64 {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_F64
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_F64
+typedef struct UniffiForeignFutureResultF64 {
     double returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructF64;
+} UniffiForeignFutureResultF64;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_F64
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_F64
-typedef void (*UniffiForeignFutureCompleteF64)(uint64_t, UniffiForeignFutureStructF64
+typedef void (*UniffiForeignFutureCompleteF64)(uint64_t, UniffiForeignFutureResultF64
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_POINTER
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_POINTER
-typedef struct UniffiForeignFutureStructPointer {
-    void*_Nonnull returnValue;
-    RustCallStatus callStatus;
-} UniffiForeignFutureStructPointer;
-
-#endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_POINTER
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_POINTER
-typedef void (*UniffiForeignFutureCompletePointer)(uint64_t, UniffiForeignFutureStructPointer
-    );
-
-#endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_RUST_BUFFER
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_RUST_BUFFER
-typedef struct UniffiForeignFutureStructRustBuffer {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_RUST_BUFFER
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_RUST_BUFFER
+typedef struct UniffiForeignFutureResultRustBuffer {
     RustBuffer returnValue;
     RustCallStatus callStatus;
-} UniffiForeignFutureStructRustBuffer;
+} UniffiForeignFutureResultRustBuffer;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_RUST_BUFFER
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_RUST_BUFFER
-typedef void (*UniffiForeignFutureCompleteRustBuffer)(uint64_t, UniffiForeignFutureStructRustBuffer
+typedef void (*UniffiForeignFutureCompleteRustBuffer)(uint64_t, UniffiForeignFutureResultRustBuffer
     );
 
 #endif
-#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_VOID
-#define UNIFFI_FFIDEF_FOREIGN_FUTURE_STRUCT_VOID
-typedef struct UniffiForeignFutureStructVoid {
+#ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_VOID
+#define UNIFFI_FFIDEF_FOREIGN_FUTURE_RESULT_VOID
+typedef struct UniffiForeignFutureResultVoid {
     RustCallStatus callStatus;
-} UniffiForeignFutureStructVoid;
+} UniffiForeignFutureResultVoid;
 
 #endif
 #ifndef UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_VOID
 #define UNIFFI_FFIDEF_FOREIGN_FUTURE_COMPLETE_VOID
-typedef void (*UniffiForeignFutureCompleteVoid)(uint64_t, UniffiForeignFutureStructVoid
+typedef void (*UniffiForeignFutureCompleteVoid)(uint64_t, UniffiForeignFutureResultVoid
     );
 
 #endif
@@ -429,110 +421,125 @@ typedef void (*UniffiCallbackInterfaceValueOrContainerMethod11)(uint64_t, int8_t
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_CHANGE_ANCESTORS_TRAVELER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_CHANGE_ANCESTORS_TRAVELER
 typedef struct UniffiVTableCallbackInterfaceChangeAncestorsTraveler {
-    UniffiCallbackInterfaceChangeAncestorsTravelerMethod0 _Nonnull travel;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceChangeAncestorsTravelerMethod0 _Nonnull travel;
 } UniffiVTableCallbackInterfaceChangeAncestorsTraveler;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_CONTAINER_ID_LIKE
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_CONTAINER_ID_LIKE
 typedef struct UniffiVTableCallbackInterfaceContainerIdLike {
-    UniffiCallbackInterfaceContainerIdLikeMethod0 _Nonnull asContainerId;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceContainerIdLikeMethod0 _Nonnull asContainerId;
 } UniffiVTableCallbackInterfaceContainerIdLike;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_EPHEMERAL_SUBSCRIBER
 typedef struct UniffiVTableCallbackInterfaceEphemeralSubscriber {
-    UniffiCallbackInterfaceEphemeralSubscriberMethod0 _Nonnull onEphemeralEvent;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceEphemeralSubscriberMethod0 _Nonnull onEphemeralEvent;
 } UniffiVTableCallbackInterfaceEphemeralSubscriber;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_FIRST_COMMIT_FROM_PEER_CALLBACK
 typedef struct UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback {
-    UniffiCallbackInterfaceFirstCommitFromPeerCallbackMethod0 _Nonnull onFirstCommitFromPeer;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceFirstCommitFromPeerCallbackMethod0 _Nonnull onFirstCommitFromPeer;
 } UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_JSON_PATH_SUBSCRIBER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_JSON_PATH_SUBSCRIBER
 typedef struct UniffiVTableCallbackInterfaceJsonPathSubscriber {
-    UniffiCallbackInterfaceJsonPathSubscriberMethod0 _Nonnull onJsonpathChanged;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceJsonPathSubscriberMethod0 _Nonnull onJsonpathChanged;
 } UniffiVTableCallbackInterfaceJsonPathSubscriber;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_EPHEMERAL_LISTENER
 typedef struct UniffiVTableCallbackInterfaceLocalEphemeralListener {
-    UniffiCallbackInterfaceLocalEphemeralListenerMethod0 _Nonnull onEphemeralUpdate;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceLocalEphemeralListenerMethod0 _Nonnull onEphemeralUpdate;
 } UniffiVTableCallbackInterfaceLocalEphemeralListener;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LOCAL_UPDATE_CALLBACK
 typedef struct UniffiVTableCallbackInterfaceLocalUpdateCallback {
-    UniffiCallbackInterfaceLocalUpdateCallbackMethod0 _Nonnull onLocalUpdate;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceLocalUpdateCallbackMethod0 _Nonnull onLocalUpdate;
 } UniffiVTableCallbackInterfaceLocalUpdateCallback;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LORO_VALUE_LIKE
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_LORO_VALUE_LIKE
 typedef struct UniffiVTableCallbackInterfaceLoroValueLike {
-    UniffiCallbackInterfaceLoroValueLikeMethod0 _Nonnull asLoroValue;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceLoroValueLikeMethod0 _Nonnull asLoroValue;
 } UniffiVTableCallbackInterfaceLoroValueLike;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_ON_POP
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_ON_POP
 typedef struct UniffiVTableCallbackInterfaceOnPop {
-    UniffiCallbackInterfaceOnPopMethod0 _Nonnull onPop;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceOnPopMethod0 _Nonnull onPop;
 } UniffiVTableCallbackInterfaceOnPop;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_ON_PUSH
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_ON_PUSH
 typedef struct UniffiVTableCallbackInterfaceOnPush {
-    UniffiCallbackInterfaceOnPushMethod0 _Nonnull onPush;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceOnPushMethod0 _Nonnull onPush;
 } UniffiVTableCallbackInterfaceOnPush;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_PRE_COMMIT_CALLBACK
 typedef struct UniffiVTableCallbackInterfacePreCommitCallback {
-    UniffiCallbackInterfacePreCommitCallbackMethod0 _Nonnull onPreCommit;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfacePreCommitCallbackMethod0 _Nonnull onPreCommit;
 } UniffiVTableCallbackInterfacePreCommitCallback;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_SUBSCRIBER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_SUBSCRIBER
 typedef struct UniffiVTableCallbackInterfaceSubscriber {
-    UniffiCallbackInterfaceSubscriberMethod0 _Nonnull onDiff;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceSubscriberMethod0 _Nonnull onDiff;
 } UniffiVTableCallbackInterfaceSubscriber;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_UNSUBSCRIBER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_UNSUBSCRIBER
 typedef struct UniffiVTableCallbackInterfaceUnsubscriber {
-    UniffiCallbackInterfaceUnsubscriberMethod0 _Nonnull onUnsubscribe;
     UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
+    UniffiCallbackInterfaceUnsubscriberMethod0 _Nonnull onUnsubscribe;
 } UniffiVTableCallbackInterfaceUnsubscriber;
 
 #endif
 #ifndef UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_VALUE_OR_CONTAINER
 #define UNIFFI_FFIDEF_V_TABLE_CALLBACK_INTERFACE_VALUE_OR_CONTAINER
 typedef struct UniffiVTableCallbackInterfaceValueOrContainer {
+    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
+    UniffiCallbackInterfaceClone _Nonnull uniffiClone;
     UniffiCallbackInterfaceValueOrContainerMethod0 _Nonnull asContainer;
     UniffiCallbackInterfaceValueOrContainerMethod1 _Nonnull asLoroCounter;
     UniffiCallbackInterfaceValueOrContainerMethod2 _Nonnull asLoroList;
@@ -545,2346 +552,2410 @@ typedef struct UniffiVTableCallbackInterfaceValueOrContainer {
     UniffiCallbackInterfaceValueOrContainerMethod9 _Nonnull containerType;
     UniffiCallbackInterfaceValueOrContainerMethod10 _Nonnull isContainer;
     UniffiCallbackInterfaceValueOrContainerMethod11 _Nonnull isValue;
-    UniffiCallbackInterfaceFree _Nonnull uniffiFree;
 } UniffiVTableCallbackInterfaceValueOrContainer;
 
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_AWARENESS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_AWARENESS
-void*_Nonnull uniffi_loro_ffi_fn_clone_awareness(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_awareness(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_AWARENESS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_AWARENESS
-void uniffi_loro_ffi_fn_free_awareness(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_awareness(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_AWARENESS_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_AWARENESS_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_awareness_new(uint64_t peer, int64_t timeout, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_awareness_new(uint64_t peer, int64_t timeout, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_APPLY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_APPLY
-RustBuffer uniffi_loro_ffi_fn_method_awareness_apply(void*_Nonnull ptr, RustBuffer encoded_peers_info, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_apply(uint64_t ptr, RustBuffer encoded_peers_info, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_ENCODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_ENCODE
-RustBuffer uniffi_loro_ffi_fn_method_awareness_encode(void*_Nonnull ptr, RustBuffer peers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_encode(uint64_t ptr, RustBuffer peers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_ENCODE_ALL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_ENCODE_ALL
-RustBuffer uniffi_loro_ffi_fn_method_awareness_encode_all(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_encode_all(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_GET_ALL_STATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_GET_ALL_STATES
-RustBuffer uniffi_loro_ffi_fn_method_awareness_get_all_states(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_get_all_states(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_GET_LOCAL_STATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_GET_LOCAL_STATE
-RustBuffer uniffi_loro_ffi_fn_method_awareness_get_local_state(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_get_local_state(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_PEER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_PEER
-uint64_t uniffi_loro_ffi_fn_method_awareness_peer(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_awareness_peer(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_REMOVE_OUTDATED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_REMOVE_OUTDATED
-RustBuffer uniffi_loro_ffi_fn_method_awareness_remove_outdated(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_awareness_remove_outdated(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_SET_LOCAL_STATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_AWARENESS_SET_LOCAL_STATE
-void uniffi_loro_ffi_fn_method_awareness_set_local_state(void*_Nonnull ptr, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_awareness_set_local_state(uint64_t ptr, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CHANGEANCESTORSTRAVELER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CHANGEANCESTORSTRAVELER
-void*_Nonnull uniffi_loro_ffi_fn_clone_changeancestorstraveler(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_changeancestorstraveler(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CHANGEANCESTORSTRAVELER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CHANGEANCESTORSTRAVELER
-void uniffi_loro_ffi_fn_free_changeancestorstraveler(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_changeancestorstraveler(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_CHANGEANCESTORSTRAVELER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_CHANGEANCESTORSTRAVELER
-void uniffi_loro_ffi_fn_init_callback_vtable_changeancestorstraveler(UniffiVTableCallbackInterfaceChangeAncestorsTraveler* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_changeancestorstraveler(const UniffiVTableCallbackInterfaceChangeAncestorsTraveler* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEANCESTORSTRAVELER_TRAVEL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEANCESTORSTRAVELER_TRAVEL
-int8_t uniffi_loro_ffi_fn_method_changeancestorstraveler_travel(void*_Nonnull ptr, RustBuffer change, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_changeancestorstraveler_travel(uint64_t ptr, RustBuffer change, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CHANGEMODIFIER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CHANGEMODIFIER
-void*_Nonnull uniffi_loro_ffi_fn_clone_changemodifier(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_changemodifier(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CHANGEMODIFIER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CHANGEMODIFIER
-void uniffi_loro_ffi_fn_free_changemodifier(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_changemodifier(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEMODIFIER_SET_MESSAGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEMODIFIER_SET_MESSAGE
-void uniffi_loro_ffi_fn_method_changemodifier_set_message(void*_Nonnull ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_changemodifier_set_message(uint64_t ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CHANGEMODIFIER_SET_TIMESTAMP
-void uniffi_loro_ffi_fn_method_changemodifier_set_timestamp(void*_Nonnull ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_changemodifier_set_timestamp(uint64_t ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CONFIGURE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CONFIGURE
-void*_Nonnull uniffi_loro_ffi_fn_clone_configure(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_configure(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CONFIGURE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CONFIGURE
-void uniffi_loro_ffi_fn_free_configure(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_configure(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_FORK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_FORK
-void*_Nonnull uniffi_loro_ffi_fn_method_configure_fork(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_configure_fork(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_MERGE_INTERVAL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_MERGE_INTERVAL
-int64_t uniffi_loro_ffi_fn_method_configure_merge_interval(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int64_t uniffi_loro_ffi_fn_method_configure_merge_interval(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_RECORD_TIMESTAMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_RECORD_TIMESTAMP
-int8_t uniffi_loro_ffi_fn_method_configure_record_timestamp(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_configure_record_timestamp(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_SET_MERGE_INTERVAL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_SET_MERGE_INTERVAL
-void uniffi_loro_ffi_fn_method_configure_set_merge_interval(void*_Nonnull ptr, int64_t interval, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_configure_set_merge_interval(uint64_t ptr, int64_t interval, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_SET_RECORD_TIMESTAMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_SET_RECORD_TIMESTAMP
-void uniffi_loro_ffi_fn_method_configure_set_record_timestamp(void*_Nonnull ptr, int8_t record, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_configure_set_record_timestamp(uint64_t ptr, int8_t record, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_TEXT_STYLE_CONFIG
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONFIGURE_TEXT_STYLE_CONFIG
-void*_Nonnull uniffi_loro_ffi_fn_method_configure_text_style_config(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_configure_text_style_config(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CONTAINERIDLIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CONTAINERIDLIKE
-void*_Nonnull uniffi_loro_ffi_fn_clone_containeridlike(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_containeridlike(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CONTAINERIDLIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CONTAINERIDLIKE
-void uniffi_loro_ffi_fn_free_containeridlike(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_containeridlike(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_CONTAINERIDLIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_CONTAINERIDLIKE
-void uniffi_loro_ffi_fn_init_callback_vtable_containeridlike(UniffiVTableCallbackInterfaceContainerIdLike* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_containeridlike(const UniffiVTableCallbackInterfaceContainerIdLike* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONTAINERIDLIKE_AS_CONTAINER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CONTAINERIDLIKE_AS_CONTAINER_ID
-RustBuffer uniffi_loro_ffi_fn_method_containeridlike_as_container_id(void*_Nonnull ptr, RustBuffer ty, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_containeridlike_as_container_id(uint64_t ptr, RustBuffer ty, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_CURSOR
-void*_Nonnull uniffi_loro_ffi_fn_clone_cursor(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_cursor(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_CURSOR
-void uniffi_loro_ffi_fn_free_cursor(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_cursor(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_CURSOR_DECODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_CURSOR_DECODE
-void*_Nonnull uniffi_loro_ffi_fn_constructor_cursor_decode(RustBuffer data, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_cursor_decode(RustBuffer data, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_CURSOR_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_CURSOR_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_cursor_new(RustBuffer id, RustBuffer container, RustBuffer side, uint32_t origin_pos, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_cursor_new(RustBuffer id, RustBuffer container, RustBuffer side, uint32_t origin_pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CURSOR_ENCODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_CURSOR_ENCODE
-RustBuffer uniffi_loro_ffi_fn_method_cursor_encode(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_cursor_encode(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_DIFFBATCH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_DIFFBATCH
-void*_Nonnull uniffi_loro_ffi_fn_clone_diffbatch(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_diffbatch(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_DIFFBATCH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_DIFFBATCH
-void uniffi_loro_ffi_fn_free_diffbatch(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_diffbatch(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_DIFFBATCH_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_DIFFBATCH_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_diffbatch_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_diffbatch_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_DIFFBATCH_GET_DIFF
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_DIFFBATCH_GET_DIFF
-RustBuffer uniffi_loro_ffi_fn_method_diffbatch_get_diff(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_diffbatch_get_diff(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_DIFFBATCH_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_DIFFBATCH_PUSH
-RustBuffer uniffi_loro_ffi_fn_method_diffbatch_push(void*_Nonnull ptr, RustBuffer cid, RustBuffer diff, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_diffbatch_push(uint64_t ptr, RustBuffer cid, RustBuffer diff, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_EPHEMERALSTORE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_EPHEMERALSTORE
-void*_Nonnull uniffi_loro_ffi_fn_clone_ephemeralstore(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_ephemeralstore(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_EPHEMERALSTORE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_EPHEMERALSTORE
-void uniffi_loro_ffi_fn_free_ephemeralstore(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_ephemeralstore(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_EPHEMERALSTORE_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_EPHEMERALSTORE_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_ephemeralstore_new(int64_t timeout, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_ephemeralstore_new(int64_t timeout, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_APPLY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_APPLY
-void uniffi_loro_ffi_fn_method_ephemeralstore_apply(void*_Nonnull ptr, RustBuffer data, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_ephemeralstore_apply(uint64_t ptr, RustBuffer data, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_DELETE
-void uniffi_loro_ffi_fn_method_ephemeralstore_delete(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_ephemeralstore_delete(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_ENCODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_ENCODE
-RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_encode(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_encode(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_ENCODE_ALL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_ENCODE_ALL
-RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_encode_all(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_encode_all(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_GET
-RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_get(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_get(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_GET_ALL_STATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_GET_ALL_STATES
-RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_get_all_states(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_get_all_states(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_KEYS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_KEYS
-RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_keys(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_ephemeralstore_keys(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_REMOVE_OUTDATED
-void uniffi_loro_ffi_fn_method_ephemeralstore_remove_outdated(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_ephemeralstore_remove_outdated(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SET
-void uniffi_loro_ffi_fn_method_ephemeralstore_set(void*_Nonnull ptr, RustBuffer key, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_ephemeralstore_set(uint64_t ptr, RustBuffer key, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE
-void*_Nonnull uniffi_loro_ffi_fn_method_ephemeralstore_subscribe(void*_Nonnull ptr, void*_Nonnull listener, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_ephemeralstore_subscribe(uint64_t ptr, uint64_t listener, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSTORE_SUBSCRIBE_LOCAL_UPDATE
-void*_Nonnull uniffi_loro_ffi_fn_method_ephemeralstore_subscribe_local_update(void*_Nonnull ptr, void*_Nonnull listener, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_ephemeralstore_subscribe_local_update(uint64_t ptr, uint64_t listener, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_EPHEMERALSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_EPHEMERALSUBSCRIBER
-void*_Nonnull uniffi_loro_ffi_fn_clone_ephemeralsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_ephemeralsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_EPHEMERALSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_EPHEMERALSUBSCRIBER
-void uniffi_loro_ffi_fn_free_ephemeralsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_ephemeralsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_EPHEMERALSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_EPHEMERALSUBSCRIBER
-void uniffi_loro_ffi_fn_init_callback_vtable_ephemeralsubscriber(UniffiVTableCallbackInterfaceEphemeralSubscriber* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_ephemeralsubscriber(const UniffiVTableCallbackInterfaceEphemeralSubscriber* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_EPHEMERALSUBSCRIBER_ON_EPHEMERAL_EVENT
-void uniffi_loro_ffi_fn_method_ephemeralsubscriber_on_ephemeral_event(void*_Nonnull ptr, RustBuffer event, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_ephemeralsubscriber_on_ephemeral_event(uint64_t ptr, RustBuffer event, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FIRSTCOMMITFROMPEERCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FIRSTCOMMITFROMPEERCALLBACK
-void*_Nonnull uniffi_loro_ffi_fn_clone_firstcommitfrompeercallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_firstcommitfrompeercallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FIRSTCOMMITFROMPEERCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FIRSTCOMMITFROMPEERCALLBACK
-void uniffi_loro_ffi_fn_free_firstcommitfrompeercallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_firstcommitfrompeercallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_FIRSTCOMMITFROMPEERCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_FIRSTCOMMITFROMPEERCALLBACK
-void uniffi_loro_ffi_fn_init_callback_vtable_firstcommitfrompeercallback(UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_firstcommitfrompeercallback(const UniffiVTableCallbackInterfaceFirstCommitFromPeerCallback* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FIRSTCOMMITFROMPEERCALLBACK_ON_FIRST_COMMIT_FROM_PEER
-void uniffi_loro_ffi_fn_method_firstcommitfrompeercallback_on_first_commit_from_peer(void*_Nonnull ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_firstcommitfrompeercallback_on_first_commit_from_peer(uint64_t ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FRACTIONALINDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FRACTIONALINDEX
-void*_Nonnull uniffi_loro_ffi_fn_clone_fractionalindex(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_fractionalindex(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FRACTIONALINDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FRACTIONALINDEX
-void uniffi_loro_ffi_fn_free_fractionalindex(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_fractionalindex(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRACTIONALINDEX_FROM_BYTES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRACTIONALINDEX_FROM_BYTES
-void*_Nonnull uniffi_loro_ffi_fn_constructor_fractionalindex_from_bytes(RustBuffer bytes, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_fractionalindex_from_bytes(RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRACTIONALINDEX_FROM_HEX_STRING
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRACTIONALINDEX_FROM_HEX_STRING
-void*_Nonnull uniffi_loro_ffi_fn_constructor_fractionalindex_from_hex_string(RustBuffer str, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_fractionalindex_from_hex_string(RustBuffer str, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRACTIONALINDEX_UNIFFI_TRAIT_DISPLAY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRACTIONALINDEX_UNIFFI_TRAIT_DISPLAY
-RustBuffer uniffi_loro_ffi_fn_method_fractionalindex_uniffi_trait_display(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_fractionalindex_uniffi_trait_display(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_FRONTIERS
-void*_Nonnull uniffi_loro_ffi_fn_clone_frontiers(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_frontiers(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_FRONTIERS
-void uniffi_loro_ffi_fn_free_frontiers(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_frontiers(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_DECODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_DECODE
-void*_Nonnull uniffi_loro_ffi_fn_constructor_frontiers_decode(RustBuffer bytes, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_frontiers_decode(RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_FROM_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_FROM_ID
-void*_Nonnull uniffi_loro_ffi_fn_constructor_frontiers_from_id(RustBuffer id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_frontiers_from_id(RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_FROM_IDS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_FROM_IDS
-void*_Nonnull uniffi_loro_ffi_fn_constructor_frontiers_from_ids(RustBuffer ids, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_frontiers_from_ids(RustBuffer ids, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_FRONTIERS_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_frontiers_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_frontiers_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_ENCODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_ENCODE
-RustBuffer uniffi_loro_ffi_fn_method_frontiers_encode(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_frontiers_encode(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_EQ
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_EQ
-int8_t uniffi_loro_ffi_fn_method_frontiers_eq(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_frontiers_eq(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_frontiers_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_frontiers_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_TO_VEC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_FRONTIERS_TO_VEC
-RustBuffer uniffi_loro_ffi_fn_method_frontiers_to_vec(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_frontiers_to_vec(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_JSONPATHSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_JSONPATHSUBSCRIBER
-void*_Nonnull uniffi_loro_ffi_fn_clone_jsonpathsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_jsonpathsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_JSONPATHSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_JSONPATHSUBSCRIBER
-void uniffi_loro_ffi_fn_free_jsonpathsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_jsonpathsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_JSONPATHSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_JSONPATHSUBSCRIBER
-void uniffi_loro_ffi_fn_init_callback_vtable_jsonpathsubscriber(UniffiVTableCallbackInterfaceJsonPathSubscriber* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_jsonpathsubscriber(const UniffiVTableCallbackInterfaceJsonPathSubscriber* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_JSONPATHSUBSCRIBER_ON_JSONPATH_CHANGED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_JSONPATHSUBSCRIBER_ON_JSONPATH_CHANGED
-void uniffi_loro_ffi_fn_method_jsonpathsubscriber_on_jsonpath_changed(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_jsonpathsubscriber_on_jsonpath_changed(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALEPHEMERALLISTENER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALEPHEMERALLISTENER
-void*_Nonnull uniffi_loro_ffi_fn_clone_localephemerallistener(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_localephemerallistener(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOCALEPHEMERALLISTENER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOCALEPHEMERALLISTENER
-void uniffi_loro_ffi_fn_free_localephemerallistener(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_localephemerallistener(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOCALEPHEMERALLISTENER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOCALEPHEMERALLISTENER
-void uniffi_loro_ffi_fn_init_callback_vtable_localephemerallistener(UniffiVTableCallbackInterfaceLocalEphemeralListener* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_localephemerallistener(const UniffiVTableCallbackInterfaceLocalEphemeralListener* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOCALEPHEMERALLISTENER_ON_EPHEMERAL_UPDATE
-void uniffi_loro_ffi_fn_method_localephemerallistener_on_ephemeral_update(void*_Nonnull ptr, RustBuffer update, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_localephemerallistener_on_ephemeral_update(uint64_t ptr, RustBuffer update, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALUPDATECALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOCALUPDATECALLBACK
-void*_Nonnull uniffi_loro_ffi_fn_clone_localupdatecallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_localupdatecallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOCALUPDATECALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOCALUPDATECALLBACK
-void uniffi_loro_ffi_fn_free_localupdatecallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_localupdatecallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOCALUPDATECALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOCALUPDATECALLBACK
-void uniffi_loro_ffi_fn_init_callback_vtable_localupdatecallback(UniffiVTableCallbackInterfaceLocalUpdateCallback* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_localupdatecallback(const UniffiVTableCallbackInterfaceLocalUpdateCallback* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOCALUPDATECALLBACK_ON_LOCAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOCALUPDATECALLBACK_ON_LOCAL_UPDATE
-void uniffi_loro_ffi_fn_method_localupdatecallback_on_local_update(void*_Nonnull ptr, RustBuffer update, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_localupdatecallback_on_local_update(uint64_t ptr, RustBuffer update, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROCOUNTER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROCOUNTER
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorocounter(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorocounter(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROCOUNTER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROCOUNTER
-void uniffi_loro_ffi_fn_free_lorocounter(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorocounter(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROCOUNTER_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROCOUNTER_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_lorocounter_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_lorocounter_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_DECREMENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_DECREMENT
-void uniffi_loro_ffi_fn_method_lorocounter_decrement(void*_Nonnull ptr, double value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorocounter_decrement(uint64_t ptr, double value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_DOC
-RustBuffer uniffi_loro_ffi_fn_method_lorocounter_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorocounter_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_lorocounter_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorocounter_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_GET_VALUE
-double uniffi_loro_ffi_fn_method_lorocounter_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+double uniffi_loro_ffi_fn_method_lorocounter_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorocounter_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorocounter_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_INCREMENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_INCREMENT
-void uniffi_loro_ffi_fn_method_lorocounter_increment(void*_Nonnull ptr, double value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorocounter_increment(uint64_t ptr, double value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_lorocounter_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorocounter_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_lorocounter_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorocounter_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROCOUNTER_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_lorocounter_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorocounter_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LORODOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LORODOC
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorodoc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorodoc(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LORODOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LORODOC
-void uniffi_loro_ffi_fn_free_lorodoc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorodoc(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LORODOC_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LORODOC_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_lorodoc_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_lorodoc_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_APPLY_DIFF
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_APPLY_DIFF
-void uniffi_loro_ffi_fn_method_lorodoc_apply_diff(void*_Nonnull ptr, void*_Nonnull diff, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_apply_diff(uint64_t ptr, uint64_t diff, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_ATTACH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_ATTACH
-void uniffi_loro_ffi_fn_method_lorodoc_attach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_attach(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECK_STATE_CORRECTNESS_SLOW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECK_STATE_CORRECTNESS_SLOW
-void uniffi_loro_ffi_fn_method_lorodoc_check_state_correctness_slow(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_check_state_correctness_slow(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECKOUT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECKOUT
-void uniffi_loro_ffi_fn_method_lorodoc_checkout(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_checkout(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECKOUT_TO_LATEST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CHECKOUT_TO_LATEST
-void uniffi_loro_ffi_fn_method_lorodoc_checkout_to_latest(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_checkout_to_latest(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CLEAR_NEXT_COMMIT_OPTIONS
-void uniffi_loro_ffi_fn_method_lorodoc_clear_next_commit_options(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_clear_next_commit_options(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CMP_WITH_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CMP_WITH_FRONTIERS
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_cmp_with_frontiers(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_cmp_with_frontiers(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMMIT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMMIT
-void uniffi_loro_ffi_fn_method_lorodoc_commit(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_commit(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMMIT_WITH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMMIT_WITH
-void uniffi_loro_ffi_fn_method_lorodoc_commit_with(void*_Nonnull ptr, RustBuffer options, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_commit_with(uint64_t ptr, RustBuffer options, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMPACT_CHANGE_STORE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_COMPACT_CHANGE_STORE
-void uniffi_loro_ffi_fn_method_lorodoc_compact_change_store(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_compact_change_store(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_config(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_config(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG_DEFAULT_TEXT_STYLE
-void uniffi_loro_ffi_fn_method_lorodoc_config_default_text_style(void*_Nonnull ptr, RustBuffer text_style, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_config_default_text_style(uint64_t ptr, RustBuffer text_style, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG_TEXT_STYLE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_CONFIG_TEXT_STYLE
-void uniffi_loro_ffi_fn_method_lorodoc_config_text_style(void*_Nonnull ptr, void*_Nonnull text_style, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_config_text_style(uint64_t ptr, uint64_t text_style, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DELETE_ROOT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DELETE_ROOT_CONTAINER
-void uniffi_loro_ffi_fn_method_lorodoc_delete_root_container(void*_Nonnull ptr, RustBuffer cid, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_delete_root_container(uint64_t ptr, RustBuffer cid, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DETACH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DETACH
-void uniffi_loro_ffi_fn_method_lorodoc_detach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_detach(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DIFF
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_DIFF
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_diff(void*_Nonnull ptr, void*_Nonnull a, void*_Nonnull b, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_diff(uint64_t ptr, uint64_t a, uint64_t b, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export(uint64_t ptr, RustBuffer mode, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_in_id_span(void*_Nonnull ptr, RustBuffer id_span, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_in_id_span(uint64_t ptr, RustBuffer id_span, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_updates(void*_Nonnull ptr, void*_Nonnull start_vv, void*_Nonnull end_vv, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_updates(uint64_t ptr, uint64_t start_vv, uint64_t end_vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_JSON_UPDATES_WITHOUT_PEER_COMPRESSION
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_updates_without_peer_compression(void*_Nonnull ptr, void*_Nonnull start_vv, void*_Nonnull end_vv, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_json_updates_without_peer_compression(uint64_t ptr, uint64_t start_vv, uint64_t end_vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SHALLOW_SNAPSHOT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SHALLOW_SNAPSHOT
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_shallow_snapshot(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_shallow_snapshot(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SNAPSHOT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SNAPSHOT
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_snapshot(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_snapshot(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SNAPSHOT_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_SNAPSHOT_AT
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_snapshot_at(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_snapshot_at(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_STATE_ONLY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_STATE_ONLY
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_state_only(void*_Nonnull ptr, RustBuffer frontiers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_state_only(uint64_t ptr, RustBuffer frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_UPDATES
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_updates(void*_Nonnull ptr, void*_Nonnull vv, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_updates(uint64_t ptr, uint64_t vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_EXPORT_UPDATES_IN_RANGE
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_updates_in_range(void*_Nonnull ptr, RustBuffer spans, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_export_updates_in_range(uint64_t ptr, RustBuffer spans, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FIND_ID_SPANS_BETWEEN
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_find_id_spans_between(void*_Nonnull ptr, void*_Nonnull from, void*_Nonnull to, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_find_id_spans_between(uint64_t ptr, uint64_t from, uint64_t to, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FORK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FORK
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_fork(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_fork(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FORK_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FORK_AT
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_fork_at(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_fork_at(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FREE_DIFF_CALCULATOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FREE_DIFF_CALCULATOR
-void uniffi_loro_ffi_fn_method_lorodoc_free_diff_calculator(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_free_diff_calculator(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FREE_HISTORY_CACHE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FREE_HISTORY_CACHE
-void uniffi_loro_ffi_fn_method_lorodoc_free_history_cache(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_free_history_cache(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FRONTIERS_TO_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_FRONTIERS_TO_VV
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_frontiers_to_vv(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_frontiers_to_vv(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_BY_PATH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_BY_PATH
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_by_path(void*_Nonnull ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_by_path(uint64_t ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_BY_STR_PATH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_BY_STR_PATH
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_by_str_path(void*_Nonnull ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_by_str_path(uint64_t ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CHANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CHANGE
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_change(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_change(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CHANGED_CONTAINERS_IN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CHANGED_CONTAINERS_IN
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_changed_containers_in(void*_Nonnull ptr, RustBuffer id, uint32_t len, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_changed_containers_in(uint64_t ptr, RustBuffer id, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CONTAINER
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_container(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_container(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_COUNTER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_COUNTER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_counter(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_counter(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CURSOR_POS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_CURSOR_POS
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_cursor_pos(void*_Nonnull ptr, void*_Nonnull cursor, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_cursor_pos(uint64_t ptr, uint64_t cursor, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_DEEP_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_DEEP_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_deep_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_deep_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_DEEP_VALUE_WITH_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_DEEP_VALUE_WITH_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_deep_value_with_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_deep_value_with_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_LIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_LIST
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_list(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_list(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_MAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_MAP
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_map(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_map(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_MOVABLE_LIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_MOVABLE_LIST
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_movable_list(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_movable_list(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_PATH_TO_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_PATH_TO_CONTAINER
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_path_to_container(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_path_to_container(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_PENDING_TXN_LEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_PENDING_TXN_LEN
-uint32_t uniffi_loro_ffi_fn_method_lorodoc_get_pending_txn_len(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_lorodoc_get_pending_txn_len(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_TEXT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_TEXT
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_text(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_text(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_TREE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_TREE
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_get_tree(void*_Nonnull ptr, void*_Nonnull id, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_get_tree(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_GET_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_HAS_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_HAS_CONTAINER
-int8_t uniffi_loro_ffi_fn_method_lorodoc_has_container(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorodoc_has_container(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_HAS_HISTORY_CACHE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_HAS_HISTORY_CACHE
-int8_t uniffi_loro_ffi_fn_method_lorodoc_has_history_cache(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorodoc_has_history_cache(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import(void*_Nonnull ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import(uint64_t ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_BATCH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_BATCH
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_batch(void*_Nonnull ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_batch(uint64_t ptr, RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_JSON_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_JSON_UPDATES
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_json_updates(void*_Nonnull ptr, RustBuffer json, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_json_updates(uint64_t ptr, RustBuffer json, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_WITH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IMPORT_WITH
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_with(void*_Nonnull ptr, RustBuffer bytes, RustBuffer origin, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_import_with(uint64_t ptr, RustBuffer bytes, RustBuffer origin, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IS_DETACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IS_DETACHED
-int8_t uniffi_loro_ffi_fn_method_lorodoc_is_detached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorodoc_is_detached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IS_SHALLOW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_IS_SHALLOW
-int8_t uniffi_loro_ffi_fn_method_lorodoc_is_shallow(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorodoc_is_shallow(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_JSONPATH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_JSONPATH
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_jsonpath(void*_Nonnull ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_jsonpath(uint64_t ptr, RustBuffer path, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LEN_CHANGES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LEN_CHANGES
-uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_changes(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_changes(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LEN_OPS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_LEN_OPS
-uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_ops(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_len_ops(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_MINIMIZE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_MINIMIZE_FRONTIERS
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_minimize_frontiers(void*_Nonnull ptr, void*_Nonnull frontiers, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_minimize_frontiers(uint64_t ptr, uint64_t frontiers, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_OPLOG_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_OPLOG_FRONTIERS
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_oplog_frontiers(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_oplog_frontiers(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_OPLOG_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_OPLOG_VV
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_oplog_vv(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_oplog_vv(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_PEER_ID
-uint64_t uniffi_loro_ffi_fn_method_lorodoc_peer_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_peer_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_REDACT_JSON_UPDATES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_REDACT_JSON_UPDATES
-RustBuffer uniffi_loro_ffi_fn_method_lorodoc_redact_json_updates(void*_Nonnull ptr, RustBuffer json, void*_Nonnull version_range, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_redact_json_updates(uint64_t ptr, RustBuffer json, uint64_t version_range, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_REVERT_TO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_REVERT_TO
-void uniffi_loro_ffi_fn_method_lorodoc_revert_to(void*_Nonnull ptr, void*_Nonnull version, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_revert_to(uint64_t ptr, uint64_t version, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_CHANGE_MERGE_INTERVAL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_CHANGE_MERGE_INTERVAL
-void uniffi_loro_ffi_fn_method_lorodoc_set_change_merge_interval(void*_Nonnull ptr, int64_t interval, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_change_merge_interval(uint64_t ptr, int64_t interval, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_HIDE_EMPTY_ROOT_CONTAINERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_HIDE_EMPTY_ROOT_CONTAINERS
-void uniffi_loro_ffi_fn_method_lorodoc_set_hide_empty_root_containers(void*_Nonnull ptr, int8_t hide, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_hide_empty_root_containers(uint64_t ptr, int8_t hide, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_MESSAGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_MESSAGE
-void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_message(void*_Nonnull ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_message(uint64_t ptr, RustBuffer msg, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_OPTIONS
-void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_options(void*_Nonnull ptr, RustBuffer options, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_options(uint64_t ptr, RustBuffer options, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_ORIGIN
-void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_origin(void*_Nonnull ptr, RustBuffer origin, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_origin(uint64_t ptr, RustBuffer origin, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_NEXT_COMMIT_TIMESTAMP
-void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_timestamp(void*_Nonnull ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_next_commit_timestamp(uint64_t ptr, int64_t timestamp, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_PEER_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_PEER_ID
-void uniffi_loro_ffi_fn_method_lorodoc_set_peer_id(void*_Nonnull ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_peer_id(uint64_t ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_RECORD_TIMESTAMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SET_RECORD_TIMESTAMP
-void uniffi_loro_ffi_fn_method_lorodoc_set_record_timestamp(void*_Nonnull ptr, int8_t record, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_set_record_timestamp(uint64_t ptr, int8_t record, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SHALLOW_SINCE_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SHALLOW_SINCE_VV
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_shallow_since_vv(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_shallow_since_vv(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_STATE_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_STATE_FRONTIERS
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_state_frontiers(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_state_frontiers(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_STATE_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_STATE_VV
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_state_vv(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_state_vv(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe(void*_Nonnull ptr, RustBuffer container_id, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe(uint64_t ptr, RustBuffer container_id, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_FIRST_COMMIT_FROM_PEER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe_first_commit_from_peer(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe_first_commit_from_peer(uint64_t ptr, uint64_t callback, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_JSONPATH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_JSONPATH
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe_jsonpath(void*_Nonnull ptr, RustBuffer path, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe_jsonpath(uint64_t ptr, RustBuffer path, uint64_t callback, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_LOCAL_UPDATE
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe_local_update(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe_local_update(uint64_t ptr, uint64_t callback, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_PRE_COMMIT
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe_pre_commit(void*_Nonnull ptr, void*_Nonnull callback, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe_pre_commit(uint64_t ptr, uint64_t callback, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_ROOT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_SUBSCRIBE_ROOT
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_subscribe_root(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_subscribe_root(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRAVEL_CHANGE_ANCESTORS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRAVEL_CHANGE_ANCESTORS
-void uniffi_loro_ffi_fn_method_lorodoc_travel_change_ancestors(void*_Nonnull ptr, RustBuffer ids, void*_Nonnull f, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorodoc_travel_change_ancestors(uint64_t ptr, RustBuffer ids, uint64_t f, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_COUNTER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_COUNTER
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_counter(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_LIST
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_list(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_MAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_MAP
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_map(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_MOVABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_MOVABLE_LIST
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_movable_list(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_TEXT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_TEXT
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_text(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_TREE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_TRY_GET_TREE
+RustBuffer uniffi_loro_ffi_fn_method_lorodoc_try_get_tree(uint64_t ptr, uint64_t id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_VV_TO_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LORODOC_VV_TO_FRONTIERS
-void*_Nonnull uniffi_loro_ffi_fn_method_lorodoc_vv_to_frontiers(void*_Nonnull ptr, void*_Nonnull vv, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorodoc_vv_to_frontiers(uint64_t ptr, uint64_t vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROLIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROLIST
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorolist(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorolist(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROLIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROLIST
-void uniffi_loro_ffi_fn_free_lorolist(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorolist(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROLIST_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROLIST_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_lorolist_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_lorolist_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_CLEAR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_CLEAR
-void uniffi_loro_ffi_fn_method_lorolist_clear(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorolist_clear(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_DELETE
-void uniffi_loro_ffi_fn_method_lorolist_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorolist_delete(uint64_t ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_DOC
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get(void*_Nonnull ptr, uint32_t index, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get(uint64_t ptr, uint32_t index, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_CURSOR
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_cursor(void*_Nonnull ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_cursor(uint64_t ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_DEEP_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_DEEP_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_deep_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_deep_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_ID_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_ID_AT
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_id_at(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_id_at(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_GET_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT
-void uniffi_loro_ffi_fn_method_lorolist_insert(void*_Nonnull ptr, uint32_t pos, void*_Nonnull v, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorolist_insert(uint64_t ptr, uint32_t pos, uint64_t v, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_COUNTER_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_COUNTER_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_counter_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_counter_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_MAP_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_MAP_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_map_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_map_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_MOVABLE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_MOVABLE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_movable_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_movable_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_TEXT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_TEXT_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_text_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_text_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_TREE_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_INSERT_TREE_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_lorolist_insert_tree_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorolist_insert_tree_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_lorolist_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorolist_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_lorolist_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorolist_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_lorolist_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorolist_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_LEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_LEN
-uint32_t uniffi_loro_ffi_fn_method_lorolist_len(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_lorolist_len(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_POP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_POP
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_pop(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_pop(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_PUSH
-void uniffi_loro_ffi_fn_method_lorolist_push(void*_Nonnull ptr, void*_Nonnull v, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorolist_push(uint64_t ptr, uint64_t v, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_TO_VEC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROLIST_TO_VEC
-RustBuffer uniffi_loro_ffi_fn_method_lorolist_to_vec(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorolist_to_vec(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROMAP
-void*_Nonnull uniffi_loro_ffi_fn_clone_loromap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_loromap(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROMAP
-void uniffi_loro_ffi_fn_free_loromap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_loromap(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROMAP_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROMAP_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_loromap_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_loromap_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_CLEAR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_CLEAR
-void uniffi_loro_ffi_fn_method_loromap_clear(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromap_clear(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_DELETE
-void uniffi_loro_ffi_fn_method_loromap_delete(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromap_delete(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_DOC
-RustBuffer uniffi_loro_ffi_fn_method_loromap_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_COUNTER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_COUNTER
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_counter(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_LIST
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_list(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_MAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_MAP
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_map(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_MOVABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_MOVABLE_LIST
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_movable_list(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_TEXT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_TEXT
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_text(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_TREE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ENSURE_MERGEABLE_TREE
+uint64_t uniffi_loro_ffi_fn_method_loromap_ensure_mergeable_tree(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET
-RustBuffer uniffi_loro_ffi_fn_method_loromap_get(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_get(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_loromap_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_DEEP_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_DEEP_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_loromap_get_deep_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_get_deep_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_LAST_EDITOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_LAST_EDITOR
-RustBuffer uniffi_loro_ffi_fn_method_loromap_get_last_editor(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_get_last_editor(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_COUNTER_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_counter_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_counter_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_list_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_MAP_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_map_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_map_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_MOVABLE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_movable_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_movable_list_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_TEXT_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_text_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_text_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_OR_CREATE_TREE_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_get_or_create_tree_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_get_or_create_tree_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_GET_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_loromap_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_ID
-RustBuffer uniffi_loro_ffi_fn_method_loromap_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT
-void uniffi_loro_ffi_fn_method_loromap_insert(void*_Nonnull ptr, RustBuffer key, void*_Nonnull v, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromap_insert(uint64_t ptr, RustBuffer key, uint64_t v, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_COUNTER_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_COUNTER_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_counter_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_counter_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_list_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_MAP_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_MAP_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_map_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_map_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_MOVABLE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_MOVABLE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_movable_list_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_movable_list_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_TEXT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_TEXT_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_text_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_text_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_TREE_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_INSERT_TREE_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromap_insert_tree_container(void*_Nonnull ptr, RustBuffer key, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromap_insert_tree_container(uint64_t ptr, RustBuffer key, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_loromap_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromap_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_loromap_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromap_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_loromap_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromap_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_KEYS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_KEYS
-RustBuffer uniffi_loro_ffi_fn_method_loromap_keys(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_keys(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_LEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_LEN
-uint32_t uniffi_loro_ffi_fn_method_loromap_len(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_loromap_len(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_loromap_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_VALUES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMAP_VALUES
-RustBuffer uniffi_loro_ffi_fn_method_loromap_values(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromap_values(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROMOVABLELIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROMOVABLELIST
-void*_Nonnull uniffi_loro_ffi_fn_clone_loromovablelist(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_loromovablelist(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROMOVABLELIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROMOVABLELIST
-void uniffi_loro_ffi_fn_free_loromovablelist(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_loromovablelist(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROMOVABLELIST_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROMOVABLELIST_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_loromovablelist_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_loromovablelist_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_CLEAR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_CLEAR
-void uniffi_loro_ffi_fn_method_loromovablelist_clear(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_clear(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_DELETE
-void uniffi_loro_ffi_fn_method_loromovablelist_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_delete(uint64_t ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_DOC
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get(void*_Nonnull ptr, uint32_t index, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get(uint64_t ptr, uint32_t index, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_CREATOR_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_CREATOR_AT
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_creator_at(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_creator_at(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_CURSOR
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_cursor(void*_Nonnull ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_cursor(uint64_t ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_DEEP_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_DEEP_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_deep_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_deep_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_LAST_EDITOR_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_LAST_EDITOR_AT
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_last_editor_at(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_last_editor_at(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_LAST_MOVER_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_LAST_MOVER_AT
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_last_mover_at(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_last_mover_at(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_GET_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_ID
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT
-void uniffi_loro_ffi_fn_method_loromovablelist_insert(void*_Nonnull ptr, uint32_t pos, void*_Nonnull v, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_insert(uint64_t ptr, uint32_t pos, uint64_t v, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_COUNTER_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_COUNTER_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_counter_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_counter_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_MAP_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_MAP_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_map_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_map_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_MOVABLE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_MOVABLE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_movable_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_movable_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_TEXT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_TEXT_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_text_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_text_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_TREE_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_INSERT_TREE_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_insert_tree_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_insert_tree_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_loromovablelist_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_LEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_LEN
-uint32_t uniffi_loro_ffi_fn_method_loromovablelist_len(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_loromovablelist_len(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_MOV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_MOV
-void uniffi_loro_ffi_fn_method_loromovablelist_mov(void*_Nonnull ptr, uint32_t from, uint32_t to, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_mov(uint64_t ptr, uint32_t from, uint32_t to, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_POP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_POP
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_pop(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_pop(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_PUSH
-void uniffi_loro_ffi_fn_method_loromovablelist_push(void*_Nonnull ptr, void*_Nonnull v, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_push(uint64_t ptr, uint64_t v, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET
-void uniffi_loro_ffi_fn_method_loromovablelist_set(void*_Nonnull ptr, uint32_t pos, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_loromovablelist_set(uint64_t ptr, uint32_t pos, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_COUNTER_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_COUNTER_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_counter_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_counter_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_MAP_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_MAP_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_map_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_map_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_MOVABLE_LIST_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_MOVABLE_LIST_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_movable_list_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_movable_list_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_TEXT_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_TEXT_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_text_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_text_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_TREE_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SET_TREE_CONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_method_loromovablelist_set_tree_container(void*_Nonnull ptr, uint32_t pos, void*_Nonnull child, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_loromovablelist_set_tree_container(uint64_t ptr, uint32_t pos, uint64_t child, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_TO_VEC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROMOVABLELIST_TO_VEC
-RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_to_vec(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_loromovablelist_to_vec(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROTEXT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROTEXT
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorotext(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorotext(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROTEXT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROTEXT
-void uniffi_loro_ffi_fn_free_lorotext(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorotext(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROTEXT_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROTEXT_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_lorotext_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_lorotext_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_APPLY_DELTA
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_APPLY_DELTA
-void uniffi_loro_ffi_fn_method_lorotext_apply_delta(void*_Nonnull ptr, RustBuffer delta, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_apply_delta(uint64_t ptr, RustBuffer delta, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_CHAR_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_CHAR_AT
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_char_at(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_char_at(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_CONVERT_POS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_CONVERT_POS
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_convert_pos(void*_Nonnull ptr, uint32_t index, RustBuffer from, RustBuffer to, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_convert_pos(uint64_t ptr, uint32_t index, RustBuffer from, RustBuffer to, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE
-void uniffi_loro_ffi_fn_method_lorotext_delete(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_delete(uint64_t ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE_UTF16
-void uniffi_loro_ffi_fn_method_lorotext_delete_utf16(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_delete_utf16(uint64_t ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE_UTF8
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DELETE_UTF8
-void uniffi_loro_ffi_fn_method_lorotext_delete_utf8(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_delete_utf8(uint64_t ptr, uint32_t pos, uint32_t len, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_DOC
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_CURSOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_CURSOR
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_cursor(void*_Nonnull ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_cursor(uint64_t ptr, uint32_t pos, RustBuffer side, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_EDITOR_AT_UNICODE_POS
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_editor_at_unicode_pos(void*_Nonnull ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_editor_at_unicode_pos(uint64_t ptr, uint32_t pos, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_GET_RICHTEXT_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_richtext_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_get_richtext_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT
-void uniffi_loro_ffi_fn_method_lorotext_insert(void*_Nonnull ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_insert(uint64_t ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT_UTF16
-void uniffi_loro_ffi_fn_method_lorotext_insert_utf16(void*_Nonnull ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_insert_utf16(uint64_t ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT_UTF8
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_INSERT_UTF8
-void uniffi_loro_ffi_fn_method_lorotext_insert_utf8(void*_Nonnull ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_insert_utf8(uint64_t ptr, uint32_t pos, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_lorotext_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotext_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_lorotext_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotext_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_lorotext_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotext_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UNICODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UNICODE
-uint32_t uniffi_loro_ffi_fn_method_lorotext_len_unicode(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_lorotext_len_unicode(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UTF16
-uint32_t uniffi_loro_ffi_fn_method_lorotext_len_utf16(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_lorotext_len_utf16(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UTF8
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_LEN_UTF8
-uint32_t uniffi_loro_ffi_fn_method_lorotext_len_utf8(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_lorotext_len_utf8(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK
-void uniffi_loro_ffi_fn_method_lorotext_mark(void*_Nonnull ptr, uint32_t from, uint32_t to, RustBuffer key, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_mark(uint64_t ptr, uint32_t from, uint32_t to, RustBuffer key, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK_UTF16
-void uniffi_loro_ffi_fn_method_lorotext_mark_utf16(void*_Nonnull ptr, uint32_t from, uint32_t to, RustBuffer key, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_mark_utf16(uint64_t ptr, uint32_t from, uint32_t to, RustBuffer key, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK_UTF8
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_MARK_UTF8
-void uniffi_loro_ffi_fn_method_lorotext_mark_utf8(void*_Nonnull ptr, uint32_t from, uint32_t to, RustBuffer key, void*_Nonnull value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_mark_utf8(uint64_t ptr, uint32_t from, uint32_t to, RustBuffer key, uint64_t value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_PUSH_STR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_PUSH_STR
-void uniffi_loro_ffi_fn_method_lorotext_push_str(void*_Nonnull ptr, RustBuffer s, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_push_str(uint64_t ptr, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice(void*_Nonnull ptr, uint32_t start_index, uint32_t end_index, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice(uint64_t ptr, uint32_t start_index, uint32_t end_index, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE_DELTA
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE_DELTA
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice_delta(void*_Nonnull ptr, uint32_t start_index, uint32_t end_index, RustBuffer pos_type, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice_delta(uint64_t ptr, uint32_t start_index, uint32_t end_index, RustBuffer pos_type, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SLICE_UTF16
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice_utf16(void*_Nonnull ptr, uint32_t start_index, uint32_t end_index, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_slice_utf16(uint64_t ptr, uint32_t start_index, uint32_t end_index, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SPLICE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SPLICE
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_splice(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustBuffer s, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_splice(uint64_t ptr, uint32_t pos, uint32_t len, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SPLICE_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SPLICE_UTF16
-void uniffi_loro_ffi_fn_method_lorotext_splice_utf16(void*_Nonnull ptr, uint32_t pos, uint32_t len, RustBuffer s, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_splice_utf16(uint64_t ptr, uint32_t pos, uint32_t len, RustBuffer s, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_TO_DELTA
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_TO_DELTA
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_to_delta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_to_delta(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNMARK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNMARK
-void uniffi_loro_ffi_fn_method_lorotext_unmark(void*_Nonnull ptr, uint32_t from, uint32_t to, RustBuffer key, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_unmark(uint64_t ptr, uint32_t from, uint32_t to, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNMARK_UTF16
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNMARK_UTF16
-void uniffi_loro_ffi_fn_method_lorotext_unmark_utf16(void*_Nonnull ptr, uint32_t from, uint32_t to, RustBuffer key, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_unmark_utf16(uint64_t ptr, uint32_t from, uint32_t to, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UPDATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UPDATE
-void uniffi_loro_ffi_fn_method_lorotext_update(void*_Nonnull ptr, RustBuffer s, RustBuffer options, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_update(uint64_t ptr, RustBuffer s, RustBuffer options, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UPDATE_BY_LINE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UPDATE_BY_LINE
-void uniffi_loro_ffi_fn_method_lorotext_update_by_line(void*_Nonnull ptr, RustBuffer s, RustBuffer options, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotext_update_by_line(uint64_t ptr, RustBuffer s, RustBuffer options, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNIFFI_TRAIT_DISPLAY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTEXT_UNIFFI_TRAIT_DISPLAY
-RustBuffer uniffi_loro_ffi_fn_method_lorotext_uniffi_trait_display(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotext_uniffi_trait_display(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROTREE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROTREE
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorotree(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorotree(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROTREE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROTREE
-void uniffi_loro_ffi_fn_free_lorotree(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorotree(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROTREE_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_LOROTREE_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_lorotree_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_lorotree_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CHILDREN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CHILDREN
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_children(void*_Nonnull ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_children(uint64_t ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CHILDREN_NUM
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CHILDREN_NUM
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_children_num(void*_Nonnull ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_children_num(uint64_t ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CONTAINS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CONTAINS
-int8_t uniffi_loro_ffi_fn_method_lorotree_contains(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotree_contains(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CREATE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CREATE
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_create(void*_Nonnull ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_create(uint64_t ptr, RustBuffer parent, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CREATE_AT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_CREATE_AT
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_create_at(void*_Nonnull ptr, RustBuffer parent, uint32_t index, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_create_at(uint64_t ptr, RustBuffer parent, uint32_t index, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DELETE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DELETE
-void uniffi_loro_ffi_fn_method_lorotree_delete(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_delete(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DISABLE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DISABLE_FRACTIONAL_INDEX
-void uniffi_loro_ffi_fn_method_lorotree_disable_fractional_index(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_disable_fractional_index(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_DOC
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_doc(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_doc(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ENABLE_FRACTIONAL_INDEX
-void uniffi_loro_ffi_fn_method_lorotree_enable_fractional_index(void*_Nonnull ptr, uint8_t jitter, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_enable_fractional_index(uint64_t ptr, uint8_t jitter, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_FRACTIONAL_INDEX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_FRACTIONAL_INDEX
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_fractional_index(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_fractional_index(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_ATTACHED
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_LAST_MOVE_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_LAST_MOVE_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_last_move_id(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_last_move_id(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_META
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_META
-void*_Nonnull uniffi_loro_ffi_fn_method_lorotree_get_meta(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_lorotree_get_meta(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_VALUE_WITH_META
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_GET_VALUE_WITH_META
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_value_with_meta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_get_value_with_meta(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_ATTACHED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_ATTACHED
-int8_t uniffi_loro_ffi_fn_method_lorotree_is_attached(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotree_is_attached(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_DELETED
-int8_t uniffi_loro_ffi_fn_method_lorotree_is_deleted(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotree_is_deleted(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_FRACTIONAL_INDEX_ENABLED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_FRACTIONAL_INDEX_ENABLED
-int8_t uniffi_loro_ffi_fn_method_lorotree_is_fractional_index_enabled(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotree_is_fractional_index_enabled(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_NODE_DELETED
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_IS_NODE_DELETED
-int8_t uniffi_loro_ffi_fn_method_lorotree_is_node_deleted(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_lorotree_is_node_deleted(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV
-void uniffi_loro_ffi_fn_method_lorotree_mov(void*_Nonnull ptr, RustBuffer target, RustBuffer parent, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_mov(uint64_t ptr, RustBuffer target, RustBuffer parent, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_AFTER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_AFTER
-void uniffi_loro_ffi_fn_method_lorotree_mov_after(void*_Nonnull ptr, RustBuffer target, RustBuffer after, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_mov_after(uint64_t ptr, RustBuffer target, RustBuffer after, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_BEFORE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_BEFORE
-void uniffi_loro_ffi_fn_method_lorotree_mov_before(void*_Nonnull ptr, RustBuffer target, RustBuffer before, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_mov_before(uint64_t ptr, RustBuffer target, RustBuffer before, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_TO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_MOV_TO
-void uniffi_loro_ffi_fn_method_lorotree_mov_to(void*_Nonnull ptr, RustBuffer target, RustBuffer parent, uint32_t to, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_lorotree_mov_to(uint64_t ptr, RustBuffer target, RustBuffer parent, uint32_t to, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_NODES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_NODES
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_nodes(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_nodes(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_PARENT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_PARENT
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_parent(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_parent(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ROOTS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_ROOTS
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_roots(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_roots(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_SUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROTREE_SUBSCRIBE
-RustBuffer uniffi_loro_ffi_fn_method_lorotree_subscribe(void*_Nonnull ptr, void*_Nonnull subscriber, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorotree_subscribe(uint64_t ptr, uint64_t subscriber, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROUNKNOWN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROUNKNOWN
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorounknown(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorounknown(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROUNKNOWN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROUNKNOWN
-void uniffi_loro_ffi_fn_free_lorounknown(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorounknown(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROUNKNOWN_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROUNKNOWN_ID
-RustBuffer uniffi_loro_ffi_fn_method_lorounknown_id(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorounknown_id(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROVALUELIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_LOROVALUELIKE
-void*_Nonnull uniffi_loro_ffi_fn_clone_lorovaluelike(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_lorovaluelike(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROVALUELIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_LOROVALUELIKE
-void uniffi_loro_ffi_fn_free_lorovaluelike(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_lorovaluelike(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOROVALUELIKE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_LOROVALUELIKE
-void uniffi_loro_ffi_fn_init_callback_vtable_lorovaluelike(UniffiVTableCallbackInterfaceLoroValueLike* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_lorovaluelike(const UniffiVTableCallbackInterfaceLoroValueLike* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROVALUELIKE_AS_LORO_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_LOROVALUELIKE_AS_LORO_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_lorovaluelike_as_loro_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_lorovaluelike_as_loro_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_ONPOP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_ONPOP
-void*_Nonnull uniffi_loro_ffi_fn_clone_onpop(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_onpop(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_ONPOP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_ONPOP
-void uniffi_loro_ffi_fn_free_onpop(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_onpop(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_ONPOP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_ONPOP
-void uniffi_loro_ffi_fn_init_callback_vtable_onpop(UniffiVTableCallbackInterfaceOnPop* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_onpop(const UniffiVTableCallbackInterfaceOnPop* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_ONPOP_ON_POP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_ONPOP_ON_POP
-void uniffi_loro_ffi_fn_method_onpop_on_pop(void*_Nonnull ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer undo_meta, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_onpop_on_pop(uint64_t ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer undo_meta, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_ONPUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_ONPUSH
-void*_Nonnull uniffi_loro_ffi_fn_clone_onpush(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_onpush(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_ONPUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_ONPUSH
-void uniffi_loro_ffi_fn_free_onpush(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_onpush(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_ONPUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_ONPUSH
-void uniffi_loro_ffi_fn_init_callback_vtable_onpush(UniffiVTableCallbackInterfaceOnPush* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_onpush(const UniffiVTableCallbackInterfaceOnPush* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_ONPUSH_ON_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_ONPUSH_ON_PUSH
-RustBuffer uniffi_loro_ffi_fn_method_onpush_on_push(void*_Nonnull ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer diff_event, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_onpush_on_push(uint64_t ptr, RustBuffer undo_or_redo, RustBuffer span, RustBuffer diff_event, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_PRECOMMITCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_PRECOMMITCALLBACK
-void*_Nonnull uniffi_loro_ffi_fn_clone_precommitcallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_precommitcallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_PRECOMMITCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_PRECOMMITCALLBACK
-void uniffi_loro_ffi_fn_free_precommitcallback(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_precommitcallback(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_PRECOMMITCALLBACK
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_PRECOMMITCALLBACK
-void uniffi_loro_ffi_fn_init_callback_vtable_precommitcallback(UniffiVTableCallbackInterfacePreCommitCallback* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_precommitcallback(const UniffiVTableCallbackInterfacePreCommitCallback* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_PRECOMMITCALLBACK_ON_PRE_COMMIT
-void uniffi_loro_ffi_fn_method_precommitcallback_on_pre_commit(void*_Nonnull ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_precommitcallback_on_pre_commit(uint64_t ptr, RustBuffer payload, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_STYLECONFIGMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_STYLECONFIGMAP
-void*_Nonnull uniffi_loro_ffi_fn_clone_styleconfigmap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_styleconfigmap(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_STYLECONFIGMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_STYLECONFIGMAP
-void uniffi_loro_ffi_fn_free_styleconfigmap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_styleconfigmap(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_STYLECONFIGMAP_DEFAULT_RICH_TEXT_CONFIG
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_STYLECONFIGMAP_DEFAULT_RICH_TEXT_CONFIG
-void*_Nonnull uniffi_loro_ffi_fn_constructor_styleconfigmap_default_rich_text_config(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_styleconfigmap_default_rich_text_config(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_STYLECONFIGMAP_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_STYLECONFIGMAP_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_styleconfigmap_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_styleconfigmap_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_STYLECONFIGMAP_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_STYLECONFIGMAP_GET
-RustBuffer uniffi_loro_ffi_fn_method_styleconfigmap_get(void*_Nonnull ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_styleconfigmap_get(uint64_t ptr, RustBuffer key, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_STYLECONFIGMAP_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_STYLECONFIGMAP_INSERT
-void uniffi_loro_ffi_fn_method_styleconfigmap_insert(void*_Nonnull ptr, RustBuffer key, RustBuffer value, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_styleconfigmap_insert(uint64_t ptr, RustBuffer key, RustBuffer value, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_SUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_SUBSCRIBER
-void*_Nonnull uniffi_loro_ffi_fn_clone_subscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_subscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_SUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_SUBSCRIBER
-void uniffi_loro_ffi_fn_free_subscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_subscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_SUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_SUBSCRIBER
-void uniffi_loro_ffi_fn_init_callback_vtable_subscriber(UniffiVTableCallbackInterfaceSubscriber* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_subscriber(const UniffiVTableCallbackInterfaceSubscriber* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIBER_ON_DIFF
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIBER_ON_DIFF
-void uniffi_loro_ffi_fn_method_subscriber_on_diff(void*_Nonnull ptr, RustBuffer diff, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_subscriber_on_diff(uint64_t ptr, RustBuffer diff, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_SUBSCRIPTION
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_SUBSCRIPTION
-void*_Nonnull uniffi_loro_ffi_fn_clone_subscription(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_subscription(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_SUBSCRIPTION
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_SUBSCRIPTION
-void uniffi_loro_ffi_fn_free_subscription(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_subscription(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIPTION_DETACH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIPTION_DETACH
-void uniffi_loro_ffi_fn_method_subscription_detach(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_subscription_detach(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIPTION_UNSUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_SUBSCRIPTION_UNSUBSCRIBE
-void uniffi_loro_ffi_fn_method_subscription_unsubscribe(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_subscription_unsubscribe(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_UNDOMANAGER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_UNDOMANAGER
-void*_Nonnull uniffi_loro_ffi_fn_clone_undomanager(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_undomanager(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_UNDOMANAGER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_UNDOMANAGER
-void uniffi_loro_ffi_fn_free_undomanager(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_undomanager(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_UNDOMANAGER_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_UNDOMANAGER_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_undomanager_new(void*_Nonnull doc, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_undomanager_new(uint64_t doc, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_ADD_EXCLUDE_ORIGIN_PREFIX
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_ADD_EXCLUDE_ORIGIN_PREFIX
-void uniffi_loro_ffi_fn_method_undomanager_add_exclude_origin_prefix(void*_Nonnull ptr, RustBuffer prefix, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_add_exclude_origin_prefix(uint64_t ptr, RustBuffer prefix, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_CAN_REDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_CAN_REDO
-int8_t uniffi_loro_ffi_fn_method_undomanager_can_redo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_undomanager_can_redo(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_CAN_UNDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_CAN_UNDO
-int8_t uniffi_loro_ffi_fn_method_undomanager_can_undo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_undomanager_can_undo(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_END
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_END
-void uniffi_loro_ffi_fn_method_undomanager_group_end(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_group_end(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_START
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_GROUP_START
-void uniffi_loro_ffi_fn_method_undomanager_group_start(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_group_start(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_PEER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_PEER
-uint64_t uniffi_loro_ffi_fn_method_undomanager_peer(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_method_undomanager_peer(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_RECORD_NEW_CHECKPOINT
-void uniffi_loro_ffi_fn_method_undomanager_record_new_checkpoint(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_record_new_checkpoint(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_REDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_REDO
-int8_t uniffi_loro_ffi_fn_method_undomanager_redo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_undomanager_redo(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_REDO_COUNT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_REDO_COUNT
-uint32_t uniffi_loro_ffi_fn_method_undomanager_redo_count(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_undomanager_redo_count(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_MAX_UNDO_STEPS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_MAX_UNDO_STEPS
-void uniffi_loro_ffi_fn_method_undomanager_set_max_undo_steps(void*_Nonnull ptr, uint32_t size, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_set_max_undo_steps(uint64_t ptr, uint32_t size, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_MERGE_INTERVAL
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_MERGE_INTERVAL
-void uniffi_loro_ffi_fn_method_undomanager_set_merge_interval(void*_Nonnull ptr, int64_t interval, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_set_merge_interval(uint64_t ptr, int64_t interval, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_POP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_POP
-void uniffi_loro_ffi_fn_method_undomanager_set_on_pop(void*_Nonnull ptr, RustBuffer on_pop, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_set_on_pop(uint64_t ptr, RustBuffer on_pop, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_PUSH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_SET_ON_PUSH
-void uniffi_loro_ffi_fn_method_undomanager_set_on_push(void*_Nonnull ptr, RustBuffer on_push, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_undomanager_set_on_push(uint64_t ptr, RustBuffer on_push, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_META
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_META
-RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_meta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_meta(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_REDO_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_redo_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_META
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_META
-RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_meta(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_meta(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_TOP_UNDO_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_undomanager_top_undo_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_UNDO
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_UNDO
-int8_t uniffi_loro_ffi_fn_method_undomanager_undo(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_undomanager_undo(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_UNDO_COUNT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNDOMANAGER_UNDO_COUNT
-uint32_t uniffi_loro_ffi_fn_method_undomanager_undo_count(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint32_t uniffi_loro_ffi_fn_method_undomanager_undo_count(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_UNSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_UNSUBSCRIBER
-void*_Nonnull uniffi_loro_ffi_fn_clone_unsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_unsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_UNSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_UNSUBSCRIBER
-void uniffi_loro_ffi_fn_free_unsubscriber(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_unsubscriber(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_UNSUBSCRIBER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_INIT_CALLBACK_VTABLE_UNSUBSCRIBER
-void uniffi_loro_ffi_fn_init_callback_vtable_unsubscriber(UniffiVTableCallbackInterfaceUnsubscriber* _Nonnull vtable
+void uniffi_loro_ffi_fn_init_callback_vtable_unsubscriber(const UniffiVTableCallbackInterfaceUnsubscriber* _Nonnull vtable
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNSUBSCRIBER_ON_UNSUBSCRIBE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_UNSUBSCRIBER_ON_UNSUBSCRIBE
-void uniffi_loro_ffi_fn_method_unsubscriber_on_unsubscribe(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_unsubscriber_on_unsubscribe(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VALUEORCONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VALUEORCONTAINER
-void*_Nonnull uniffi_loro_ffi_fn_clone_valueorcontainer(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_valueorcontainer(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VALUEORCONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VALUEORCONTAINER
-void uniffi_loro_ffi_fn_free_valueorcontainer(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_valueorcontainer(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_CONTAINER
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_container(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_container(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_COUNTER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_COUNTER
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_counter(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_counter(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_LIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_LIST
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_list(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_list(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_MAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_MAP
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_map(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_map(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_MOVABLE_LIST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_MOVABLE_LIST
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_movable_list(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_movable_list(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_TEXT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_TEXT
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_text(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_text(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_TREE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_TREE
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_tree(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_tree(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_LORO_UNKNOWN
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_unknown(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_loro_unknown(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_AS_VALUE
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_as_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_CONTAINER_TYPE
-RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_container_type(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_valueorcontainer_container_type(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_IS_CONTAINER
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_IS_CONTAINER
-int8_t uniffi_loro_ffi_fn_method_valueorcontainer_is_container(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_valueorcontainer_is_container(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_IS_VALUE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VALUEORCONTAINER_IS_VALUE
-int8_t uniffi_loro_ffi_fn_method_valueorcontainer_is_value(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_valueorcontainer_is_value(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VERSIONRANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VERSIONRANGE
-void*_Nonnull uniffi_loro_ffi_fn_clone_versionrange(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_versionrange(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VERSIONRANGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VERSIONRANGE
-void uniffi_loro_ffi_fn_free_versionrange(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_versionrange(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONRANGE_FROM_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONRANGE_FROM_VV
-void*_Nonnull uniffi_loro_ffi_fn_constructor_versionrange_from_vv(void*_Nonnull vv, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_versionrange_from_vv(uint64_t vv, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONRANGE_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONRANGE_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_versionrange_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_versionrange_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CLEAR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CLEAR
-void uniffi_loro_ffi_fn_method_versionrange_clear(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionrange_clear(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_ID
-int8_t uniffi_loro_ffi_fn_method_versionrange_contains_id(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionrange_contains_id(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_ID_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_ID_SPAN
-int8_t uniffi_loro_ffi_fn_method_versionrange_contains_id_span(void*_Nonnull ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionrange_contains_id_span(uint64_t ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_OPS_BETWEEN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_CONTAINS_OPS_BETWEEN
-int8_t uniffi_loro_ffi_fn_method_versionrange_contains_ops_between(void*_Nonnull ptr, void*_Nonnull vv_a, void*_Nonnull vv_b, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionrange_contains_ops_between(uint64_t ptr, uint64_t vv_a, uint64_t vv_b, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_EXTENDS_TO_INCLUDE_ID_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_EXTENDS_TO_INCLUDE_ID_SPAN
-void uniffi_loro_ffi_fn_method_versionrange_extends_to_include_id_span(void*_Nonnull ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionrange_extends_to_include_id_span(uint64_t ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET
-RustBuffer uniffi_loro_ffi_fn_method_versionrange_get(void*_Nonnull ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionrange_get(uint64_t ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET_ALL_RANGES
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET_ALL_RANGES
-RustBuffer uniffi_loro_ffi_fn_method_versionrange_get_all_ranges(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionrange_get_all_ranges(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET_PEERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_GET_PEERS
-RustBuffer uniffi_loro_ffi_fn_method_versionrange_get_peers(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionrange_get_peers(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_HAS_OVERLAP_WITH
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_HAS_OVERLAP_WITH
-int8_t uniffi_loro_ffi_fn_method_versionrange_has_overlap_with(void*_Nonnull ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionrange_has_overlap_with(uint64_t ptr, RustBuffer span, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_INSERT
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_INSERT
-void uniffi_loro_ffi_fn_method_versionrange_insert(void*_Nonnull ptr, uint64_t peer, int32_t start, int32_t end, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionrange_insert(uint64_t ptr, uint64_t peer, int32_t start, int32_t end, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_IS_EMPTY
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONRANGE_IS_EMPTY
-int8_t uniffi_loro_ffi_fn_method_versionrange_is_empty(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionrange_is_empty(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VERSIONVECTOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CLONE_VERSIONVECTOR
-void*_Nonnull uniffi_loro_ffi_fn_clone_versionvector(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_clone_versionvector(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VERSIONVECTOR
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FREE_VERSIONVECTOR
-void uniffi_loro_ffi_fn_free_versionvector(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_free_versionvector(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONVECTOR_DECODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONVECTOR_DECODE
-void*_Nonnull uniffi_loro_ffi_fn_constructor_versionvector_decode(RustBuffer bytes, RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_versionvector_decode(RustBuffer bytes, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONVECTOR_NEW
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_CONSTRUCTOR_VERSIONVECTOR_NEW
-void*_Nonnull uniffi_loro_ffi_fn_constructor_versionvector_new(RustCallStatus *_Nonnull out_status
+uint64_t uniffi_loro_ffi_fn_constructor_versionvector_new(RustCallStatus *_Nonnull out_status
     
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_DIFF
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_DIFF
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_diff(void*_Nonnull ptr, void*_Nonnull rhs, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_diff(uint64_t ptr, uint64_t rhs, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_ENCODE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_ENCODE
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_encode(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_encode(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_EQ
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_EQ
-int8_t uniffi_loro_ffi_fn_method_versionvector_eq(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionvector_eq(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_EXTEND_TO_INCLUDE_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_EXTEND_TO_INCLUDE_VV
-void uniffi_loro_ffi_fn_method_versionvector_extend_to_include_vv(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionvector_extend_to_include_vv(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_GET_LAST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_GET_LAST
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_get_last(void*_Nonnull ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_get_last(uint64_t ptr, uint64_t peer, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_GET_MISSING_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_GET_MISSING_SPAN
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_get_missing_span(void*_Nonnull ptr, void*_Nonnull target, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_get_missing_span(uint64_t ptr, uint64_t target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INCLUDES_ID
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INCLUDES_ID
-int8_t uniffi_loro_ffi_fn_method_versionvector_includes_id(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionvector_includes_id(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INCLUDES_VV
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INCLUDES_VV
-int8_t uniffi_loro_ffi_fn_method_versionvector_includes_vv(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionvector_includes_vv(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INTERSECT_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_INTERSECT_SPAN
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_intersect_span(void*_Nonnull ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_intersect_span(uint64_t ptr, RustBuffer target, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_MERGE
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_MERGE
-void uniffi_loro_ffi_fn_method_versionvector_merge(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionvector_merge(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_PARTIAL_CMP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_PARTIAL_CMP
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_partial_cmp(void*_Nonnull ptr, void*_Nonnull other, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_partial_cmp(uint64_t ptr, uint64_t other, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_END
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_END
-void uniffi_loro_ffi_fn_method_versionvector_set_end(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionvector_set_end(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_LAST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_SET_LAST
-void uniffi_loro_ffi_fn_method_versionvector_set_last(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+void uniffi_loro_ffi_fn_method_versionvector_set_last(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TO_HASHMAP
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TO_HASHMAP
-RustBuffer uniffi_loro_ffi_fn_method_versionvector_to_hashmap(void*_Nonnull ptr, RustCallStatus *_Nonnull out_status
+RustBuffer uniffi_loro_ffi_fn_method_versionvector_to_hashmap(uint64_t ptr, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_METHOD_VERSIONVECTOR_TRY_UPDATE_LAST
-int8_t uniffi_loro_ffi_fn_method_versionvector_try_update_last(void*_Nonnull ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
+int8_t uniffi_loro_ffi_fn_method_versionvector_try_update_last(uint64_t ptr, RustBuffer id, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_FN_FUNC_DECODE_IMPORT_BLOB_META
@@ -3116,26 +3187,6 @@ void ffi_loro_ffi_rust_future_free_f64(uint64_t handle
 #ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_COMPLETE_F64
 #define UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_COMPLETE_F64
 double ffi_loro_ffi_rust_future_complete_f64(uint64_t handle, RustCallStatus *_Nonnull out_status
-);
-#endif
-#ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_POLL_POINTER
-#define UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_POLL_POINTER
-void ffi_loro_ffi_rust_future_poll_pointer(uint64_t handle, UniffiRustFutureContinuationCallback _Nonnull callback, uint64_t callback_data
-);
-#endif
-#ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_CANCEL_POINTER
-#define UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_CANCEL_POINTER
-void ffi_loro_ffi_rust_future_cancel_pointer(uint64_t handle
-);
-#endif
-#ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_FREE_POINTER
-#define UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_FREE_POINTER
-void ffi_loro_ffi_rust_future_free_pointer(uint64_t handle
-);
-#endif
-#ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_COMPLETE_POINTER
-#define UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_COMPLETE_POINTER
-void*_Nonnull ffi_loro_ffi_rust_future_complete_pointer(uint64_t handle, RustCallStatus *_Nonnull out_status
 );
 #endif
 #ifndef UNIFFI_FFIDEF_FFI_LORO_FFI_RUST_FUTURE_POLL_RUST_BUFFER
@@ -3586,6 +3637,12 @@ uint16_t uniffi_loro_ffi_checksum_method_lorodoc_diff(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_EXPORT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_EXPORT
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_export(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_EXPORT_JSON_IN_ID_SPAN
 uint16_t uniffi_loro_ffi_checksum_method_lorodoc_export_json_in_id_span(void
@@ -3988,6 +4045,42 @@ uint16_t uniffi_loro_ffi_checksum_method_lorodoc_travel_change_ancestors(void
     
 );
 #endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_COUNTER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_COUNTER
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_counter(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_LIST
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_list(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_MAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_MAP
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_map(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_MOVABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_MOVABLE_LIST
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_movable_list(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_TEXT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_TEXT
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_text(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_TREE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_TRY_GET_TREE
+uint16_t uniffi_loro_ffi_checksum_method_lorodoc_try_get_tree(void
+    
+);
+#endif
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_VV_TO_FRONTIERS
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LORODOC_VV_TO_FRONTIERS
 uint16_t uniffi_loro_ffi_checksum_method_lorodoc_vv_to_frontiers(void
@@ -4159,6 +4252,42 @@ uint16_t uniffi_loro_ffi_checksum_method_loromap_delete(void
 #ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_DOC
 #define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_DOC
 uint16_t uniffi_loro_ffi_checksum_method_loromap_doc(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_COUNTER
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_COUNTER
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_counter(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_LIST
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_list(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_MAP
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_MAP
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_map(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_MOVABLE_LIST
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_MOVABLE_LIST
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_movable_list(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_TEXT
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_TEXT
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_text(void
+    
+);
+#endif
+#ifndef UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_TREE
+#define UNIFFI_FFIDEF_UNIFFI_LORO_FFI_CHECKSUM_METHOD_LOROMAP_ENSURE_MERGEABLE_TREE
+uint16_t uniffi_loro_ffi_checksum_method_loromap_ensure_mergeable_tree(void
     
 );
 #endif
