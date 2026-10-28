@@ -1,6 +1,6 @@
 [package]
 name = "loro-swift"
-version = "1.16.2"
+version = "1.17.1"
 edition = "2021"
 
 # By default this will produce an rlib named "loro-swift", which is what we want.
@@ -13,7 +13,7 @@ name = "uniffi-bindgen"
 path = "src/uniffi-bindgen.rs"
 
 [dependencies]
-loro-ffi = "1.*"
+loro-ffi = "=1.17.1"
 # See https://mozilla.github.io/uniffi-rs/latest/tutorial/Prerequisites.html
 uniffi = { version = "0.31.1" }
 
